@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/* all elements */
+*
+{
+    box-sizing: border-box;
+}
+
+summary
+{
+    font-weight: bold;
+    font-size: large;
+}
+
+/* all multimedia */
+video,
+audio
+{
+    display: block;
+    margin: auto;
+}

@@ -1,2 +1,2 @@
-# SimpleChord.github.io
+# Simple Chord
 Let's create chord-scores easily!
