@@ -3,15 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="css/chord.css" />
-    <script src="js/chord.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/function.js"></script>
     <title>SimpleChord</title>
   </head>
   <body>
-    <script>
-      var song =
-      {
-          title: "一代公主",
-          score:
+    <header>
+      <h1>简单编曲</h1>
+    </header>
+    <main>
+      <article id="new">
+        <h2>一代公主</h2>
+        <script>
+          var score =
           {
               chord:
               [
@@ -51,9 +55,13 @@
                   "两面评价 在人间",
                   "唐朝轶事 永流传"
               ]
-          }
-      };
-      createSong(song);
-    </script>
+          };
+          appendScore(document.getElementById("new"), score)
+        </script>
+        <audio controls style="width: 81%;">
+          <source src="audio/gequ/taiwan/ydgz.mp3" type="audio/mpeg" />
+        </audio>
+      </article>
+    </main>
   </body>
 </html>

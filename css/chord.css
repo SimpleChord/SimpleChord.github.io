@@ -5,11 +5,27 @@
 {
     box-sizing: border-box;
 }
-
-summary
+body
 {
-    font-weight: bold;
-    font-size: large;
+    margin: 0; /* remove the default margin between navbar and sides */
+/*    background-color: #CCE8CF;  colour to protect eyes */
+}
+
+header
+{
+    float: right;
+    width: 90%;
+}
+header h1
+{
+    text-align: center;
+    color: purple;
+}
+
+main
+{
+    float: right;
+    width: 80%;
 }
 
 /* all multimedia */
