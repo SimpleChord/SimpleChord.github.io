@@ -1,39 +1,32 @@
 function getPage(url)
 {
-    var i = 0;
     var splitURL = url.split("/");
-    var last = splitURL.length - 1;
-    var nodes = []; // effective nodes
-    var node = "";
     
     var page =
     {
-        language: "",
+        name: splitURL.pop().split(".").shift(),
         top: "", // top menu, used to highlight the current NAV link
-        name: splitURL[last].split(".").shift(),
         prefix: "", // prefix to go up directories
-        path: "" // effective path without extension
+        path: "", // effective path without extension
+        info: {},
+        language: ""
     };
     
-    page.top = page.name;
-    page.path = page.name;
-    
-    for (i = last - 1; i >= 0; i--)
+    if (page.name in DATA)
     {
-        page.prefix += "../";
-        if (splitURL[i] in LANGUAGES)
-        {
-            page.language = splitURL[i];
-            break;
-        }
-        else
-        {
-            page.top = splitURL[i];
-            nodes.unshift(splitURL[i]);
-            page.path = splitURL[i] + "/" + page.path;
-        }
+        page.top = page.name;
+        page.prefix = "../";
+        page.path = page.name;
+        page.info = DATA[page.name];
     }
-    for (node of nodes) page.parent = page.parent[node].aside;
+    else
+    {
+        page.top = splitURL.pop();
+        page.prefix = "../../";
+        page.path = page.top + "/" + page.name;
+        page.info = DATA[page.top].classification[page.name];
+    }
+    page.language = LANGUAGES[page.top];
     
     return page;
 }
@@ -88,38 +81,34 @@ function appendLyrics(parent, line, from, to) // line: a line of lyrics
     parent.appendChild(text);
 }
 
-function appendScore(parent, score)
+function appendScore(parent, chords, lyrics)
 {
     var p = document.createElement("p");
     
-    var line = "";
-    var firstIndex = 0; // the index of the 1st chord in a line of lyrics 
-    var firstChord = [];
-    var lyricsFrom = 0;
-    var lyricsTo = 0;
-    
-    score.chord.forEach
+    chords.forEach
     (
-        function(scch, i)
+        function(chord, i)
         {
-            line = FullSpace + score.lyric[i] + FullSpace;
-            firstIndex = scch[0][ChordFrom];
-            lyricsFrom = 0;
+            var line = FullSpace + lyrics[i] + FullSpace;
+            var firstIndex = chord[0][ChordFrom]; // the index of the 1st chord in a line of lyrics
+            var firstChord = [];
+            var lyricsFrom = 0;
+            var lyricsTo = 0;
             
             if (0 == firstIndex)
             {
-                firstChord = scch.shift();
+                firstChord = chord.shift();
                 
                 appendChord(p, line[firstChord[ChordFrom]], firstChord[ChordName]);
                 lyricsFrom = 1;
             }
             
-            for (sc of scch)
+            for (c of chord)
             {
-                lyricsTo = sc[ChordFrom];
+                lyricsTo = c[ChordFrom];
                 
                 if (lyricsFrom != lyricsTo) appendLyrics(p, line, lyricsFrom, lyricsTo);
-                appendChord(p, line[sc[ChordFrom]], sc[ChordName]);
+                appendChord(p, line[c[ChordFrom]], c[ChordName]);
                 
                 lyricsFrom = lyricsTo + 1;
             }
@@ -134,7 +123,7 @@ function appendScore(parent, score)
     parent.appendChild(p);
 }
 
-function appendSong(parent, id, song)
+function appendSong(parent, id, song, language)
 {
     var article = document.createElement("article");
     var h2 = document.createElement("h2"); // heading 2
@@ -145,45 +134,47 @@ function appendSong(parent, id, song)
     article.id = id;
     
 // heading 2
-    h2.textContent = song.title;
+    h2.textContent = song.h2;
     article.appendChild(h2);
     
 // score
-    appendScore(article, song.score);
+    appendScore(article, song.chords, song.lyrics);
     
 // demo
-    summary.textContent = "Demo";///
+    summary.textContent = DICTIONARY.demo[language];///multimedia
     details.appendChild(summary);
     
     article.appendChild(details);
     parent.appendChild(article);
 }
 
-function createHeader(heading1)
+function createHeader(info)
 {
     var header = document.createElement("header");
     var h1 = document.createElement("h1"); // heading 1
     
-    h1.textContent = heading1;
+    h1.textContent = info.header.h1;
     
     header.appendChild(h1);
     document.body.appendChild(header);
 }
 
-function createMain(songs)
+function createMain(page)
 {
     var main = document.createElement("main");
     
     var id = "";
     var song = {};
     
-    for ([id, song] of Object.entries(songs)) appendSong(main, id, song);
+    for ([id, song] of Object.entries(page.info.main)) appendSong(main, id, song, page.language);
 
     document.body.appendChild(main);
 }
 
-function createPage(page)///argument:page=>url;parameter:location.pathname
+function createPage(url)
 {
+    var page = getPage(url);
+    
     var link = document.createElement("link");
     
 // link CSS
@@ -193,9 +184,9 @@ function createPage(page)///argument:page=>url;parameter:location.pathname
     document.head.appendChild(link);
     
 // title
-    document.title = page.heading1;
+    document.title = page.info.header.h1;
     
 //    createNav(page);///
-    createHeader(page.heading1);
-    createMain(page.songs);
+    createHeader(page.info);
+    createMain(page);
 }

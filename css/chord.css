@@ -8,13 +8,20 @@
 body
 {
     margin: 0; /* remove the default margin between navbar and sides */
-/*    background-color: #CCE8CF;  colour to protect eyes */
+}
+
+/* vertical navigation bar */
+nav
+{
+    float: left;
+    width: 20%;
+    border: 1px solid red;
 }
 
 header
 {
     float: right;
-    width: 90%;
+    width: 80%;
 }
 header h1
 {
@@ -25,7 +32,7 @@ header h1
 main
 {
     float: right;
-    width: 80%;
+    width: 70%;
 }
 
 /* all multimedia */

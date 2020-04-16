@@ -1,12 +1,7 @@
 // chords
 var Am = "Am";
 var Am7 = "Am7";
-var Bm = "Bm";
-var C = "C";
-var C7 = "C7";
-var D = "D";
 var D6 = "D6";
-var D7 = "D7";
 var Dm = "Dm";
 var Dm7 = "Dm7";
 var Em = "Em";
@@ -14,7 +9,6 @@ var EmB = "Em/B";
 var F = "F";
 var G = "G";
 var GB = "G/B";
-var G7 = "G7";
 
 // others
 var HalfSpace = "\u00A0";
@@ -28,3 +22,16 @@ var TAG =
 {
     SUP: "sup"
 };
+
+var LANGUAGES =
+{
+    gequ: "zh"
+};
+
+var DICTIONARY =
+{
+    demo:
+    {
+        zh: "示范弹唱"
+    }
+}
