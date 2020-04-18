@@ -1,6 +1,10 @@
 // chords
+var A7 = "A7";
 var Am = "Am";
 var Am7 = "Am7";
+var bB = "fB";
+var C = "C";
+var C7 = "C7";
 var D6 = "D6";
 var Dm = "Dm";
 var Dm7 = "Dm7";
@@ -9,6 +13,7 @@ var EmB = "Em/B";
 var F = "F";
 var G = "G";
 var GB = "G/B";
+var Gm = "Gm";
 
 // others
 var HalfSpace = "\u00A0";
@@ -20,7 +25,13 @@ var ChordName = 1;
 
 var TAG =
 {
-    SUP: "sup"
+    audio: "audio",
+    sup: "sup"
+};
+
+var FORMAT =
+{
+    audio: "mp3"
 };
 
 var LANGUAGES =

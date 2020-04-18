@@ -1,7 +1,6 @@
 function getPage(url)
 {
     var splitURL = url.split("/");
-    
     var page =
     {
         name: splitURL.pop().split(".").shift(),
@@ -38,34 +37,41 @@ function appendBreak(parent)
     parent.appendChild(br);
 }
 
-function appendChord(parent, lyrics, chord)
+function createTagText(tag, text)
+{
+    var element = document.createElement(tag);
+    
+    element.innerText = text;
+    
+    return element;
+}
+
+function appendChord(lyrics, chord, parent)
 {
     var ruby = document.createElement("ruby");
     var rt = document.createElement("rt");
-    
+    var c = "";
     var betweenRT;
     
-    ruby.textContent = (" " === lyrics) ? HalfSpace : lyrics;///to be improved if lyrics are english!
+    ruby.textContent = (" " === lyrics) ? HalfSpace : lyrics;
     
     for (c of chord)
     {
         switch (c)
         {
             case "M":
-                betweenRT = document.createElement("small");
-                betweenRT.textContent = c;
+                betweenRT = createTagText("small", c);
                 break;
             case "#":
-                betweenRT = document.createElement(TAG.SUP);
-                betweenRT.textContent = c;
+                betweenRT = createTagText(TAG.sup, c);
                 break;
             case "f":
-                betweenRT = document.createElement(TAG.SUP);
-                betweenRT.textContent = "b";
+                betweenRT = createTagText(TAG.sup, "b");
                 break;
             default:
                 betweenRT = document.createTextNode(c);
         }
+        
         rt.appendChild(betweenRT);
     }
     
@@ -73,7 +79,7 @@ function appendChord(parent, lyrics, chord)
     parent.appendChild(ruby);
 }
 
-function appendLyrics(parent, line, from, to) // line: a line of lyrics
+function appendLyrics(line, from, to, parent) // line: a line of lyrics
 {
     var part = line.slice(from, to);
     var text = document.createTextNode(part);
@@ -81,7 +87,7 @@ function appendLyrics(parent, line, from, to) // line: a line of lyrics
     parent.appendChild(text);
 }
 
-function appendScore(parent, chords, lyrics)
+function appendScore(chords, lyrics, parent)
 {
     var p = document.createElement("p");
     
@@ -94,12 +100,13 @@ function appendScore(parent, chords, lyrics)
             var firstChord = [];
             var lyricsFrom = 0;
             var lyricsTo = 0;
+            var c = "";
             
             if (0 == firstIndex)
             {
                 firstChord = chord.shift();
                 
-                appendChord(p, line[firstChord[ChordFrom]], firstChord[ChordName]);
+                appendChord(line[firstChord[ChordFrom]], firstChord[ChordName], p);
                 lyricsFrom = 1;
             }
             
@@ -107,13 +114,13 @@ function appendScore(parent, chords, lyrics)
             {
                 lyricsTo = c[ChordFrom];
                 
-                if (lyricsFrom != lyricsTo) appendLyrics(p, line, lyricsFrom, lyricsTo);
-                appendChord(p, line[c[ChordFrom]], c[ChordName]);
+                if (lyricsFrom != lyricsTo) appendLyrics(line, lyricsFrom, lyricsTo, p);
+                appendChord(line[c[ChordFrom]], c[ChordName], p);
                 
                 lyricsFrom = lyricsTo + 1;
             }
             
-            if (lyricsFrom < line.length) appendLyrics(p, line, lyricsFrom, line.length);
+            if (lyricsFrom < line.length) appendLyrics(line, lyricsFrom, line.length, p);
             
             appendBreak(p);
             if (0 == (i + 1) % PARAGRAPH) appendBreak(p);
@@ -123,37 +130,61 @@ function appendScore(parent, chords, lyrics)
     parent.appendChild(p);
 }
 
-function appendSong(parent, id, song, language)
+function getLink(prefix, folder, file)
+{
+    return prefix + folder + "/" + file;
+}
+
+function appendDemo(page, type, baseName, parent)
+{
+    var demo = document.createElement(type);
+    
+    demo.src = getLink(page.prefix, type, page.path + "/" + baseName + "." + FORMAT[type]);
+    demo.controls = true;
+    demo.onmouseenter = function()
+    {
+        demo.play();
+    };
+    
+    parent.appendChild(demo);
+}
+
+function appendSong(page, id, parent)
 {
     var article = document.createElement("article");
-    var h2 = document.createElement("h2"); // heading 2
-    var details = document.createElement("details");
-    var summary = document.createElement("summary");
+    var song = page.info.main[id];
+    var h2 = createTagText("h2", song.h2); // heading 2
+    var details;
+    var summary;
     
 // create bookmarks with ID attribute
     article.id = id;
     
 // heading 2
-    h2.textContent = song.h2;
     article.appendChild(h2);
     
 // score
-    appendScore(article, song.chords, song.lyrics);
+    appendScore(song.chords, song.lyrics, article);
     
 // demo
-    summary.textContent = DICTIONARY.demo[language];///multimedia
-    details.appendChild(summary);
+    if ("demo" in song)
+    {
+        details = document.createElement("details");
+        summary = createTagText("summary", DICTIONARY.demo[page.language]);
+        
+        details.appendChild(summary);
+        appendDemo(page, song.demo, id, details)
+        
+        article.appendChild(details);
+    }
     
-    article.appendChild(details);
     parent.appendChild(article);
 }
 
-function createHeader(info)
+function createHeader(pih) // page.info.header
 {
     var header = document.createElement("header");
-    var h1 = document.createElement("h1"); // heading 1
-    
-    h1.textContent = info.header.h1;
+    var h1 = createTagText("h1", pih.h1); // heading 1
     
     header.appendChild(h1);
     document.body.appendChild(header);
@@ -162,11 +193,9 @@ function createHeader(info)
 function createMain(page)
 {
     var main = document.createElement("main");
-    
     var id = "";
-    var song = {};
     
-    for ([id, song] of Object.entries(page.info.main)) appendSong(main, id, song, page.language);
+    for (id in page.info.main) appendSong(page, id, main);
 
     document.body.appendChild(main);
 }
@@ -174,19 +203,18 @@ function createMain(page)
 function createPage(url)
 {
     var page = getPage(url);
-    
+    var pih = page.info.header;
     var link = document.createElement("link");
     
 // link CSS
     link.rel = "stylesheet";
     link.type = "text/css";
-    link.href = page.prefix + "css/chord.css";
+    link.href = getLink(page.prefix, "css", "chord.css");
     document.head.appendChild(link);
     
 // title
-    document.title = page.info.header.h1;
+    document.title = pih.h1;
     
-//    createNav(page);///
-    createHeader(page.info);
+    createHeader(pih);
     createMain(page);
 }

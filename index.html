@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="css/chord.css" />
     <script src="js/constant.js"></script>
+    <script src="js/database.js"></script>
     <script src="js/function.js"></script>
     <title>SimpleChord</title>
   </head>
@@ -24,52 +25,15 @@
       <h1>简单编曲</h1>
     </header>
     <main>
-      <article id="new">
-        <h2>一代公主</h2>
-        <script>
-          var chords =
-          [
-              [[0, Am], [3, Em]],
-              [[0, Am], [3, G]],
-              [[0, Dm7], [5, GB], [8, Am]],
-              [[1, F], [3, Em], [5, Em], [6, Em], [8, Am], [9, Am]],
-              [[0, Am], [3, Em]],
-              [[0, Am], [3, G]],
-              [[0, Dm7], [5, GB], [8, Am]],
-              [[1, F], [3, Em], [5, Em], [6, Em], [8, Am], [9, Am]],
-              [[1, Dm7], [5, Am], [9, Em], [10, Em]],
-              [[1, Am], [5, Am7], [8, FullSpace + Dm], [10, Dm]],
-              [[1, Dm7], [5, EmB], [8, GB], [10, GB]],
-              [[1, Dm7], [5, D6], [9, G + FullSpace], [10, G]],
-              [[0, Am], [5, Em]],
-              [[0, Am], [5, G]],
-              [[0, Dm7], [5, GB], [8, Am]],
-              [[1, F], [3, Em], [5, Em], [6, Em], [8, Am], [9, Am]]
-          ];
-          var lyrics =
-          [
-              "峨眉 耸参天",
-              "丰颊 满光华",
-              "器宇非凡 是慧根",
-              "唐朝女皇 武则天",
-              "皓腕 刚毅扬",
-              "慧智 兰心巧",
-              "玉纤香动 万卷书",
-              "一代公主 封太平",
-              "春晖普照 溢满宫锦",
-              "女袭母风 展露威仪",
-              "寸寸柔肠 盈盈粉泪",
-              "冷暖人间 恩情几许",
-              "盘踞天下 数十年",
-              "郁郁笙歌 愈寂寥",
-              "两面评价 在人间",
-              "唐朝轶事 永流传"
-          ];
-          appendScore(document.getElementById("new"), chords, lyrics);
-        </script>
-        <audio controls style="width: 81%;">
-          <source src="audio/gequ/taiwan/ydgz.mp3" type="audio/mpeg" />
-        </audio>
+      <article>
+        <h2>春风</h2>
+        <p>春天来了！选一首当季的歌。</p>
+        <section id="new">
+          <script>
+            var song = DATA.gequ.classification.taiwan.main.cf;
+            appendScore(song.chords, song.lyrics, document.getElementById("new"));
+          </script>
+        </section>
       </article>
     </main>
   </body>
