@@ -10,7 +10,6 @@ body
     margin: 0; /* remove the default margin between navbar and sides */
 }
 
-/* vertical navigation bar */
 nav
 {
     float: left;
@@ -40,14 +39,17 @@ section
 section p
 {
     display: inline-block;
+    margin: 0;
     text-align: left;
 }
 summary
 {
-    font-weight: bold;
+    color: deepPink;
 }
 
-audio
+/* demo */
+audio,
+video
 {
     display: block;
     margin: auto;

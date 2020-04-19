@@ -30,13 +30,6 @@ function getPage(url)
     return page;
 }
 
-function appendBreak(parent)
-{
-    var br = document.createElement("br");
-    
-    parent.appendChild(br);
-}
-
 function createTagText(tag, text)
 {
     var element = document.createElement(tag);
@@ -46,6 +39,17 @@ function createTagText(tag, text)
     return element;
 }
 
+function appendParagraph(type, song, parent)
+{
+    var p;
+    
+    if (type in song)
+    {
+        p = createTagText("p", song[type]);
+        parent.appendChild(p);
+    }
+}
+
 function appendChord(lyrics, chord, parent)
 {
     var ruby = document.createElement("ruby");
@@ -53,7 +57,7 @@ function appendChord(lyrics, chord, parent)
     var c = "";
     var betweenRT;
     
-    ruby.textContent = (" " === lyrics) ? HalfSpace : lyrics;
+    ruby.textContent = (" " === lyrics) ? SPACE : lyrics;
     
     for (c of chord)
     {
@@ -87,35 +91,62 @@ function appendLyrics(line, from, to, parent) // line: a line of lyrics
     parent.appendChild(text);
 }
 
-function appendScore(chords, lyrics, parent)
+function append__tro(__tro, score, language, parent)
 {
+    var st = "";
+    var chords = "";
+    var space = document.createTextNode(SPACE);
+    
+    if (__tro in score)
+    {
+        for (st of score[__tro]) chords += st + SPACE; // "score[__tro]" is an array.
+        
+        parent.appendChild(space);
+        appendChord(DICTIONARY[__tro][language], chords.slice(0, -1), parent);
+    }
+}
+
+function appendBreak(parent)
+{
+    var br = document.createElement("br");
+    
+    parent.appendChild(br);
+}
+
+function appendScore(score, language, parent)
+{
+    var section = document.createElement("section");
     var p = document.createElement("p");
     
-    chords.forEach
+    append__tro("intro", score, language, p);
+    
+    score.chords.forEach
     (
-        function(chord, i)
+        function(scch, i)
         {
-            var line = FullSpace + lyrics[i] + FullSpace;
-            var firstIndex = chord[0][ChordFrom]; // the index of the 1st chord in a line of lyrics
+            var firstIndex = scch[0][ChordFrom]; // the index of the 1st chord in a line of lyrics
             var firstChord = [];
+            var line = SPACE + score.lyrics[i] + SPACE;
             var lyricsFrom = 0;
             var lyricsTo = 0;
-            var c = "";
+            var sc = "";
+            
+            if (0 == i % PARAGRAPH) appendBreak(p);
             
             if (0 == firstIndex)
             {
-                firstChord = chord.shift();
+                firstChord = scch.shift();
                 
                 appendChord(line[firstChord[ChordFrom]], firstChord[ChordName], p);
                 lyricsFrom = 1;
             }
             
-            for (c of chord)
+            for (sc of scch)
             {
-                lyricsTo = c[ChordFrom];
+                lyricsTo = sc[ChordFrom];
                 
                 if (lyricsFrom != lyricsTo) appendLyrics(line, lyricsFrom, lyricsTo, p);
-                appendChord(line[c[ChordFrom]], c[ChordName], p);
+                appendChord(line[sc[ChordFrom]], sc[ChordName], p);
                 
                 lyricsFrom = lyricsTo + 1;
             }
@@ -123,11 +154,13 @@ function appendScore(chords, lyrics, parent)
             if (lyricsFrom < line.length) appendLyrics(line, lyricsFrom, line.length, p);
             
             appendBreak(p);
-            if (0 == (i + 1) % PARAGRAPH) appendBreak(p);
         }
     );
     
-    parent.appendChild(p);
+    append__tro("outro", score, language, p);
+    
+    section.appendChild(p);
+    parent.appendChild(section);
 }
 
 function getLink(prefix, folder, file)
@@ -157,14 +190,16 @@ function appendSong(page, id, parent)
     var details;
     var summary;
     
-// create bookmarks with ID attribute
-    article.id = id;
+    article.id = id; // create bookmarks with ID attribute
     
 // heading 2
     article.appendChild(h2);
     
-// score
-    appendScore(song.chords, song.lyrics, article);
+    appendParagraph("preface", song, article); // preface
+    
+    appendScore(song.score, page.language, article); // score
+    
+    appendParagraph("postscript", song, article); // postscript
     
 // demo
     if ("demo" in song)
@@ -173,7 +208,8 @@ function appendSong(page, id, parent)
         summary = createTagText("summary", DICTIONARY.demo[page.language]);
         
         details.appendChild(summary);
-        appendDemo(page, song.demo, id, details)
+        appendDemo(page, song.demo, id, details);
+        appendParagraph("comment", song, details); // comment
         
         article.appendChild(details);
     }
@@ -196,7 +232,7 @@ function createMain(page)
     var id = "";
     
     for (id in page.info.main) appendSong(page, id, main);
-
+    
     document.body.appendChild(main);
 }
 

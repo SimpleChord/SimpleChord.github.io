@@ -27,13 +27,16 @@
     <main>
       <article>
         <h2>春风</h2>
-        <p>春天来了！选一首当季的歌。</p>
+        <p>春天来了！选一首当季的歌吧。</p>
         <section id="new">
           <script>
-            var song = DATA.gequ.classification.taiwan.main.cf;
-            appendScore(song.chords, song.lyrics, document.getElementById("new"));
+            var score = DATA.gequ.classification.taiwan.main.cf.score;
+            appendScore(score, "zh", document.getElementById("new"));
           </script>
         </section>
+        <video controls>
+          <source src="video/gequ/taiwan/cf.mp4" type="video/mp4" />
+        </video>
       </article>
     </main>
   </body>

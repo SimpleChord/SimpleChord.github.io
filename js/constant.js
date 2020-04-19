@@ -16,8 +16,7 @@ var GB = "G/B";
 var Gm = "Gm";
 
 // others
-var HalfSpace = "\u00A0";
-var FullSpace = "\u3000";
+var SPACE = "\u3000"; // full width
 var PARAGRAPH = 4; // add a break every 4 lines
 
 var ChordFrom = 0;
@@ -26,12 +25,14 @@ var ChordName = 1;
 var TAG =
 {
     audio: "audio",
-    sup: "sup"
+    sup: "sup",
+    video: "video"
 };
 
 var FORMAT =
 {
-    audio: "mp3"
+    audio: "mp3",
+    video: "mp4"
 };
 
 var LANGUAGES =
@@ -41,8 +42,16 @@ var LANGUAGES =
 
 var DICTIONARY =
 {
+    intro:
+    {
+        zh: "（前奏）"
+    },
     demo:
     {
         zh: "示范弹唱"
+    },
+    outro:
+    {
+        zh: "（尾奏）"
     }
 }
