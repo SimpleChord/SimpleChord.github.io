@@ -16,6 +16,8 @@ var GB = "G/B";
 var Gm = "Gm";
 
 // others
+var LB = "<br />"; // line break
+var PB = LB + LB; // paragraph break
 var SPACE = "\u3000"; // full width
 var PARAGRAPH = 4; // add a break every 4 lines
 

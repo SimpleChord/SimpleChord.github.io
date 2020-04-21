@@ -30,24 +30,32 @@ function getPage(url)
     return page;
 }
 
-function createTagText(tag, text)
+function appendBreak(parent)
+{
+    var br = document.createElement("br");
+    
+    parent.appendChild(br);
+}
+
+function appendTextNode(text, parent)
+{
+    var node = document.createTextNode(text);
+    
+    parent.appendChild(node);
+}
+
+function appendTagText(tag, text, parent)
 {
     var element = document.createElement(tag);
     
-    element.innerText = text;
+    element.innerHTML = text;
     
-    return element;
+    parent.appendChild(element);
 }
 
 function appendParagraph(type, song, parent)
 {
-    var p;
-    
-    if (type in song)
-    {
-        p = createTagText("p", song[type]);
-        parent.appendChild(p);
-    }
+    if (type in song) appendTagText("p", song[type], parent);
 }
 
 function appendChord(lyrics, chord, parent)
@@ -55,29 +63,24 @@ function appendChord(lyrics, chord, parent)
     var ruby = document.createElement("ruby");
     var rt = document.createElement("rt");
     var c = "";
-    var betweenRT;
     
     ruby.textContent = (" " === lyrics) ? SPACE : lyrics;
     
     for (c of chord)
-    {
         switch (c)
         {
             case "M":
-                betweenRT = createTagText("small", c);
+                appendTagText("small", c, rt);
                 break;
             case "#":
-                betweenRT = createTagText(TAG.sup, c);
+                appendTagText(TAG.sup, c, rt);
                 break;
             case "f":
-                betweenRT = createTagText(TAG.sup, "b");
+                appendTagText(TAG.sup, "b", rt);
                 break;
             default:
-                betweenRT = document.createTextNode(c);
+                appendTextNode(c, rt);
         }
-        
-        rt.appendChild(betweenRT);
-    }
     
     ruby.appendChild(rt);
     parent.appendChild(ruby);
@@ -85,32 +88,21 @@ function appendChord(lyrics, chord, parent)
 
 function appendLyrics(line, from, to, parent) // line: a line of lyrics
 {
-    var part = line.slice(from, to);
-    var text = document.createTextNode(part);
-    
-    parent.appendChild(text);
+    appendTextNode(line.slice(from, to), parent);
 }
 
 function append__tro(__tro, score, language, parent)
 {
     var st = "";
     var chords = "";
-    var space = document.createTextNode(SPACE);
     
     if (__tro in score)
     {
         for (st of score[__tro]) chords += st + SPACE; // "score[__tro]" is an array.
         
-        parent.appendChild(space);
+        appendTextNode(SPACE, parent);
         appendChord(DICTIONARY[__tro][language], chords.slice(0, -1), parent);
     }
-}
-
-function appendBreak(parent)
-{
-    var br = document.createElement("br");
-    
-    parent.appendChild(br);
 }
 
 function appendScore(score, language, parent)
@@ -186,14 +178,11 @@ function appendSong(page, id, parent)
 {
     var article = document.createElement("article");
     var song = page.info.main[id];
-    var h2 = createTagText("h2", song.h2); // heading 2
     var details;
-    var summary;
     
     article.id = id; // create bookmarks with ID attribute
     
-// heading 2
-    article.appendChild(h2);
+    appendTagText("h2", song.h2, article); // heading 2
     
     appendParagraph("preface", song, article); // preface
     
@@ -205,9 +194,8 @@ function appendSong(page, id, parent)
     if ("demo" in song)
     {
         details = document.createElement("details");
-        summary = createTagText("summary", DICTIONARY.demo[page.language]);
         
-        details.appendChild(summary);
+        appendTagText("summary", DICTIONARY.demo[page.language], details);
         appendDemo(page, song.demo, id, details);
         appendParagraph("comment", song, details); // comment
         
@@ -220,9 +208,8 @@ function appendSong(page, id, parent)
 function createHeader(pih) // page.info.header
 {
     var header = document.createElement("header");
-    var h1 = createTagText("h1", pih.h1); // heading 1
     
-    header.appendChild(h1);
+    appendTagText("h1", pih.h1, header); // heading 1
     document.body.appendChild(header);
 }
 
