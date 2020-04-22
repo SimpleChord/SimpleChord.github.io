@@ -13,6 +13,7 @@ var EmB = "Em/B";
 var F = "F";
 var G = "G";
 var GB = "G/B";
+var G7 = "G7";
 var Gm = "Gm";
 
 // others
@@ -27,6 +28,8 @@ var ChordName = 1;
 var TAG =
 {
     audio: "audio",
+    details: "details",
+    p: "p",
     sup: "sup",
     video: "video"
 };

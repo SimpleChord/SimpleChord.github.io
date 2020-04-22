@@ -55,7 +55,7 @@ function appendTagText(tag, text, parent)
 
 function appendParagraph(type, song, parent)
 {
-    if (type in song) appendTagText("p", song[type], parent);
+    if (type in song) appendTagText(TAG.p, song[type], parent);
 }
 
 function appendChord(lyrics, chord, parent)
@@ -108,7 +108,7 @@ function append__tro(__tro, score, language, parent)
 function appendScore(score, language, parent)
 {
     var section = document.createElement("section");
-    var p = document.createElement("p");
+    var p = document.createElement(TAG.p);
     
     append__tro("intro", score, language, p);
     
@@ -191,12 +191,12 @@ function appendSong(page, id, parent)
     appendParagraph("postscript", song, article); // postscript
     
 // demo
-    if ("demo" in song)
+    if (TAG.details in song)
     {
-        details = document.createElement("details");
+        details = document.createElement(TAG.details);
         
         appendTagText("summary", DICTIONARY.demo[page.language], details);
-        appendDemo(page, song.demo, id, details);
+        appendDemo(page, song.details, id, details);
         appendParagraph("comment", song, details); // comment
         
         article.appendChild(details);
