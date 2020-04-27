@@ -32,7 +32,7 @@ function getPage(url)
 
 function appendBreak(parent)
 {
-    var br = document.createElement("br");
+    var br = document.createElement(TAG.br);
     
     parent.appendChild(br);
 }
@@ -48,14 +48,63 @@ function appendTagText(tag, text, parent)
 {
     var element = document.createElement(tag);
     
-    element.innerHTML = text;
+    element.innerText = text;
     
     parent.appendChild(element);
 }
 
+function transform2tag(original, parent)
+{
+    switch (original[ELEMENT.tag])
+    {
+        case TAG.PB:
+            appendBreak(parent);
+            return LB;
+        default:
+            return original;
+    }
+}
+
+function appendRecursively(content, parent)
+{
+    var c; // string or array
+    var transformed = [];
+    var element;
+    
+    for (c of content)
+        if ("string" === typeof c) appendTextNode(c, parent);
+        else // array
+        {
+            transformed = transform2tag(c, parent); // transform "c" into an HTML tag if necessary
+            element = document.createElement(transformed[ELEMENT.tag]);
+            
+            switch (transformed[ELEMENT.tag])
+            {
+                case TAG.br:
+                    break;
+                default:
+                    appendRecursively([transformed[ELEMENT.between]], element);
+            }
+            
+            parent.appendChild(element);
+        }
+}
+
 function appendParagraph(type, song, parent)
 {
-    if (type in song) appendTagText(TAG.p, song[type], parent);
+    var p;
+    var st; // string or array
+    
+    if (type in song)
+    {
+        p = document.createElement(TAG.p);
+        st = song[type];
+        
+        if ("string" === typeof st) appendTextNode(st, p); // a simple sentence
+        else appendRecursively(st, p); // array
+        
+        parent.appendChild(p);
+    }
 }
 
 function appendChord(lyrics, chord, parent)
