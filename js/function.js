@@ -71,37 +71,36 @@ function appendRecursively(content, parent)
     var transformed = [];
     var element;
     
-    for (c of content)
-        if ("string" === typeof c) appendTextNode(c, parent);
-        else // array
-        {
-            transformed = transform2tag(c, parent); // transform "c" into an HTML tag if necessary
-            element = document.createElement(transformed[ELEMENT.tag]);
-            
-            switch (transformed[ELEMENT.tag])
+    if ("string" === typeof content) appendTextNode(content, parent);
+    else // array
+        for (c of content)
+            if ("string" === typeof c) appendTextNode(c, parent);
+            else // array
             {
-                case TAG.br:
-                    break;
-                default:
-                    appendRecursively([transformed[ELEMENT.between]], element);
+                transformed = transform2tag(c, parent); // transform "c" into an HTML tag if necessary
+                element = document.createElement(transformed[ELEMENT.tag]);
+                
+                switch (transformed[ELEMENT.tag])
+                {
+                    case TAG.br:
+                        break;
+                    default:
+                        appendRecursively(transformed[ELEMENT.between], element);
+                }
+                
+                parent.appendChild(element);
             }
-            
-            parent.appendChild(element);
-        }
 }
 
 function appendParagraph(type, song, parent)
 {
     var p;
-    var st; // string or array
     
     if (type in song)
     {
         p = document.createElement(TAG.p);
-        st = song[type];
         
-        if ("string" === typeof st) appendTextNode(st, p); // a simple sentence
-        else appendRecursively(st, p); // array
+        appendRecursively(song[type], p);
         
         parent.appendChild(p);
     }
@@ -119,7 +118,7 @@ function appendChord(lyrics, chord, parent)
         switch (c)
         {
             case "M":
-                appendTagText("small", c, rt);
+                appendTagText(TAG.small, c, rt);
                 break;
             case "#":
                 appendTagText(TAG.sup, c, rt);
@@ -272,6 +271,17 @@ function createMain(page)
     document.body.appendChild(main);
 }
 
+function createFooter(language)
+{
+    var footer = document.createElement("footer");
+    var small = document.createElement(TAG.small);
+    
+    appendRecursively(DICTIONARY.footer[language], small);
+    
+    footer.appendChild(small);
+    document.body.appendChild(footer);
+}
+
 function createPage(url)
 {
     var page = getPage(url);
@@ -289,4 +299,5 @@ function createPage(url)
     
     createHeader(pih);
     createMain(page);
+    createFooter(page.language);
 }

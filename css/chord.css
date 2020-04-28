@@ -109,6 +109,7 @@ section p
     display: inline-block;
     margin: 0;
     text-align: left;
+    font-size: large;
     color: purple;
 }
 summary
@@ -116,11 +117,21 @@ summary
     color: deepPink;
 }
 
+/* bookmark */
 aside
 {
     float: right;
     width: 10%;
-    background-color: pink;
+    background-color: bisque;
+}
+
+/* footer */
+footer
+{
+    clear: both; /* no floating elements allowed on both sides */
+    padding: 8px;
+    background-color: Azure;
+    text-align: right;
 }
 
 /* demo */

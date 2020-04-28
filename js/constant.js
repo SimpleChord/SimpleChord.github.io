@@ -38,6 +38,7 @@ var TAG =
     br: "br",
     details: "details",
     p: "p",
+    small: "small",
     sup: "sup",
     video: "video",
 // derivatives
@@ -59,6 +60,10 @@ var LANGUAGES =
 
 var DICTIONARY =
 {
+    footer:
+    {
+        zh: "希望您会欢喜以上内容！"
+    },
     intro:
     {
         zh: "（前奏）"
