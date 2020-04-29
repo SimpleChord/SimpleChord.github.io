@@ -28,7 +28,7 @@ nav ul
 }
 nav ul li:hover
 {
-    background-color: limeGreen;
+    background-color: springGreen;
 }
 nav ul li a
 {
@@ -45,6 +45,7 @@ nav ul ul
     display: none; /* hide dropdowns by default */
     position: relative; /* indispensable */
     background-color: snow;
+/* todo */
     top: 0; /* rectify the position of submenus */
     left: 100%; /* rectify the position of submenus */
     white-space: nowrap; /* Text continues on the same line. */
@@ -85,20 +86,20 @@ main
 {
     float: left;
     margin-left: 10%;
-    width: 80%;
+    width: 75%;
 }
 article
 {
     margin: 0 8px 8px;
-    padding: 24px;
+    padding: 3%;
     background-color: honeyDew;
 }
 article h2
 {
-    margin: 0 0 8px;
+    margin: 0;
     border-bottom: 1px solid deepPink;
     border-left: 16px solid deepPink;
-    padding-left: 8px;
+    padding-left: 1%;
 }
 section
 {
@@ -121,16 +122,22 @@ summary
 aside
 {
     float: right;
-    width: 10%;
+    width: 15%;
+    padding: 1%;
     background-color: bisque;
 }
 
-/* footer */
 footer
 {
     clear: both; /* no floating elements allowed on both sides */
-    padding: 8px;
-    background-color: Azure;
+    margin-left: 10%;
+}
+footer small
+{
+    display: block;
+    margin-left: 8px;
+    padding: 1%;
+    background-color: azure;
     text-align: right;
 }
 

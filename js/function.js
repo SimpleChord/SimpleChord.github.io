@@ -108,11 +108,11 @@ function appendParagraph(type, song, parent)
 
 function appendChord(lyrics, chord, parent)
 {
-    var ruby = document.createElement("ruby");
+    var ruby = document.createElement("ruby");///to use appendTagText?
     var rt = document.createElement("rt");
     var c = "";
     
-    ruby.textContent = (" " === lyrics) ? SPACE : lyrics;
+    ruby.innerText = lyrics;///to be improved if lyrics are not CJK! | to use appendTagText?
     
     for (c of chord)
         switch (c)
@@ -166,11 +166,12 @@ function appendScore(score, language, parent)
         {
             var firstIndex = scch[0][ChordFrom]; // the index of the 1st chord in a line of lyrics
             var firstChord = [];
-            var line = SPACE + score.lyrics[i] + SPACE;
+            var line = SPACE + score.lyrics[i].replace(/ /g, SPACE) + SPACE; // replace all of the half-width spaces with full-width ones, and add 2 more to a line of lyrics
             var lyricsFrom = 0;
             var lyricsTo = 0;
             var sc = "";
             
+            ///if not CJK, half space???
             if (0 == i % PARAGRAPH) appendBreak(p);
             
             if (0 == firstIndex)
@@ -297,7 +298,9 @@ function createPage(url)
 // title
     document.title = pih.h1;
     
+//    createNav(page);///
     createHeader(pih);
     createMain(page);
+//    createAside(page);///
     createFooter(page.language);
 }

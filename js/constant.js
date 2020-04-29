@@ -7,6 +7,7 @@ var bB = "fB";
 var Bm = "Bm";
 var C = "C";
 var C7 = "C7";
+//var CM7 = "CM7";
 var D = "D";
 var D6 = "D6";
 var D7 = "D7";
@@ -33,11 +34,13 @@ var PARAGRAPH = 4; // add a break every 4 lines
 
 var ChordFrom = 0;
 var ChordName = 1;
+///var LyricsTo = 2;to be used
 
 var ELEMENT =
 {
     tag: 0, // HTML tags or other variations
     between: 1 // contents between tags
+//    href: 2
 }
 
 var TAG =
@@ -65,27 +68,36 @@ var LANGUAGES =
 {
     gequ: "zh",
     uta: "ja"
+//    song: "en"
 };
 
 var DICTIONARY =
 {
     footer:
     {
-        ja: "誠にありがとうございます！",
+//        en: "",
+        ja:
+        [
+            "わざわざ本サイトをご覧いただき、誠にありがとうございます！", PB,
+            "歌詞は掲載しかねます。"
+        ],
         zh: "希望您会欢喜以上内容！"
     },
     intro:
     {
+//        en: "(Intro)",
         ja: "（前奏）",
         zh: "（前奏）"
     },
     demo:
     {
+//        en: "Demo",
         ja: "弾き語り",
         zh: "示范弹唱"
     },
     outro:
     {
+//        en: "(Outro)",
         ja: "（後奏）",
         zh: "（尾奏）"
     }

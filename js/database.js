@@ -5,6 +5,7 @@ var DATA =
         nav: "歌曲",
         classification:
         {
+//            dalu:{},
             xianggang:
             {
                 nav: "香港",
@@ -255,14 +256,14 @@ var DATA =
                     chords:
                     [
                         [[2, C], [4, E7], [7, Am]],
-                        [[1, EmG], [5, F], [7, G7], [11, C]],
+                        [[1, EmG], [5, F], [7, G7], [11, C], [14, C]],
                         [[2, C], [4, E7], [6, Am]],
-                        [[1, EmG], [6, F], [8, G7], [12, C]],
-                        [[1, C], [3, E7], [6, Am]],
-                        [[1, AmG], [6, F], [9, G7], [12, C]],
-                        [[1, C], [3, E7], [6, Am]],
-                        [[1, AmG], [5, D7Fs], [8, Gsus4], [11, G7]],
-                        [[1, C], [3, Dm7], [5, Em7], [8, E7Gs], [10, Am], [13, EmG], [15, SPACE + F], [18, FmM7]],
+                        [[2, EmG], [6, F], [9, G7], [12, C], [13, C]],
+                        [[1, SPACE + C], [3, E7], [6, Am]],
+                        [[2, AmG], [6, F], [8, SPACE + G7], [12, C], [13, C]],
+                        [[1, SPACE + C], [3, E7 + SPACE], [6, Am]],
+                        [[1, SPACE + AmG], [3, D7Fs], [6, Gsus4], [8, G7], [10, G7]],
+                        [[1, C], [3, Dm7], [5, Em7 + SPACE], [8, E7Gs], [10, SPACE + Am], [13, EmG], [15, SPACE + F], [18, FmM7]],
                         [[1, C], [3, Am], [5, SPACE + Dm7], [9, Gsus4]],
                         [[1, Em7], [3, Am], [5, SPACE + Dm7], [9, Gsus4]],
                         [[1, Em7], [3, Am], [5, Dm7], [9, Gsus4], [11, C]]
@@ -293,5 +294,11 @@ var DATA =
                 comment: "ガッキーに「よく知っとる」と言いたかったが、逆にそう言われた……"
             }
         }
-    }
+    }/*,
+    song:
+    {
+        nav: "Song",
+        classification:
+        {}
+    }*/
 };
