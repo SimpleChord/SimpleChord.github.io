@@ -45,12 +45,15 @@ var ELEMENT =
 
 var TAG =
 {
+    a: "a",
     audio: "audio",
     br: "br",
     details: "details",
+    li: "li",
     p: "p",
     small: "small",
     sup: "sup",
+    ul: "ul",
     video: "video",
 // derivatives
     PB: "PB"
@@ -64,7 +67,7 @@ var FORMAT =
     video: "mp4"
 };
 
-var LANGUAGES =
+var LANGUAGE =
 {
     gequ: "zh",
     uta: "ja"

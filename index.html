@@ -14,9 +14,9 @@
         <li>
           <a>歌曲</a>
           <ul>
-            <!--li>
+            <li>
               <a href="html/gequ/dalu.html">大陆</a>
-            </li-->
+            </li>
             <li>
               <a href="html/gequ/xianggang.html">香港</a>
             </li>
@@ -53,9 +53,12 @@
             appendScore(score, "ja", document.getElementById("new"));
           </script>
         </section>
-        <audio controls>
-          <source src="audio/uta/hdmrnut.mp3" type="audio/mpeg" />
-        </audio>
+        <details>
+          <summary>弾き語り</summary>
+          <audio controls>
+            <source src="audio/uta/hdmrnut.mp3" type="audio/mpeg" />
+          </audio>
+        </details>
       </article>
     </main>
     <aside>
@@ -66,7 +69,7 @@
     </aside>
     <footer>
       <small>
-        不建议用Edge或IE访问本站！因为有的tag不支持。<br />
+        不建议用Edge或IE访问本站！<br />
         <br />
         左边的导航栏还没整完……
       </small>

@@ -1,83 +1,117 @@
 function getPage(url)
 {
     var splitURL = url.split("/");
+    var name = splitURL.pop().split(".").shift(); // the name of current page
     var page =
     {
-        name: splitURL.pop().split(".").shift(),
-        top: "", // top menu, used to highlight the current NAV link
-        prefix: "", // prefix to go up directories
-        path: "", // effective path without extension
-        info: {},
-        language: ""
+        information: {},
+        addition:
+        {
+            prefix: "../", // prefix to go up directories
+            top: name, // top menu, used to highlight the current NAV link
+            path: name, // effective path without extension
+            language: ""
+        }
     };
     
-    if (page.name in DATA)
-    {
-        page.top = page.name;
-        page.prefix = "../";
-        page.path = page.name;
-        page.info = DATA[page.name];
-    }
+    if (name in DATA) page.information = DATA[name];
     else
     {
-        page.top = splitURL.pop();
-        page.prefix = "../../";
-        page.path = page.top + "/" + page.name;
-        page.info = DATA[page.top].classification[page.name];
+        page.addition.prefix = "../../";
+        page.addition.top = splitURL.pop();
+        page.addition.path = page.addition.top + "/" + name;
+        page.information = DATA[page.addition.top].classification[name];
     }
-    page.language = LANGUAGES[page.top];
+    page.addition.language = LANGUAGE[page.addition.top];
     
     return page;
 }
 
-function appendBreak(parent)
+function getLink(prefix, folder, file)
+{
+    return prefix + folder + "/" + file;
+}
+
+function appendBreak(container)
 {
     var br = document.createElement(TAG.br);
     
-    parent.appendChild(br);
+    container.appendChild(br);
 }
 
-function appendTextNode(text, parent)
+function appendTextNode(text, tag)
 {
     var node = document.createTextNode(text);
     
-    parent.appendChild(node);
+    tag.appendChild(node);
 }
 
-function appendTagText(tag, text, parent)
+function appendTagText(tag, text, container)
 {
     var element = document.createElement(tag);
     
-    element.innerText = text;
+    appendTextNode(text, element);
     
-    parent.appendChild(element);
+    container.appendChild(element);
+    return element;
 }
 
-function transform2tag(original, parent)
+function appendMenus(addition, path, parent, container) // create menus recursively
+{
+    var ul = document.createElement(TAG.ul);
+    var li;
+    var a;
+    var menu = "";
+    var child = {};
+    var currentPath = "";
+    
+    for ([menu, child] of Object.entries(parent))
+    {
+        li = document.createElement(TAG.li);
+        a = appendTagText(TAG.a, child.nav, li);
+        currentPath = path + menu;
+        
+        if (addition.top === currentPath)
+        {
+            a.style.backgroundColor = "tomato";
+            a.style.color = "gold";
+        }
+        
+        if ("classification" in child) appendMenus(addition, currentPath + "/", child.classification, li);
+        else
+            if (addition.path !== currentPath) a.href = addition.prefix + "html" + "/" + currentPath + ".html";
+        
+        ul.appendChild(li);
+    }
+    
+    container.appendChild(ul);
+}
+
+function transform2tag(original, container)
 {
     switch (original[ELEMENT.tag])
     {
         case TAG.PB:
-            appendBreak(parent);
+            appendBreak(container);
             return LB;
         default:
             return original;
     }
 }
 
-function appendRecursively(content, parent)
+function appendRecursively(content, container)
 {
     var c; // string or array
     var transformed = [];
     var element;
     
-    if ("string" === typeof content) appendTextNode(content, parent);
+    if ("string" === typeof content) appendTextNode(content, container);
     else // array
         for (c of content)
-            if ("string" === typeof c) appendTextNode(c, parent);
+            if ("string" === typeof c) appendTextNode(c, container);
             else // array
             {
-                transformed = transform2tag(c, parent); // transform "c" into an HTML tag if necessary
+                transformed = transform2tag(c, container); // transform "c" into an HTML tag if necessary
                 element = document.createElement(transformed[ELEMENT.tag]);
                 
                 switch (transformed[ELEMENT.tag])
@@ -88,11 +122,11 @@ function appendRecursively(content, parent)
                         appendRecursively(transformed[ELEMENT.between], element);
                 }
                 
-                parent.appendChild(element);
+                container.appendChild(element);
             }
 }
 
-function appendParagraph(type, song, parent)
+function appendParagraph(type, song, container)
 {
     var p;
     
@@ -102,11 +136,11 @@ function appendParagraph(type, song, parent)
         
         appendRecursively(song[type], p);
         
-        parent.appendChild(p);
+        container.appendChild(p);
     }
 }
 
-function appendChord(lyrics, chord, parent)
+function appendChord(lyrics, chord, container)
 {
     var ruby = document.createElement("ruby");///to use appendTagText?
     var rt = document.createElement("rt");
@@ -131,15 +165,15 @@ function appendChord(lyrics, chord, parent)
         }
     
     ruby.appendChild(rt);
-    parent.appendChild(ruby);
+    container.appendChild(ruby);
 }
 
-function appendLyrics(line, from, to, parent) // line: a line of lyrics
+function appendLyrics(line, from, to, container) // line: a line of lyrics
 {
-    appendTextNode(line.slice(from, to), parent);
+    appendTextNode(line.slice(from, to), container);
 }
 
-function append__tro(__tro, score, language, parent)
+function append__tro(__tro, score, language, container)
 {
     var st = "";
     var chords = "";
@@ -148,12 +182,12 @@ function append__tro(__tro, score, language, parent)
     {
         for (st of score[__tro]) chords += st + SPACE; // "score[__tro]" is an array.
         
-        appendTextNode(SPACE, parent);
-        appendChord(DICTIONARY[__tro][language], chords.slice(0, -1), parent);
+        appendTextNode(SPACE, container);
+        appendChord(DICTIONARY[__tro][language], chords.slice(0, -1), container); // remove the last SPACE
     }
 }
 
-function appendScore(score, language, parent)
+function appendScore(score, language, container)
 {
     var section = document.createElement("section");
     var p = document.createElement(TAG.p);
@@ -201,64 +235,67 @@ function appendScore(score, language, parent)
     append__tro("outro", score, language, p);
     
     section.appendChild(p);
-    parent.appendChild(section);
+    container.appendChild(section);
 }
 
-function getLink(prefix, folder, file)
-{
-    return prefix + folder + "/" + file;
-}
-
-function appendDemo(page, type, baseName, parent)
+function appendDemo(addition, type, baseName, container)
 {
     var demo = document.createElement(type);
     
-    demo.src = getLink(page.prefix, type, page.path + "/" + baseName + "." + FORMAT[type]);
+    demo.src = getLink(addition.prefix, type, addition.path + "/" + baseName + "." + FORMAT[type]);
     demo.controls = true;
     demo.onmouseenter = function()
     {
         demo.play();
     };
     
-    parent.appendChild(demo);
+    container.appendChild(demo);
 }
 
-function appendSong(page, id, parent)
+function appendSong(page, bookmark, container)
 {
     var article = document.createElement("article");
-    var song = page.info.main[id];
     var details;
+    var song = page.information.main[bookmark];
+    var pa = page.addition;
     
-    article.id = id; // create bookmarks with ID attribute
+    article.id = bookmark; // create bookmarks with ID attribute
     
-    appendTagText("h2", song.h2, article); // heading 2
-    
-    appendParagraph("preface", song, article); // preface
-    
-    appendScore(song.score, page.language, article); // score
-    
-    appendParagraph("postscript", song, article); // postscript
+    appendTagText("h2", song.h2, article);
+    appendParagraph("preface", song, article);
+    appendScore(song.score, pa.language, article);
+    appendParagraph("postscript", song, article);
     
 // demo
     if (TAG.details in song)
     {
         details = document.createElement(TAG.details);
         
-        appendTagText("summary", DICTIONARY.demo[page.language], details);
-        appendDemo(page, song.details, id, details);
+        appendTagText("summary", DICTIONARY.demo[pa.language], details);
+        appendDemo(pa, song.details, bookmark, details);
         appendParagraph("comment", song, details); // comment
         
         article.appendChild(details);
     }
     
-    parent.appendChild(article);
+    container.appendChild(article);
 }
 
-function createHeader(pih) // page.info.header
+function createNav(addition)
+{
+    var nav = document.createElement("nav");
+    
+    appendMenus(addition, "", DATA, nav);
+    
+    document.body.appendChild(nav);
+}
+
+function createHeader(pih) // page.information.header
 {
     var header = document.createElement("header");
     
-    appendTagText("h1", pih.h1, header); // heading 1
+    appendTagText("h1", pih.h1, header);
+    
     document.body.appendChild(header);
 }
 
@@ -267,7 +304,7 @@ function createMain(page)
     var main = document.createElement("main");
     var id = "";
     
-    for (id in page.info.main) appendSong(page, id, main);
+    for (id in page.information.main) appendSong(page, id, main);
     
     document.body.appendChild(main);
 }
@@ -285,22 +322,23 @@ function createFooter(language)
 
 function createPage(url)
 {
-    var page = getPage(url);
-    var pih = page.info.header;
     var link = document.createElement("link");
+    var page = getPage(url);
+    var pih = page.information.header;
+    var pa = page.addition;
     
 // link CSS
     link.rel = "stylesheet";
     link.type = "text/css";
-    link.href = getLink(page.prefix, "css", "chord.css");
+    link.href = getLink(pa.prefix, "css", "chord.css");
     document.head.appendChild(link);
     
 // title
     document.title = pih.h1;
     
-//    createNav(page);///
+    createNav(pa);
     createHeader(pih);
     createMain(page);
 //    createAside(page);///
-    createFooter(page.language);
+    createFooter(pa.language);
 }
