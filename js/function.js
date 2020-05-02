@@ -32,11 +32,18 @@ function getLink(prefix, folder, file)
     return prefix + folder + "/" + file;
 }
 
+function appendElement(tag, container) // Text is not added or Attributes are not set yet.
+{
+    var element = document.createElement(tag);
+    
+    container.appendChild(element);
+    
+    return element;
+}
+
 function appendBreak(container)
 {
-    var br = document.createElement(TAG.br);
-    
-    container.appendChild(br);
+    appendElement(TAG.br, container);
 }
 
 function appendTextNode(text, tag)
@@ -46,13 +53,12 @@ function appendTextNode(text, tag)
     tag.appendChild(node);
 }
 
-function appendTagText(tag, text, container)
+function appendTAGwithTEXT(tag, text, container)
 {
-    var element = document.createElement(tag);
+    var element = appendElement(tag, container);
     
     appendTextNode(text, element);
     
-    container.appendChild(element);
     return element;
 }
 
@@ -68,12 +74,12 @@ function appendMenus(addition, path, parent, container) // create menus recursiv
     for ([menu, child] of Object.entries(parent))
     {
         li = document.createElement(TAG.li);
-        a = appendTagText(TAG.a, child.nav, li);
+        a = appendTAGwithTEXT(TAG.a, child.nav, li);
         currentPath = path + menu;
         
         if (addition.top === currentPath)
         {
-            a.style.backgroundColor = "tomato";
+            a.style.backgroundColor = "red";
             a.style.color = "gold";
         }
         
@@ -142,23 +148,23 @@ function appendParagraph(type, song, container)
 
 function appendChord(lyrics, chord, container)
 {
-    var ruby = document.createElement("ruby");///to use appendTagText?
+    var ruby = document.createElement("ruby");///to use appendTAGwithTEXT?
     var rt = document.createElement("rt");
     var c = "";
     
-    ruby.innerText = lyrics;///to be improved if lyrics are not CJK! | to use appendTagText?
+    ruby.innerText = lyrics;///to be improved if lyrics are not CJK! | to use appendTAGwithTEXT?
     
     for (c of chord)
         switch (c)
         {
             case "M":
-                appendTagText(TAG.small, c, rt);
+                appendTAGwithTEXT(TAG.small, c, rt);
                 break;
             case "#":
-                appendTagText(TAG.sup, c, rt);
+                appendTAGwithTEXT(TAG.sup, c, rt);
                 break;
             case "f":
-                appendTagText(TAG.sup, "b", rt);
+                appendTAGwithTEXT(TAG.sup, "b", rt);
                 break;
             default:
                 appendTextNode(c, rt);
@@ -261,7 +267,7 @@ function appendSong(page, bookmark, container)
     
     article.id = bookmark; // create bookmarks with ID attribute
     
-    appendTagText("h2", song.h2, article);
+    appendTAGwithTEXT("h2", song.h2, article);
     appendParagraph("preface", song, article);
     appendScore(song.score, pa.language, article);
     appendParagraph("postscript", song, article);
@@ -271,7 +277,7 @@ function appendSong(page, bookmark, container)
     {
         details = document.createElement(TAG.details);
         
-        appendTagText("summary", DICTIONARY.demo[pa.language], details);
+        appendTAGwithTEXT("summary", DICTIONARY.demo[pa.language], details);
         appendDemo(pa, song.details, bookmark, details);
         appendParagraph("comment", song, details); // comment
         
@@ -294,7 +300,7 @@ function createHeader(pih) // page.information.header
 {
     var header = document.createElement("header");
     
-    appendTagText("h1", pih.h1, header);
+    appendTAGwithTEXT("h1", pih.h1, header);
     
     document.body.appendChild(header);
 }
