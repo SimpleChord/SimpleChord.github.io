@@ -22,14 +22,16 @@ function getPage(url)
         page.addition.path = page.addition.top + "/" + name;
         page.information = DATA[page.addition.top].classification[name];
     }
-    page.addition.language = LANGUAGE[page.addition.top];
+    page.addition.language = DATA[page.addition.top].language;
     
     return page;
 }
 
-function getLink(prefix, folder, file)
+function getLink(prefix, folder, file) // "file" may be "path", "base" or "path/base".
 {
-    return prefix + folder + "/" + file;
+    var extension = (folder in FORMAT) ? FORMAT[folder] : folder;
+    
+    return prefix + folder + "/" + file + "." + extension;
 }
 
 function appendElement(tag, container) // Text is not added or Attributes are not set yet.
@@ -64,7 +66,7 @@ function appendTAGwithTEXT(tag, text, container)
 
 function appendMenus(addition, path, parent, container) // create menus recursively
 {
-    var ul = document.createElement(TAG.ul);
+    var ul = appendElement(TAG.ul, container);
     var li;
     var a;
     var menu = "";
@@ -73,7 +75,7 @@ function appendMenus(addition, path, parent, container) // create menus recursiv
     
     for ([menu, child] of Object.entries(parent))
     {
-        li = document.createElement(TAG.li);
+        li = appendElement(TAG.li, ul);
         a = appendTAGwithTEXT(TAG.a, child.nav, li);
         currentPath = path + menu;
         
@@ -85,27 +87,25 @@ function appendMenus(addition, path, parent, container) // create menus recursiv
         
         if ("classification" in child) appendMenus(addition, currentPath + "/", child.classification, li);
         else
-            if (addition.path !== currentPath) a.href = addition.prefix + "html" + "/" + currentPath + ".html";
-        
-        ul.appendChild(li);
+            if (addition.path !== currentPath) a.href = getLink(addition.prefix, HTML, currentPath);
     }
-    
-    container.appendChild(ul);
 }
 
-function transform2tag(original, container)
+function transform2tag(prefix, original, container)
 {
     switch (original[ELEMENT.tag])
     {
         case TAG.PB:
             appendBreak(container);
             return LB;
+        case TAG.BoALP:
+            return [TAG.a, original[ELEMENT.between], getLink(prefix, HTML, original[ELEMENT.alp]) + "#" + original[ELEMENT.id]];
         default:
             return original;
     }
 }
 
-function appendRecursively(content, container)
+function appendRecursively(prefix, content, container)
 {
     var c; // string or array
     var transformed = [];
@@ -117,39 +117,37 @@ function appendRecursively(content, container)
             if ("string" === typeof c) appendTextNode(c, container);
             else // array
             {
-                transformed = transform2tag(c, container); // transform "c" into an HTML tag if necessary
-                element = document.createElement(transformed[ELEMENT.tag]);
+                transformed = transform2tag(prefix, c, container); // transform "c" into an HTML tag if necessary
+                element = appendElement(transformed[ELEMENT.tag], container);
                 
                 switch (transformed[ELEMENT.tag])
                 {
                     case TAG.br:
                         break;
+                    case TAG.a:
+                        element.href = transformed[ELEMENT.href];
                     default:
-                        appendRecursively(transformed[ELEMENT.between], element);
+                        appendRecursively(prefix, transformed[ELEMENT.between], element);
                 }
-                
-                container.appendChild(element);
             }
 }
 
-function appendParagraph(type, song, container)
+function appendParagraph(prefix, type, song, container)
 {
     var p;
     
     if (type in song)
     {
-        p = document.createElement(TAG.p);
+        p = appendElement(TAG.p, container);
         
-        appendRecursively(song[type], p);
-        
-        container.appendChild(p);
+        appendRecursively(prefix, song[type], p);
     }
 }
 
 function appendChord(lyrics, chord, container)
 {
     var ruby = document.createElement("ruby");///to use appendTAGwithTEXT?
-    var rt = document.createElement("rt");
+    var rt = document.createElement("rt");///to use appendElement?
     var c = "";
     
     ruby.innerText = lyrics;///to be improved if lyrics are not CJK! | to use appendTAGwithTEXT?
@@ -179,7 +177,7 @@ function appendLyrics(line, from, to, container) // line: a line of lyrics
     appendTextNode(line.slice(from, to), container);
 }
 
-function append__tro(__tro, score, language, container)
+function append__tro(__tro, score, language, container) // intro or outro
 {
     var st = "";
     var chords = "";
@@ -195,8 +193,8 @@ function append__tro(__tro, score, language, container)
 
 function appendScore(score, language, container)
 {
-    var section = document.createElement("section");
-    var p = document.createElement(TAG.p);
+    var section = appendElement("section", container);
+    var p = appendElement(TAG.p, section);
     
     append__tro("intro", score, language, p);
     
@@ -239,28 +237,23 @@ function appendScore(score, language, container)
     );
     
     append__tro("outro", score, language, p);
-    
-    section.appendChild(p);
-    container.appendChild(section);
 }
 
 function appendDemo(addition, type, baseName, container)
 {
-    var demo = document.createElement(type);
+    var demo = appendElement(type, container);
     
-    demo.src = getLink(addition.prefix, type, addition.path + "/" + baseName + "." + FORMAT[type]);
+    demo.src = getLink(addition.prefix, type, addition.path + "/" + baseName);
     demo.controls = true;
     demo.onmouseenter = function()
     {
         demo.play();
     };
-    
-    container.appendChild(demo);
 }
 
 function appendSong(page, bookmark, container)
 {
-    var article = document.createElement("article");
+    var article = appendElement("article", container);
     var details;
     var song = page.information.main[bookmark];
     var pa = page.addition;
@@ -268,67 +261,54 @@ function appendSong(page, bookmark, container)
     article.id = bookmark; // create bookmarks with ID attribute
     
     appendTAGwithTEXT("h2", song.h2, article);
-    appendParagraph("preface", song, article);
+    appendParagraph(pa.prefix, "preface", song, article);
     appendScore(song.score, pa.language, article);
-    appendParagraph("postscript", song, article);
+    appendParagraph(pa.prefix, "postscript", song, article);
     
 // demo
     if (TAG.details in song)
     {
-        details = document.createElement(TAG.details);
+        details = appendElement(TAG.details, article);
         
         appendTAGwithTEXT("summary", DICTIONARY.demo[pa.language], details);
         appendDemo(pa, song.details, bookmark, details);
-        appendParagraph("comment", song, details); // comment
-        
-        article.appendChild(details);
+        appendParagraph(pa.prefix, "comment", song, details);
     }
-    
-    container.appendChild(article);
 }
 
 function createNav(addition)
 {
-    var nav = document.createElement("nav");
+    var nav = appendElement("nav", document.body);
     
     appendMenus(addition, "", DATA, nav);
-    
-    document.body.appendChild(nav);
 }
 
 function createHeader(pih) // page.information.header
 {
-    var header = document.createElement("header");
+    var header = appendElement("header", document.body);
     
     appendTAGwithTEXT("h1", pih.h1, header);
-    
-    document.body.appendChild(header);
 }
 
 function createMain(page)
 {
-    var main = document.createElement("main");
+    var main = appendElement("main", document.body);
     var id = "";
     
     for (id in page.information.main) appendSong(page, id, main);
-    
-    document.body.appendChild(main);
 }
 
-function createFooter(language)
+function createFooter(addition)
 {
-    var footer = document.createElement("footer");
-    var small = document.createElement(TAG.small);
+    var footer = appendElement("footer", document.body);
+    var small = appendElement(TAG.small, footer);
     
-    appendRecursively(DICTIONARY.footer[language], small);
-    
-    footer.appendChild(small);
-    document.body.appendChild(footer);
+    appendRecursively(addition.prefix, DICTIONARY.footer[addition.language], small);
 }
 
 function createPage(url)
 {
-    var link = document.createElement("link");
+    var link = appendElement("link", document.head);
     var page = getPage(url);
     var pih = page.information.header;
     var pa = page.addition;
@@ -336,8 +316,7 @@ function createPage(url)
 // link CSS
     link.rel = "stylesheet";
     link.type = "text/css";
-    link.href = getLink(pa.prefix, "css", "chord.css");
-    document.head.appendChild(link);
+    link.href = getLink(pa.prefix, "css", "chord");
     
 // title
     document.title = pih.h1;
@@ -346,5 +325,5 @@ function createPage(url)
     createHeader(pih);
     createMain(page);
 //    createAside(page);///
-    createFooter(pa.language);
+    createFooter(pa);
 }

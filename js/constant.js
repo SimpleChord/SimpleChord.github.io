@@ -36,11 +36,15 @@ var ChordFrom = 0;
 var ChordName = 1;
 ///var LyricsTo = 2;to be used
 
+var HTML = "html";
+
 var ELEMENT =
 {
     tag: 0, // HTML tags or other variations
-    between: 1 // contents between tags
-//    href: 2
+    between: 1, // contents between tags
+    href: 2,
+    alp: 2, // another local page
+    id: 3
 }
 
 var TAG =
@@ -56,6 +60,7 @@ var TAG =
     ul: "ul",
     video: "video",
 // derivatives
+    BoALP: "BoALP", // Bookmark on Another Local Page
     PB: "PB"
 };
 var LB = [TAG.br]; // line break
@@ -65,13 +70,6 @@ var FORMAT =
 {
     audio: "mp3",
     video: "mp4"
-};
-
-var LANGUAGE =
-{
-    gequ: "zh",
-    uta: "ja"
-//    song: "en"
 };
 
 var DICTIONARY =

@@ -15,10 +15,11 @@ nav
 {
     position: fixed;
     top: 0; /* position navbar at the top of page */
-    width: 10%;
+    width: 15%;
     height: 100%;
     z-index: 1; /* place dropdowns in front of other elements */
     background-color: pink;
+    font-size: xx-large;
 }
 nav ul
 {
@@ -86,8 +87,8 @@ header h1
 main
 {
     float: left;
-    margin-left: 10%;
-    width: 75%;
+    margin-left: 15%;
+    width: 70%;
 }
 article
 {
@@ -131,7 +132,7 @@ aside
 footer
 {
     clear: both; /* no floating elements allowed on both sides */
-    margin-left: 10%;
+    margin-left: 15%;
 }
 footer small
 {
