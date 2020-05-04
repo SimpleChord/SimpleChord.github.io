@@ -6,6 +6,7 @@ var Am7 = "Am7";
 var bB = "fB";
 var Bm = "Bm";
 var C = "C";
+var CE = "C/E";
 var C7 = "C7";
 //var CM7 = "CM7";
 var D = "D";
