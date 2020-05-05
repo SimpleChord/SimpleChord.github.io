@@ -99,7 +99,11 @@ function transform2tag(prefix, original, container)
             appendBreak(container);
             return LB;
         case TAG.BoALP:
-            return [TAG.a, original[ELEMENT.between], getLink(prefix, HTML, original[ELEMENT.alp]) + "#" + original[ELEMENT.id]];
+            return [
+                TAG.a,
+                original[ELEMENT.between],
+                getLink(prefix, HTML, original[ELEMENT.alp]) + "#" + original[ELEMENT.id]
+            ];
         default:
             return original;
     }
@@ -144,7 +148,16 @@ function appendParagraph(prefix, type, song, container)
     }
 }
 
-function appendChord(lyrics, chord, container)
+function appendLyrics(line, from, to, container) // line: a line of lyrics
+{
+    appendTextNode(line.slice(from, to), container);
+}
+
+function appendChord(chord, container)///todo
+{
+}
+
+function appendRuby(lyrics, chord, container) // append lyrics with chords
 {
     var ruby = document.createElement("ruby");///to use appendTAGwithTEXT?
     var rt = document.createElement("rt");///to use appendElement?
@@ -172,11 +185,6 @@ function appendChord(lyrics, chord, container)
     container.appendChild(ruby);
 }
 
-function appendLyrics(line, from, to, container) // line: a line of lyrics
-{
-    appendTextNode(line.slice(from, to), container);
-}
-
 function append__tro(__tro, score, language, container) // intro or outro
 {
     var st = "";
@@ -187,7 +195,7 @@ function append__tro(__tro, score, language, container) // intro or outro
         for (st of score[__tro]) chords += st + SPACE; // "score[__tro]" is an array.
         
         appendTextNode(SPACE, container);
-        appendChord(DICTIONARY[__tro][language], chords.slice(0, -1), container); // remove the last SPACE
+        appendRuby(DICTIONARY[__tro][language], chords.slice(0, -1), container); // remove the last SPACE
     }
 }
 
@@ -216,7 +224,7 @@ function appendScore(score, language, container)
             {
                 firstChord = scch.shift();
                 
-                appendChord(line[firstChord[ChordFrom]], firstChord[ChordName], p);
+                appendRuby(line[firstChord[ChordFrom]], firstChord[ChordName], p);
                 lyricsFrom = 1;
             }
             
@@ -225,7 +233,7 @@ function appendScore(score, language, container)
                 lyricsTo = sc[ChordFrom];
                 
                 if (lyricsFrom != lyricsTo) appendLyrics(line, lyricsFrom, lyricsTo, p);
-                appendChord(line[sc[ChordFrom]], sc[ChordName], p);
+                appendRuby(line[sc[ChordFrom]], sc[ChordName], p);
                 
                 lyricsFrom = lyricsTo + 1;
             }
