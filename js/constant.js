@@ -11,6 +11,7 @@ var C7 = "C7";
 //var CM7 = "CM7";
 var Cadd9 = "Cadd9";
 var D = "D";
+var DFs = "D/Fx";
 var D6 = "D6";
 var D7 = "D7";
 var D7Fs = "D7/Fx";
@@ -60,6 +61,7 @@ var ELEMENT =
 var TAG =
 {
     a: "a",
+    article: "article",
     audio: "audio",
     br: "br",
     details: "details",
@@ -71,6 +73,7 @@ var TAG =
     video: "video",
 // derivatives
     BoALP: "BoALP", // Bookmark on Another Local Page
+    CHORD: "CHORD",
     PB: "PB"
 };
 var LB = [TAG.br]; // line break
@@ -84,6 +87,12 @@ var FORMAT =
 
 var DICTIONARY =
 {
+    demo:
+    {
+//        en: "Demo",
+        ja: "弾き語り",
+        zh: "示范弹唱"
+    },
     footer:
     {
 //        en: "",
@@ -100,16 +109,16 @@ var DICTIONARY =
         ja: "（前奏）",
         zh: "（前奏）"
     },
-    demo:
-    {
-//        en: "Demo",
-        ja: "弾き語り",
-        zh: "示范弹唱"
-    },
     outro:
     {
 //        en: "(Outro)",
         ja: "（後奏）",
         zh: "（尾奏）"
+    },
+    unavailable:
+    {
+//        en: "(Unavailable now)",
+        ja: "（未登録）",
+        zh: "（暂无）"
     }
 }

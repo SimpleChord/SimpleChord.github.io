@@ -110,15 +110,18 @@ function transform2tag(prefix, original, container)
 {
     switch (original[ELEMENT.tag])
     {
-        case TAG.PB:
-            appendBreak(container);
-            return LB;
         case TAG.BoALP:
             return [
                 TAG.a,
                 original[ELEMENT.between],
                 getLink(prefix, HTML, original[ELEMENT.alp]) + "#" + original[ELEMENT.id]
             ];
+        case TAG.CHORD:
+            appendChord(original[ELEMENT.between], container);
+            return [];
+        case TAG.PB:
+            appendBreak(container);
+            return LB;
         default:
             return original;
     }
@@ -137,29 +140,33 @@ function appendRecursively(prefix, content, container)
             else // array
             {
                 transformed = transform2tag(prefix, c, container); // transform "c" into an HTML tag if necessary
-                element = appendElement(transformed[ELEMENT.tag], container);
                 
-                switch (transformed[ELEMENT.tag])
+                if (transformed.length > 0)
                 {
-                    case TAG.br:
-                        break;
-                    case TAG.a:
-                        element.href = transformed[ELEMENT.href];
-                    default:
-                        appendRecursively(prefix, transformed[ELEMENT.between], element);
+                    element = appendElement(transformed[ELEMENT.tag], container);
+                    
+                    switch (transformed[ELEMENT.tag])
+                    {
+                        case TAG.br:
+                            break;
+                        case TAG.a:
+                            element.href = transformed[ELEMENT.href];
+                        default:
+                            appendRecursively(prefix, transformed[ELEMENT.between], element);
+                    }
                 }
             }
 }
 
-function appendParagraph(prefix, type, song, container)
+function appendParagraph(prefix, type, parent, container)
 {
     var p;
     
-    if (type in song)
+    if (type in parent)
     {
         p = appendElement(TAG.p, container);
         
-        appendRecursively(prefix, song[type], p);
+        appendRecursively(prefix, parent[type], p);
     }
 }
 
@@ -212,7 +219,7 @@ function append__tro(__tro, score, language, container) // intro or outro
     }
 }
 
-function appendScore(score, language, container)
+function appendSection(score, language, container)
 {
     var section = appendElement("section", container);
     var p = appendElement(TAG.p, section);
@@ -260,41 +267,44 @@ function appendScore(score, language, container)
     append__tro("outro", score, language, p);
 }
 
-function appendDemo(addition, type, baseName, container)
+function appendArticle(page, bookmark, container)
 {
-    var demo = appendElement(type, container);
-    
-    demo.src = getLink(addition.prefix, type, addition.path + "/" + baseName);
-    demo.controls = true;
-    demo.onmouseenter = function()
-    {
-        demo.play();
-    };
-}
-
-function appendSong(page, bookmark, container)
-{
-    var article = appendElement("article", container);
+    var article = appendElement(TAG.article, container);
     var details;
+    var demo;
     var song = page.information.main[bookmark];
     var pa = page.addition;
+    var sd; // song.details if it exists
     
     article.id = bookmark; // create bookmarks with ID attribute
     
     appendTAGwithTEXT("h2", song.h2, article);
     appendParagraph(pa.prefix, "preface", song, article);
-    appendScore(song.score, pa.language, article);
+    appendSection(song.section, pa.language, article);
     appendParagraph(pa.prefix, "postscript", song, article);
     
 // demo
+    details = appendElement(TAG.details, article);
+    appendTAGwithTEXT("summary", DICTIONARY.demo[pa.language], details);
+    
     if (TAG.details in song)
     {
-        details = appendElement(TAG.details, article);
+        sd = song.details;
         
-        appendTAGwithTEXT("summary", DICTIONARY.demo[pa.language], details);
-        appendDemo(pa, song.details, bookmark, details);
-        appendParagraph(pa.prefix, "comment", song, details);
+        if ("demo" in sd)
+        {
+            demo = appendElement(sd.demo, details);
+            demo.src = getLink(pa.prefix, sd.demo, pa.path + "/" + bookmark);
+            demo.controls = true;
+            demo.onmouseenter = function()
+            {
+                demo.play();
+            };
+        }
+        
+        appendParagraph(pa.prefix, "comment", sd, details);
     }
+    else appendTAGwithTEXT(TAG.p, DICTIONARY.unavailable[pa.language], details);
 }
 
 function createNav(addition)
@@ -316,7 +326,7 @@ function createMain(page)
     var main = appendElement("main", document.body);
     var id = "";
     
-    for (id in page.information.main) appendSong(page, id, main);
+    for (id in page.information.main) appendArticle(page, id, main);
 }
 
 function createFooter(addition)

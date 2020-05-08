@@ -19,7 +19,7 @@ var DATA =
                     {
                         h2: "老鼠愛大米",
                         preface: "G调唱起来稍稍有点儿高？",
-                        score:
+                        section:
                         {
                             chords:
                             [
@@ -52,13 +52,16 @@ var DATA =
                                 "只要能让你开心 我什么都愿意 这样爱你"
                             ]
                         },
-                        postscript:
-                        [
-                            "我好像改成F调来唱的，但和弦还是用的G调，知道我是怎么做到的吗？", PB,
-                            "示范弹唱请参考",
-                            [TAG.BoALP, "日语版", "uta", "nzmhkmgsk"],
-                            "。"
-                        ]
+                        postscript: "好像改成F调来唱的，但和弦还是用的G调，知道是怎么做到的吗？",
+                        details:
+                        {
+                            comment:
+                            [
+                                "示范弹唱请参考",
+                                [TAG.BoALP, "日语版", "uta", "nzmhkmgsk"],
+                                "。"
+                            ]
+                        }
                     }
                 }
             },
@@ -74,8 +77,13 @@ var DATA =
                     cchr:
                     {
                         h2: "叱咤红人",
-                        preface: "G调唱起来稍稍有点儿高？",
-                        score:
+                        preface:
+                        [
+                            "G调唱起来稍稍有点儿高？", PB,
+                            "选了几句第2段的歌词儿，放至第1段来唱。唱这歌无非就是对韦小宝艳福的憧憬……", LB,
+                            "原版因为唱两段，最后一句从“我冇胆”到“你够胆”，倒还真不错；唱一遍的话，就很窝囊，所以改词儿了！"
+                        ],
+                        section:
                         {
                             chords:
                             [
@@ -112,11 +120,14 @@ var DATA =
                         },
                         postscript:
                         [
-                            "我好像改成F调来唱的，但和弦还是用的G调，知道我是怎么做到的吗？", PB,
+                            "好像改成F调来唱的，但和弦还是用的G调，知道是怎么做到的吗？", PB,
                             "D或D7都是凭感觉配的，好像还算和谐？等有空时再力求配得更精确些……"
                         ],
-                        details: TAG.audio,
-                        comment: "朋友们都说我唱得蛮好…… <^_^!>"
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment: "朋友们都说唱得蛮好…… <^_^!>"
+                        }
                     }
                 }
             },
@@ -128,45 +139,7 @@ var DATA =
                     h1: "台湾歌"
                 },
                 main:
-                {///
-//                    ldxyq:
-//                    {
-//                        h2: "ldxyq（新谱置顶）",
-//                        preface:
-//                        [
-//                            "ldxyq", LB,
-//                            "ldxyq"
-//                        ],
-//                        score:
-//                        {
-//                            chords:
-//                            [
-//                                [[2, F], [4, F], [6, SPACE + Am], [8, A7], [10, Gm], [12, Gm], [14, SPACE + Dm], [16, Dm]],
-//                                [[2, F], [4, F], [6, SPACE + Am], [8, A7], [10, Gm], [12, C7], [15, F], [16, F]],
-//                                [[3, bB], [5, bB], [8, F], [9, C7], [12, bB], [14, bB], [17, F], [18, C]],
-//                                [[3, F], [5, F], [7, SPACE + Am], [9, A7], [11, Gm], [13, C7], [16, F]]
-//                            ],
-//                            lyrics:
-//                            [
-//                                "春风快加紧脚步 快到我窗前漫舞",
-//                                "春风请穿过门缝 请在我脸上轻吻",
-//                                "越过那千层的山峰 带给我亲切的问候",
-//                                "今年我们又再相逢 请给我新的祝福"
-//                            ]
-//                        },
-//                        postscript:
-//                        [
-//                            "ldxyq", LB,
-//                            "尾奏中的C最好也大横按，这样换弦方便些。"
-//                        ],
-//                        details: TAG.video, // Ep.19 4:31.2 ~ 5:20.9
-//                        comment:
-//                        [
-//                            "ldxyq", PB,
-//                            "ldxyq", LB,
-//                            "ldxyq"
-//                        ]
-//                    },
+                {
                     cf:
                     {
                         h2: "春风",
@@ -175,7 +148,7 @@ var DATA =
                             "因为是完全按照“陈天贵”的表演来记谱的，所以选用了F调。", LB,
                             "如果你觉得有难度的话，不如改成G调的和弦？当然，前提是你能再唱高一个音！"
                         ],
-                        score:
+                        section:
                         {
                             chords:
                             [
@@ -197,25 +170,28 @@ var DATA =
                         postscript:
                         [
                             "F和",
-                            [TAG.sup, "b"],
-                            "B还是用大横按比较好。指力强劲的网友，如果能用双横按来按",
-                            [TAG.sup, "b"],
-                            "B，那当然最好！", LB,
+                            [TAG.CHORD, bB],
+                            "还是用大横按比较好。指力强劲的网友，如果能用双横按来按",
+                            [TAG.CHORD, bB],
+                            "，那当然最好！", LB,
                             "尾奏中的C最好也大横按，这样换弦方便些。"
                         ],
-                        details: TAG.video, // Ep.19 4:31.2 ~ 5:20.9
-                        comment:
-                        [
-                            "澎老师唱得真好啊，琴弹得更好！", PB,
-                            "大拇指扫弦？这个手法没看懂……", LB,
-                            "第3句里的C7似乎不是很好？而且换弦也不太方便。不如把前一个F再弹一次？"
-                        ]
+                        details:
+                        {
+                            demo: TAG.video, // Ep.19 4:31.2 ~ 5:20.9
+                            comment:
+                            [
+                                "澎老师唱得真好啊，琴弹得更好！", PB,
+                                "大拇指扫弦？这个手法没看懂……", LB,
+                                "第3句里的C7似乎不是很好？而且换弦也不太方便。不如把前一个F再弹一次？"
+                            ]
+                        }
                     },
                     ydgz:
                     {
                         h2: "一代公主",
                         preface: "《一代女皇》就不提供了。",
-                        score:
+                        section:
                         {
                             chords:
                             [
@@ -257,8 +233,11 @@ var DATA =
                             ]
                         },
                         postscript: "最开心的是，能配上D6了耶！",
-                        details: TAG.audio,
-                        comment: "男声唱总是很怪哦？其实除了金老师，其他人唱出来都有点儿怪的。"
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment: "男声唱总是很怪哦？其实除了金老师，其他人唱出来都有点儿怪的。"
+                        }
                     }
                 }
             },
@@ -275,7 +254,7 @@ var DATA =
                     {
                         h2: "豪情笑江湖（新谱置顶）",
                         preface: "主歌用A小调；副歌用C大调。",
-                        score:
+                        section:
                         {
                             chords:
                             [
@@ -319,23 +298,32 @@ var DATA =
                         postscript:
                         [
                             "第一次使用Cadd9！效果好像还不错？之前也拆成C和Dm来演奏过，好像也是个不错的选择？", LB,
-                            "把Dm/F换成F也行的。", LB,
-                            [TAG.sup, "#"],
-                            "Fm还有待推敲！其它候选的有D/F",
-                            [TAG.sup, "#"],
-                            "、D7/F",
-                            [TAG.sup, "#"],
+                            "把Dm/F有点儿难按，换成F也行。", LB,
+                            [TAG.CHORD, sFm],
+                            "还有待推敲！其它候选的有",
+                            [TAG.CHORD, DFs],
+                            "、",
+                            [TAG.CHORD, D7Fs],
                             "……", LB,
                             "第6句里的Am和Em，用一个Am代替也行。不过此处用5级和弦来结束似乎更合理？但若合成一个Em/A又有点儿怪哦？所以就拆开吧！", LB,
                             "高潮前最后的G，可能用大横按比较好。"
                         ],
-                        details: TAG.audio,
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment:
+                            [
+                                "唱错一个字儿，妈的！", LB,
+                                "第2次高潮的第1句，怎么唱得像走音似的？", LB,
+                                "算了，以后再说了。"
+                            ]
+                        }
                     },
                     djdg:
                     {
                         h2: "对酒当歌",
                         preface: "C调唱起来有点儿低？若改弹D调的和弦呢，好像又有点儿怪？建议用变调夹。",
-                        score:
+                        section:
                         {
                             chords:
                             [
@@ -384,19 +372,22 @@ var DATA =
                                 "醉一回人生几何"
                             ]
                         },
-                        postscript: "我没有变调夹，只好弹D调了，改了几个和弦。",
-                        details: TAG.audio,
-                        comment:
-                        [
-                            "想唱出那种洒脱的感觉，结果显得很杂耍 <^_^!>", PB,
-                            "等心情好时再重录一次。"
-                        ]
+                        postscript: "没有变调夹，只好弹D调了，改了几个和弦。",
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment:
+                            [
+                                "想唱出那种洒脱的感觉，结果显得很杂耍 <^_^!>", PB,
+                                "等心情好时再重录一次。"
+                            ]
+                        }
                     },
                     mtdfx:
                     {
                         h2: "明天的方向",
                         preface: "凭经验、凭感觉编配的，好像还算和谐？",
-                        score:
+                        section:
                         {
                             chords:
                             [
@@ -436,6 +427,11 @@ var DATA =
                             "最满意的是C7！", PB,
                             "高潮第2句也别花哨了，用和第1、3句一样的和弦，好像也是个不错的选择？"
                         ],
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment: "方便起见，最后两句唱成一样的调儿，和原曲不一样。"
+                        }
                     }
                 }
             }
@@ -459,7 +455,7 @@ var DATA =
                     "日本の曲みたいわ！", PB,
                     "キーGで歌うなんて難しいかな？"
                 ],
-                score:
+                section:
                 {
                     chords:
                     [
@@ -497,19 +493,22 @@ var DATA =
                     "私はキーFで歌ったけど、上記どおりキーGのコードで弾いた……", LB,
                     "（手元にカポがない）"
                 ],
-                details: TAG.audio,
-                comment:
-                [
-                    "オリジナルは",
-                    [TAG.BoALP, "ここ", "gequ/dalu", "lsadm"],
-                    "をクリックして！"
-                ]
+                details:
+                {
+                    demo: TAG.audio,
+                    comment:
+                    [
+                        "オリジナルは",
+                        [TAG.BoALP, "ここ", "gequ/dalu", "lsadm"],
+                        "をクリックして！"
+                    ]
+                }
             },
             hdmrnut:
             {
                 h2: "ひだまりの詩",
                 preface: "曲名が読めるの？",
-                score:
+                section:
                 {
                     chords:
                     [
@@ -544,13 +543,15 @@ var DATA =
                 },
                 postscript:
                 [
-                    "E7/G",
-                    [TAG.sup, "#"],
+                    [TAG.CHORD, E7Gs],
                     "は完璧だがね！", LB,
                     "最後のFは、標準的に押したほうがええ。他には代理コードでやってもええ。"
                 ],
-                details: TAG.audio,
-                comment: "ガッキーに「よく知っとる」と言いたかったが、逆にそう言われた……"
+                details:
+                {
+                    demo: TAG.audio,
+                    comment: "ガッキーに「よく知っとる」と言いたかったが、逆にそう言われた……"
+                }
             }
         }
     }/*,

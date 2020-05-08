@@ -37,6 +37,9 @@
             <li>
               <a href="html/song/usa.html">USA (test)</a>
             </li>
+            <li>
+              <a href="html/song/uk.html">UK (test)</a>
+            </li>
           </ul>
         </li>
       </ul>
@@ -47,12 +50,9 @@
     <main>
       <article>
         <h2>豪情笑江湖</h2>
-        <section id="new">
-          <script>
-            var score = DATA.gequ.classification.xinjiapo.main.hqxjh.score;
-            appendScore(score, "zh", document.getElementById("new"));
-          </script>
-        </section>
+        <script>
+          appendSection(DATA.gequ.classification.xinjiapo.main.hqxjh.section, "zh", document.getElementsByTagName(TAG.article)[0]);
+        </script>
         <details>
           <summary>示范弹唱</summary>
           <audio controls>
