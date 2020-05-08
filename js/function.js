@@ -34,6 +34,23 @@ function getLink(prefix, folder, file) // "file" may be "path", "base" or "path/
     return prefix + folder + "/" + file + "." + extension;
 }
 
+function isString(value)///maybeused!
+{
+    return "string" === typeof value;
+}
+
+function appendTextNode(text, tag)
+{
+    var node = document.createTextNode(text);
+    
+    tag.appendChild(node);
+}
+
+function appendExtractedText(original, from, to, container)
+{
+    appendTextNode(original.slice(from, to), container);
+}
+
 function appendElement(tag, container) // Text is not added or Attributes are not set yet.
 {
     var element = document.createElement(tag);
@@ -48,13 +65,6 @@ function appendBreak(container)
     appendElement(TAG.br, container);
 }
 
-function appendTextNode(text, tag)
-{
-    var node = document.createTextNode(text);
-    
-    tag.appendChild(node);
-}
-
 function appendTAGwithTEXT(tag, text, container)
 {
     var element = appendElement(tag, container);
@@ -62,6 +72,11 @@ function appendTAGwithTEXT(tag, text, container)
     appendTextNode(text, element);
     
     return element;
+}
+
+function appendSHARPorFLAT(sign, container)
+{
+    appendTAGwithTEXT(TAG.sup, SHARPorFLAT[sign], container);
 }
 
 function appendMenus(addition, path, parent, container) // create menus recursively
@@ -148,41 +163,39 @@ function appendParagraph(prefix, type, song, container)
     }
 }
 
-function appendLyrics(line, from, to, container) // line: a line of lyrics
+function appendChord(chord, container)
 {
-    appendTextNode(line.slice(from, to), container);
-}
-
-function appendChord(chord, container)///todo
-{
+    var first = chord[0]; // get the 1st character of "chord"
+    var middle = chord.slice(0); // create a copy of the original "chord"
+    var last = chord.slice(-1); // get the last character of "chord"
+    var positionM = 0;
+    
+    if (first in SHARPorFLAT)
+    {
+        appendSHARPorFLAT(first, container);
+        middle = middle.slice(1); // remove the 1st character of "middle"
+    }
+    
+    if (last in SHARPorFLAT) middle = middle.slice(0, -1); // remove the last character of "middle"
+    
+    positionM = middle.indexOf("M");
+    if (positionM > 0) // M can't be the 1st character of a chord.
+    {
+        appendExtractedText(middle, 0, positionM, container);
+        appendTAGwithTEXT(TAG.small, "M", container);
+        appendExtractedText(middle, positionM + 1, middle.length, container);
+    }
+    else appendTextNode(middle, container);
+    
+    if (last in SHARPorFLAT) appendSHARPorFLAT(last, container);
 }
 
 function appendRuby(lyrics, chord, container) // append lyrics with chords
 {
-    var ruby = document.createElement("ruby");///to use appendTAGwithTEXT?
-    var rt = document.createElement("rt");///to use appendElement?
-    var c = "";
+    var ruby = appendTAGwithTEXT("ruby", lyrics, container);
+    var rt = appendElement("rt", ruby);
     
-    ruby.innerText = lyrics;///to be improved if lyrics are not CJK! | to use appendTAGwithTEXT?
-    
-    for (c of chord)
-        switch (c)
-        {
-            case "M":
-                appendTAGwithTEXT(TAG.small, c, rt);
-                break;
-            case "#":
-                appendTAGwithTEXT(TAG.sup, c, rt);
-                break;
-            case "f":
-                appendTAGwithTEXT(TAG.sup, "b", rt);
-                break;
-            default:
-                appendTextNode(c, rt);
-        }
-    
-    ruby.appendChild(rt);
-    container.appendChild(ruby);
+    appendChord(chord, rt);
 }
 
 function append__tro(__tro, score, language, container) // intro or outro
@@ -191,7 +204,7 @@ function append__tro(__tro, score, language, container) // intro or outro
     var chords = "";
     
     if (__tro in score)
-    {
+    {/////BUG exists!!! It will be fixed after English pages are created.
         for (st of score[__tro]) chords += st + SPACE; // "score[__tro]" is an array.
         
         appendTextNode(SPACE, container);
@@ -217,7 +230,7 @@ function appendScore(score, language, container)
             var lyricsTo = 0;
             var sc = "";
             
-            ///if not CJK, half space???
+            ///if lyrics are not CJK, half space???to be improved!
             if (0 == i % PARAGRAPH) appendBreak(p);
             
             if (0 == firstIndex)
@@ -232,13 +245,13 @@ function appendScore(score, language, container)
             {
                 lyricsTo = sc[ChordFrom];
                 
-                if (lyricsFrom != lyricsTo) appendLyrics(line, lyricsFrom, lyricsTo, p);
+                if (lyricsFrom != lyricsTo) appendExtractedText(line, lyricsFrom, lyricsTo, p);
                 appendRuby(line[sc[ChordFrom]], sc[ChordName], p);
                 
                 lyricsFrom = lyricsTo + 1;
             }
             
-            if (lyricsFrom < line.length) appendLyrics(line, lyricsFrom, line.length, p);
+            if (lyricsFrom < line.length) appendExtractedText(line, lyricsFrom, line.length, p);
             
             appendBreak(p);
         }
