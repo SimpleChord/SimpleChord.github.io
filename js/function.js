@@ -34,9 +34,16 @@ function getLink(prefix, folder, file) // "file" may be "path", "base" or "path/
     return prefix + folder + "/" + file + "." + extension;
 }
 
-function isString(value)///maybeused!
+function checkWidth(language)
 {
-    return "string" === typeof value;
+    switch (language)
+    {
+        case "en":
+            return HALF;
+        case "ja":
+        case "zh":
+            return FULL;
+    }
 }
 
 function appendTextNode(text, tag)
@@ -185,7 +192,7 @@ function appendChord(chord, container)
     
     if (last in SHARPorFLAT) middle = middle.slice(0, -1); // remove the last character of "middle"
     
-    positionM = middle.indexOf("M");
+    positionM = middle.indexOf("M"); // M appears at most once in a chord.
     if (positionM > 0) // M can't be the 1st character of a chord.
     {
         appendExtractedText(middle, 0, positionM, container);
@@ -205,66 +212,89 @@ function appendRuby(lyrics, chord, container) // append lyrics with chords
     appendChord(chord, rt);
 }
 
+function getEndPosition(start, chordLength, lyricsLength, language) // get ending position depending on the language
+{
+    var end = start;
+    
+    if (FULL == checkWidth(language)) end += 1;
+    else end += Math.ceil(chordLength / 2); // HALF
+    
+    return Math.min(end, lyricsLength);
+}
+
+function appendLyrics(chords, line, number, language, container) // a line of lyrics, line number
+{
+    var firstIndex = chords[0][POSITION]; // the index of the 1st chord in the lyrics
+    var firstChord = [];
+    var lyrics = FWS + line; // add a FWS on the left
+    var from = 0; // starting position of the lyrics
+    var to = 0; // ending position of the lyrics
+    var chord = "";
+    
+    if (0 == number % PARAGRAPH) appendBreak(container);
+    
+    if (0 == firstIndex)
+    {
+        firstChord = chords.shift();
+        
+        appendRuby(FWS, firstChord[NAME], container);
+        from = 1;
+    }
+    
+    for (chord of chords)
+    {
+// append lyrics without chords if necessary
+        to = chord[POSITION];
+        if (from != to) appendExtractedText(lyrics, from, to, container);
+// append lyrics with a chord/chords (swap "from" and "to" so that the next "from" need not to be set!)
+        from = getEndPosition(to, chord[NAME].length, lyrics.length, language);
+        appendRuby(lyrics.slice(to, from), chord[NAME], container);
+    }
+    
+    if (from < lyrics.length) appendExtractedText(lyrics, from, lyrics.length, container);
+    
+    appendBreak(container);
+}
+
 function append__tro(__tro, score, language, container) // intro or outro
 {
-    var st = "";
-    var chords = "";
+    var chords = [];
+    var text = "";
+    var difference = 0;
     
     if (__tro in score)
-    {/////BUG exists!!! It will be fixed after English pages are created.
-        for (st of score[__tro]) chords += st + SPACE; // "score[__tro]" is an array.
+    {
+        chords = score[__tro];
+        text = DICTIONARY[__tro][language];
+        difference = chords[chords.length - 1][POSITION] - text.length;
         
-        appendTextNode(SPACE, container);
-        appendRuby(DICTIONARY[__tro][language], chords.slice(0, -1), container); // remove the last SPACE
+        if (difference > 0)
+            for (i = 0; i < difference; i++) text += FWS; // fill with FWSs
+        
+        appendLyrics(chords, text, 1, language, container);
     }
 }
 
 function appendSection(score, language, container)
 {
     var section = appendElement("section", container);
-    var p = appendElement(TAG.p, section);
+    var pre = appendElement("pre", section);
     
-    append__tro("intro", score, language, p);
+    append__tro("intro", score, language, pre);
     
     score.chords.forEach
     (
-        function(scch, i)
+        function (sc, i)
         {
-            var firstIndex = scch[0][ChordFrom]; // the index of the 1st chord in a line of lyrics
-            var firstChord = [];
-            var line = SPACE + score.lyrics[i].replace(/ /g, SPACE) + SPACE; // replace all of the half-width spaces with full-width ones, and add 2 more to a line of lyrics
-            var lyricsFrom = 0;
-            var lyricsTo = 0;
-            var sc = "";
+            var line = score.lyrics[i] + FWS; // add a FWS to each line of lyrics on the right
             
-            ///if lyrics are not CJK, half space???to be improved!
-            if (0 == i % PARAGRAPH) appendBreak(p);
+            if (FULL == checkWidth(language)) line = line.replace(/ /g, FWS); // replace all of the white spaces with FWSs
             
-            if (0 == firstIndex)
-            {
-                firstChord = scch.shift();
-                
-                appendRuby(line[firstChord[ChordFrom]], firstChord[ChordName], p);
-                lyricsFrom = 1;
-            }
-            
-            for (sc of scch)
-            {
-                lyricsTo = sc[ChordFrom];
-                
-                if (lyricsFrom != lyricsTo) appendExtractedText(line, lyricsFrom, lyricsTo, p);
-                appendRuby(line[sc[ChordFrom]], sc[ChordName], p);
-                
-                lyricsFrom = lyricsTo + 1;
-            }
-            
-            if (lyricsFrom < line.length) appendExtractedText(line, lyricsFrom, line.length, p);
-            
-            appendBreak(p);
+            appendLyrics(sc, line, i, language, pre);
         }
     );
     
-    append__tro("outro", score, language, p);
+    append__tro("outro", score, language, pre);
 }
 
 function appendArticle(page, bookmark, container)

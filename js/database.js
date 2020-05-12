@@ -23,7 +23,7 @@ var DATA =
                         {
                             chords:
                             [
-                                [[3, G], [7, D], [11, Em], [15, SPACE + C]],
+                                [[3, G], [7, D], [11, Em], [15, FWS + C]],
                                 [[2, G], [5, C], [8, Am7], [12, D7]],
                                 [[3, G], [7, D], [11, Em], [15, Bm]],
                                 [[3, C], [7, D], [10, G], [11, G]],
@@ -31,9 +31,9 @@ var DATA =
                                 [[3, Bm], [7, Em], [12, Am7], [16, D7]],
                                 [[3, Bm], [7, Em], [11, C], [13, D], [15, G]],
                                 [[3, Bm], [7, Em], [11, Am7], [12, Am7], [15, D7], [16, D7]],
-                                [[3, G], [7, SPACE + Em], [11, G], [15, Bm]],
+                                [[3, G], [7, FWS + Em], [11, G], [15, Bm]],
                                 [[3, C], [7, G], [12, Am], [16, D]],
-                                [[3, G], [7, SPACE + Em], [11, G], [15, Bm]],
+                                [[3, G], [7, FWS + Em], [11, G], [15, Bm]],
                                 [[3, C], [7, G], [13, Am], [14, D], [18, G], [20, G]]
                             ],
                             lyrics:
@@ -87,16 +87,16 @@ var DATA =
                         {
                             chords:
                             [
-                                [[1, G], [8, SPACE + Em]],
-                                [[1, Am], [8, SPACE + D]],
+                                [[1, G], [8, FWS + Em]],
+                                [[1, Am], [8, FWS + D]],
                                 [[1, C], [7, G]],
-                                [[1, Am7], [6, SPACE + D7]],
+                                [[1, Am7], [6, FWS + D7]],
                                 [[4, Bm], [8, Em]],
-                                [[1, Am7], [5, SPACE + D]],
+                                [[1, Am7], [5, FWS + D]],
                                 [[4, Bm], [8, Em]],
                                 [[1, Am7], [6, D7]],
                                 [[1, G], [6, Em]],
-                                [[2, Am7], [8, SPACE + D7]],
+                                [[2, Am7], [8, FWS + D7]],
                                 [[3, G], [8, Em]],
                                 [[4, C], [11, D], [17, Em], [18, Em]],
                                 [[2, C], [6, D], [8, G]]
@@ -152,10 +152,10 @@ var DATA =
                         {
                             chords:
                             [
-                                [[2, F], [4, F], [6, SPACE + Am], [8, A7], [10, Gm], [12, Gm], [14, SPACE + Dm], [16, Dm]],
-                                [[2, F], [4, F], [6, SPACE + Am], [8, A7], [10, Gm], [12, C7], [15, F], [16, F]],
+                                [[2, F], [4, F], [6, FWS + Am], [8, A7], [10, Gm], [12, Gm], [14, FWS + Dm], [16, Dm]],
+                                [[2, F], [4, F], [6, FWS + Am], [8, A7], [10, Gm], [12, C7], [15, F], [16, F]],
                                 [[3, bB], [5, bB], [8, F], [9, C7], [12, bB], [14, bB], [17, F], [18, C]],
-                                [[3, F], [5, F], [7, SPACE + Am], [9, A7], [11, Gm], [13, C7], [16, F]]
+                                [[3, F], [5, F], [7, FWS + Am], [9, A7], [11, Gm], [13, C7], [16, F]]
                             ],
                             lyrics:
                             [
@@ -164,8 +164,7 @@ var DATA =
                                 "越过那千层的山峰 带给我亲切的问候",
                                 "今年我们又再相逢 请给我新的祝福"
                             ],
-                            outro: [bB, C, F]
-//                outro: [D7Fs, E7Gs,C, FmM7,F,bB]////////to be deleted after test!!!
+                            outro: [[1, bB], [2, C], [3, F]]
                         },
                         postscript:
                         [
@@ -204,9 +203,9 @@ var DATA =
                                 [[0, Dm7], [5, GB], [8, Am]],
                                 [[1, F], [3, Em], [5, Em], [6, Em], [8, Am], [9, Am]],
                                 [[1, Dm7], [5, Am], [9, Em], [10, Em]],
-                                [[1, Am], [5, Am7], [8, SPACE + Dm], [10, Dm]],
+                                [[1, Am], [5, Am7], [8, FWS + Dm], [10, Dm]],
                                 [[1, Dm7], [5, EmB], [8, GB], [10, GB]],
-                                [[1, Dm7], [5, D6], [8, SPACE + G], [10, G]],
+                                [[1, Dm7], [5, D6], [8, FWS + G], [10, G]],
                                 [[0, Am], [5, Em]],
                                 [[0, Am], [5, G]],
                                 [[0, Dm7], [5, GB], [8, Am]],
@@ -336,7 +335,7 @@ var DATA =
                                 [[1, Dm7], [6, Am]],
                                 [[1, G], [7, C], [8, C7]],
                                 [[1, Dm7], [6, Em]],
-                                [[1, F], [6, SPACE + C]],
+                                [[1, F], [6, FWS + C]],
                                 [[1, Dm7], [6, Em]],
                                 [[1, F], [7, G]],
                                 [[1, C], [6, C]],
@@ -391,17 +390,17 @@ var DATA =
                         {
                             chords:
                             [
-                                [[0, C], [4, GB], [9, Am], [12, SPACE + Em]],
-                                [[1, F], [7, CE], [11, Dm7], [12, SPACE + G]],
-                                [[0, C], [4, GB], [8, Am], [12, SPACE + Em]],
-                                [[1, F], [4, CE], [8, Dm7], [11, SPACE + G]],
-                                [[0, C], [4, GB], [8, Am], [12, SPACE + Em]],
-                                [[1, F], [7, CE], [10, Dm7], [11, SPACE + G]],
-                                [[0, C], [4, GB], [8, Am], [12, SPACE + Em]],
-                                [[1, F], [5, CE], [9, Dm7], [11, G], [13, SPACE + C]],
-                                [[0, C7], [4, F], [8, G], [12, SPACE + C]],
-                                [[0, C7], [4, SPACE + F], [8, SPACE + F], [10, G], [12, SPACE + C]],
-                                [[0, C7], [4, F], [8, G], [12, SPACE + Em]],
+                                [[0, C], [4, GB], [9, Am], [12, FWS + Em]],
+                                [[1, F], [7, CE], [11, Dm7], [12, FWS + G]],
+                                [[0, C], [4, GB], [8, Am], [12, FWS + Em]],
+                                [[1, F], [4, CE], [8, Dm7], [11, FWS + G]],
+                                [[0, C], [4, GB], [8, Am], [12, FWS + Em]],
+                                [[1, F], [7, CE], [10, Dm7], [11, FWS + G]],
+                                [[0, C], [4, GB], [8, Am], [12, FWS + Em]],
+                                [[1, F], [5, CE], [9, Dm7], [11, G], [13, FWS + C]],
+                                [[0, C7], [4, F], [8, G], [12, FWS + C]],
+                                [[0, C7], [4, FWS + F], [8, FWS + F], [10, G], [12, FWS + C]],
+                                [[0, C7], [4, F], [8, G], [12, FWS + Em]],
                                 [[0, Am], [3, D7], [7, F], [9, G], [13, C]],
                                 [[0, C], [3, D7], [7, F], [9, G], [13, C]]
                             ],
@@ -459,17 +458,17 @@ var DATA =
                 {
                     chords:
                     [
-                        [[3, G], [7, D], [11, Em], [15, SPACE + C]],
+                        [[3, G], [7, D], [11, Em], [15, FWS + C]],
                         [[3, G], [6, C], [9, Am7], [13, D7]],
                         [[2, G], [6, D], [10, Em], [14, Bm]],
-                        [[1, SPACE + C], [6, D], [8, G], [9, G]],
-                        [[3, Bm], [6, Em], [9, C], [10, SPACE + SPACE + D], [12, G]],
-                        [[2, Bm], [5, Em], [9, Am7 + SPACE], [12, D7]],
-                        [[3, Bm], [7, Em], [10, C], [11, SPACE + SPACE + D], [13, G]],
-                        [[3, Bm], [6, SPACE + Em], [10, Am7], [11, Am7], [15, D7], [16, D7]],
-                        [[5, G], [10, SPACE + Em], [14, G], [18, Bm]],
+                        [[1, FWS + C], [6, D], [8, G], [9, G]],
+                        [[3, Bm], [6, Em], [9, C], [10, FWS + FWS + D], [12, G]],
+                        [[2, Bm], [5, Em], [9, Am7 + FWS], [12, D7]],
+                        [[3, Bm], [7, Em], [10, C], [11, FWS + FWS + D], [13, G]],
+                        [[3, Bm], [6, FWS + Em], [10, Am7], [11, Am7], [15, D7], [16, D7]],
+                        [[5, G], [10, FWS + Em], [14, G], [18, Bm]],
                         [[3, C], [6, G], [10, Am], [14, D]],
-                        [[6, G], [11, SPACE + Em], [15, G], [19, Bm]],
+                        [[6, G], [11, FWS + Em], [15, G], [19, Bm]],
                         [[3, C], [7, G], [12, Am], [14, D], [18, G], [21, G]]
                     ],
                     lyrics:
@@ -516,13 +515,13 @@ var DATA =
                         [[1, EmG], [5, F], [7, G7], [11, C], [14, C]],
                         [[2, C], [4, E7], [6, Am]],
                         [[2, EmG], [6, F], [9, G7], [12, C], [13, C]],
-                        [[1, SPACE + C], [3, E7], [6, Am]],
-                        [[2, AmG], [6, F], [8, SPACE + G7], [12, C], [13, C]],
-                        [[1, SPACE + C], [3, E7 + SPACE], [6, Am]],
-                        [[1, SPACE + AmG], [3, D7Fs], [6, Gsus4], [8, G7], [10, G7]],
-                        [[1, C], [3, Dm7], [5, Em7 + SPACE], [8, E7Gs], [10, SPACE + Am], [13, EmG], [15, SPACE + F], [18, FmM7]],
-                        [[1, C], [3, Am], [5, SPACE + Dm7], [9, Gsus4]],
-                        [[1, Em7], [3, Am], [5, SPACE + Dm7], [9, Gsus4]],
+                        [[1, FWS + C], [3, E7], [6, Am]],
+                        [[2, AmG], [6, F], [8, FWS + G7], [12, C], [13, C]],
+                        [[1, FWS + C], [3, E7 + FWS], [6, Am]],
+                        [[1, FWS + AmG], [3, D7Fs], [6, Gsus4], [8, G7], [10, G7]],
+                        [[1, C], [3, Dm7], [5, Em7 + FWS], [8, E7Gs], [10, FWS + Am], [13, EmG], [15, FWS + F], [18, FmM7]],
+                        [[1, C], [3, Am], [5, FWS + Dm7], [9, Gsus4]],
+                        [[1, Em7], [3, Am], [5, FWS + Dm7], [9, Gsus4]],
                         [[1, Em7], [3, Am], [5, Dm7], [9, Gsus4], [11, C]]
                     ],
                     lyrics:
@@ -554,12 +553,72 @@ var DATA =
                 }
             }
         }
-    }/*,
-    song:
+    },
+    lat:
     {
         language: "en",
-        nav: "Song",
-        classification:
-        {}
-    }*/
+        nav: "Låt",
+        header:
+        {
+            h1: "Svenska Sånger"
+        },
+        main:
+        {
+            sitr:
+            {
+                h2: "Sunshine in the Rain",
+                preface: 'I had not expected that it is a Swedish song, the original of a Chinse cover version named "Sun Will Never Set".',
+                section:
+                {
+                    intro: [[0, G], [3, Am], [5, D7], [7, G]],
+                    chords:
+                    [
+                        [[0, Em], [16, Am7], [35, D7]],
+                        [[17, G], [35, Em]],
+                        [[17, Am7], [35, D7]],
+                        [[18, G]],
+                        [[0, Em], [18, Am7], [30, D7]],
+                        [[14, G], [30, Em]],
+                        [[18, Am7], [31, D7]],
+                        [[25, G]],
+                        [[0, G7], [18, C], [35, D]],
+                        [[19, BmD], [34, GB]],
+                        [[16, C], [34, D]],
+                        [[18, BmD], [36, Em]],
+                        [[17, Am7]],
+                        [[19, D6], [40, G]],
+                        [[0, GB], [17, Am7]],
+                        [[19, D6], [40, G]]
+                    ],
+                    lyrics:
+                    [
+                        "When I'm in Berlin you're off to London",
+                        "When I'm in New York you're doing Rome",
+                        "All those crazy nights we spend together",
+                        "As voices on the phone",
+                        "Wishing we could be more telepathic",
+                        "Tired of the nights I sleep alone",
+                        "Wishing we could redirect the traffic",
+                        "And we find ourselves a home",
+                        "Can you feel the raindrops in the desert",
+                        "Have you seen the sunrays in the dark",
+                        "Do you feel my love when I'm not present",
+                        "Standing by your side while miles apart",
+                        "Sunshine in the rain",
+                        "Love is still the same" + FWS + "Sunshine in the rain",
+                        "Sunshine in the rain",
+                        "Love is still the same" + FWS + "Sunshine in the rain"
+                    ]
+                },
+                postscript:
+                [
+                    "It seems that D7 is not a good choice, but matches with the melody well. Why?"
+                ],
+                details:
+                {
+                    comment: "It is not good to sing \"Sunshine in the rain\" twice in the same paragraph, I'm afraid. So ..."
+                }
+            }
+        }
+    }
 };

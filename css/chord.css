@@ -107,12 +107,12 @@ section
 {
     text-align: center;
 }
-section p
+section pre
 {
     display: inline-block;
     margin: 0;
     text-align: left;
-    font-size: large;
+    font-size: x-large;
     color: purple;
 }
 summary

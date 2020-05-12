@@ -5,10 +5,11 @@ var AmG = "Am/G";
 var Am7 = "Am7";
 var bB = "fB";
 var Bm = "Bm";
+var BmD = "Bm/D";
 var C = "C";
 var CE = "C/E";
 var C7 = "C7";
-//var CM7 = "CM7";
+///var CM7 = "CM7";
 var Cadd9 = "Cadd9";
 var D = "D";
 var DFs = "D/Fx";
@@ -39,12 +40,14 @@ var SHARPorFLAT =
     f: "\u266D"
 };
 
-// others
-var SPACE = "\u3000"; // full width
+var HALF = 1;
+var FULL = 2;
+var FWS = "\u3000"; // full-width space
 var PARAGRAPH = 4; // add a break every 4 lines
 
-var ChordFrom = 0;
-var ChordName = 1;
+// indexes of a chord's tuple
+var POSITION = 0; // position where a chord begins
+var NAME = 1; // name of a chord
 ///var LyricsTo = 2;to be used
 
 var HTML = "html";
@@ -89,13 +92,13 @@ var DICTIONARY =
 {
     demo:
     {
-//        en: "Demo",
+        en: "Demo",
         ja: "弾き語り",
         zh: "示范弹唱"
     },
     footer:
     {
-//        en: "",
+        en: "Please enjoy the above contents!",
         ja:
         [
             "わざわざ本サイトをご覧いただき、誠にありがとうございます！", PB,
@@ -105,19 +108,19 @@ var DICTIONARY =
     },
     intro:
     {
-//        en: "(Intro)",
+        en: "(Intro)",
         ja: "（前奏）",
         zh: "（前奏）"
     },
     outro:
     {
-//        en: "(Outro)",
+        en: "(Outro)",
         ja: "（後奏）",
         zh: "（尾奏）"
     },
     unavailable:
     {
-//        en: "(Unavailable now)",
+        en: "(Unavailable now)",
         ja: "（未登録）",
         zh: "（暂无）"
     }
