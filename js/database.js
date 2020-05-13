@@ -120,6 +120,7 @@ var DATA =
                         },
                         postscript:
                         [
+                            LB,
                             "好像改成F调来唱的，但和弦还是用的G调，知道是怎么做到的吗？", PB,
                             "D或D7都是凭感觉配的，好像还算和谐？等有空时再力求配得更精确些……"
                         ],
@@ -423,6 +424,7 @@ var DATA =
                         },
                         postscript:
                         [
+                            LB,
                             "最满意的是C7！", PB,
                             "高潮第2句也别花哨了，用和第1、3句一样的和弦，好像也是个不错的选择？"
                         ],
@@ -576,7 +578,9 @@ var DATA =
                 h2: "Sunshine in the Rain",
                 preface:
                 [
-                    'I had not expected that it is a Swedish song, the original of a Chinse cover version named "Sun Will Never Set".', PB,
+                    "I had not expected that it is a Swedish song, the original of a Chinse cover version named ",
+                    [TAG.q, "Sun Will Never Set"],
+                    ".", PB,
                     "I have changed 4 cities."
                 ],
                 section:
@@ -616,7 +620,7 @@ var DATA =
                         "Do you feel my love when I'm not present",
                         "Standing by your side while miles apart",
                         "Sunshine in the rain",
-                        "Love is still the same   shall We date again",
+                        "Love is still the same   Shall we date again",
                         "Sunshine in the rain",
                         "Love is still the same   We shall date again"
                     ]
@@ -627,8 +631,13 @@ var DATA =
                 ],
                 details:
                 {
-//                    demo: TAG.audio,
-                    comment: "It is not good to sing \"Sunshine in the rain\" twice in the same paragraph, I'm afraid. So ..."
+                    demo: TAG.audio,
+                    comment:
+                    [
+                        "It is not good to sing ",
+                        [TAG.q, "Sunshine in the rain"],
+                        " twice in the same paragraph, I'm afraid. So ..."
+                    ]
                 }
             }
         }

@@ -110,7 +110,7 @@ section
 section pre
 {
     display: inline-block;
-    margin: 0;
+    margin-bottom: 0;
     text-align: left;
     font-size: x-large;
     color: purple;

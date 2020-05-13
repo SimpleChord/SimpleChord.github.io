@@ -65,12 +65,26 @@ var TAG =
 {
     a: "a",
     article: "article",
+//    aside: "aside",
     audio: "audio",
     br: "br",
     details: "details",
+    footer: "footer",
+    h1: "h1",
+    h2: "h2",
+    header: "header",
     li: "li",
+    link: "link",
+    main: "main",
+    nav: "nav",
     p: "p",
+    pre: "pre",
+    q: "q",
+    rt: "rt",
+    ruby: "ruby",
+    section: "section",
     small: "small",
+    summary: "summary",
     sup: "sup",
     ul: "ul",
     video: "video",
@@ -103,7 +117,12 @@ var DICTIONARY =
             "わざわざ本サイトをご覧いただき、誠にありがとうございます！", PB,
             "歌詞は掲載しかねます。"
         ],
-        sv: "All of the Swedish words are translated by Google Translate.",
+        sv:
+        [
+            "All of the Swedish words are translated by ",
+            [TAG.q, "Google Translate"],
+            "."
+        ],
         zh: "希望您会欢喜以上内容！"
     },
     intro:

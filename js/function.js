@@ -1,7 +1,7 @@
 function getPage(url)
 {
     var splitURL = url.split("/");
-    var name = splitURL.pop().split(".").shift(); // the name of current page
+    var name = splitURL.pop().split(".").shift(); // name of current page
     var page =
     {
         information: {},
@@ -206,23 +206,21 @@ function appendChord(chord, container)
 
 function appendRuby(lyrics, chord, container) // append lyrics with chords
 {
-    var ruby = appendTAGwithTEXT("ruby", lyrics, container);
-    var rt = appendElement("rt", ruby);
+    var ruby = appendTAGwithTEXT(TAG.ruby, lyrics, container);
+    var rt = appendElement(TAG.rt, ruby);
     
     appendChord(chord, rt);
 }
 
-function appendLyrics(chords, line, number, language, container) // a line of lyrics, line number
+function appendLyrics(chords, line, isParagraphBreak, language, container) // a line of lyrics
 {
-    var firstIndex = chords[0][POSITION]; // the index of the 1st chord in the lyrics
+    var firstIndex = chords[0][POSITION]; // index of the 1st chord in the lyrics
     var firstChord = [];
     var chord = "";
     var lyrics = FWS + line; // add a FWS on the left
     var from = 0; // starting position of the lyrics
     var to = 0; // ending position of the lyrics
-    var offset = 0;
-    
-    if (0 == number % PARAGRAPH) appendBreak(container);
+    var offset = 0; // difference between "from" & "to"
     
     if (0 == firstIndex)
     {
@@ -238,17 +236,18 @@ function appendLyrics(chords, line, number, language, container) // a line of ly
         to = chord[POSITION];
         if (from != to) appendExtractedText(lyrics, from, to, container);
         
-// append lyrics with a chord/chords (swap "from" and "to" so that the next "from" need not be set!)
+// append lyrics with a chord/chords
         if (FULL == checkWidth(language)) offset = 1;
         else offset = Math.ceil(chord[NAME].length / 2); // HALF
         
         from = Math.min(to + offset, lyrics.length);
-        appendRuby(lyrics.slice(to, from), chord[NAME], container);
+        appendRuby(lyrics.slice(to, from), chord[NAME], container); // swap "from" & "to" so that the next "from" need not be set!
     }
     
     if (from < lyrics.length) appendExtractedText(lyrics, from, lyrics.length, container);
     
     appendBreak(container);
+    if (isParagraphBreak) appendBreak(container);
 }
 
 function append__tro(__tro, score, language, container) // intro or outro
@@ -267,14 +266,14 @@ function append__tro(__tro, score, language, container) // intro or outro
         if (difference > 0)
             for (i = 0; i < difference; i++) text += FWS; // fill with FWSs
         
-        appendLyrics(chords, text, 1, language, container);
+        appendLyrics(chords, text, true, language, container);
     }
 }
 
 function appendSection(score, language, container)
 {
-    var section = appendElement("section", container);
-    var pre = appendElement("pre", section);
+    var section = appendElement(TAG.section, container);
+    var pre = appendElement(TAG.pre, section);
     
     append__tro("intro", score, language, pre);
     
@@ -286,7 +285,7 @@ function appendSection(score, language, container)
             
             if (FULL == checkWidth(language)) line = line.replace(/ /g, FWS); // replace all of the white spaces with FWSs
             
-            appendLyrics(sc, line, i, language, pre);
+            appendLyrics(sc, line, 0 == (i + 1) % PARAGRAPH, language, pre);
         }
     );
     
@@ -304,14 +303,14 @@ function appendArticle(page, bookmark, container)
     
     article.id = bookmark; // create bookmarks with ID attribute
     
-    appendTAGwithTEXT("h2", song.h2, article);
+    appendTAGwithTEXT(TAG.h2, song.h2, article);
     appendParagraph(pa.prefix, "preface", song, article);
     appendSection(song.section, pa.language, article);
     appendParagraph(pa.prefix, "postscript", song, article);
     
 // demo
     details = appendElement(TAG.details, article);
-    appendTAGwithTEXT("summary", DICTIONARY.demo[pa.language], details);
+    appendTAGwithTEXT(TAG.summary, DICTIONARY.demo[pa.language], details);
     
     if (TAG.details in song)
     {
@@ -335,21 +334,21 @@ function appendArticle(page, bookmark, container)
 
 function createNav(addition)
 {
-    var nav = appendElement("nav", document.body);
+    var nav = appendElement(TAG.nav, document.body);
     
     appendMenus(addition, "", DATA, nav);
 }
 
 function createHeader(pih) // page.information.header
 {
-    var header = appendElement("header", document.body);
+    var header = appendElement(TAG.header, document.body);
     
-    appendTAGwithTEXT("h1", pih.h1, header);
+    appendTAGwithTEXT(TAG.h1, pih.h1, header);
 }
 
 function createMain(page)
 {
-    var main = appendElement("main", document.body);
+    var main = appendElement(TAG.main, document.body);
     var id = "";
     
     for (id in page.information.main) appendArticle(page, id, main);
@@ -357,7 +356,7 @@ function createMain(page)
 
 function createFooter(addition)
 {
-    var footer = appendElement("footer", document.body);
+    var footer = appendElement(TAG.footer, document.body);
     var small = appendElement(TAG.small, footer);
     
     appendRecursively(addition.prefix, DICTIONARY.footer[addition.language], small);
@@ -365,7 +364,7 @@ function createFooter(addition)
 
 function createPage(url)
 {
-    var link = appendElement("link", document.head);
+    var link = appendElement(TAG.link, document.head);
     var page = getPage(url);
     var pih = page.information.header;
     var pa = page.addition;
