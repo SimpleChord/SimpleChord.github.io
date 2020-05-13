@@ -92,36 +92,36 @@ var DICTIONARY =
 {
     demo:
     {
-        en: "Demo",
         ja: "弾き語り",
+        sv: "Demo",
         zh: "示范弹唱"
     },
     footer:
     {
-        en: "Please enjoy the above contents!",
         ja:
         [
             "わざわざ本サイトをご覧いただき、誠にありがとうございます！", PB,
             "歌詞は掲載しかねます。"
         ],
+        sv: "All of the Swedish words are translated by Google Translate.",
         zh: "希望您会欢喜以上内容！"
     },
     intro:
     {
-        en: "(Intro)",
         ja: "（前奏）",
+        sv: "(Intro)",
         zh: "（前奏）"
     },
     outro:
     {
-        en: "(Outro)",
         ja: "（後奏）",
+        sv: "(Outro)",
         zh: "（尾奏）"
     },
     unavailable:
     {
-        en: "(Unavailable now)",
         ja: "（未登録）",
+        sv: "(Unavailable now)",
         zh: "（暂无）"
     }
 }

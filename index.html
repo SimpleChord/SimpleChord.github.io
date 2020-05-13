@@ -35,10 +35,10 @@
           <a>Song</a>
           <ul>
             <li>
-              <a href="html/song/usa.html">USA (test)</a>
+              <a href="html/song/usa.html">USA (testing)</a>
             </li>
             <li>
-              <a href="html/song/uk.html">UK (test)</a>
+              <a href="html/song/uk.html">UK (testing)</a>
             </li>
           </ul>
         </li>
@@ -52,26 +52,29 @@
     </header>
     <main>
       <article>
-        <h2>豪情笑江湖</h2>
+        <h2>Sunshine in the Rain</h2>
         <script>
-          appendSection(DATA.gequ.classification.xinjiapo.main.hqxjh.section, "zh", document.getElementsByTagName(TAG.article)[0]);
+          var menu = DATA.lat;
+          appendSection
+          (
+              menu.main.sitr.section,
+              menu.language,
+              document.getElementsByTagName(TAG.article)[0]
+          );
         </script>
         <details>
-          <summary>示范弹唱</summary>
+          <summary>Demo</summary>
           <audio controls>
-            <source src="audio/gequ/xinjiapo/hqxjh.mp3" type="audio/mpeg" />
+            <source src="audio/lat/sitr.mp3" type="audio/mpeg" />
           </audio>
         </details>
       </article>
     </main>
     <aside>
+      <p>Edge or IE is not recommended.</p>
       <p>
-        左边的导航栏虽然尚未整完，但也不至于那么不起眼吧？你们怎么就不点呢？<br />
-        决定加大字体！！！
-      </p>
-      <p>
-        本站发布的第一首新加坡歌是《笑傲江湖》的片尾曲，再来首<a href="html/gequ/xinjiapo.html#hqxjh">主题歌</a>吧！&#x25c0;&#x25c0;&#x25c0;<br />
-        网上好像还没有和弦谱！！本站大概是首发？
+        Besides the lyrics written in Chinese characters, those in western languages have also been supported.<br />
+        &#x25c0;&#x25c0;&#x25c0; Let's enjoy a <a href="html/lat.html#sitr">Swedish song</a> firstly!
       </p>
     </aside>
     <footer>

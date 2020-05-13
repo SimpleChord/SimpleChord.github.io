@@ -38,7 +38,7 @@ function checkWidth(language)
 {
     switch (language)
     {
-        case "en":
+        case "sv":
             return HALF;
         case "ja":
         case "zh":
@@ -212,24 +212,15 @@ function appendRuby(lyrics, chord, container) // append lyrics with chords
     appendChord(chord, rt);
 }
 
-function getEndPosition(start, chordLength, lyricsLength, language) // get ending position depending on the language
-{
-    var end = start;
-    
-    if (FULL == checkWidth(language)) end += 1;
-    else end += Math.ceil(chordLength / 2); // HALF
-    
-    return Math.min(end, lyricsLength);
-}
-
 function appendLyrics(chords, line, number, language, container) // a line of lyrics, line number
 {
     var firstIndex = chords[0][POSITION]; // the index of the 1st chord in the lyrics
     var firstChord = [];
+    var chord = "";
     var lyrics = FWS + line; // add a FWS on the left
     var from = 0; // starting position of the lyrics
     var to = 0; // ending position of the lyrics
-    var chord = "";
+    var offset = 0;
     
     if (0 == number % PARAGRAPH) appendBreak(container);
     
@@ -246,8 +237,12 @@ function appendLyrics(chords, line, number, language, container) // a line of ly
 // append lyrics without chords if necessary
         to = chord[POSITION];
         if (from != to) appendExtractedText(lyrics, from, to, container);
-// append lyrics with a chord/chords (swap "from" and "to" so that the next "from" need not to be set!)
-        from = getEndPosition(to, chord[NAME].length, lyrics.length, language);
+        
+// append lyrics with a chord/chords (swap "from" and "to" so that the next "from" need not be set!)
+        if (FULL == checkWidth(language)) offset = 1;
+        else offset = Math.ceil(chord[NAME].length / 2); // HALF
+        
+        from = Math.min(to + offset, lyrics.length);
         appendRuby(lyrics.slice(to, from), chord[NAME], container);
     }
     
@@ -261,6 +256,7 @@ function append__tro(__tro, score, language, container) // intro or outro
     var chords = [];
     var text = "";
     var difference = 0;
+    var i;
     
     if (__tro in score)
     {

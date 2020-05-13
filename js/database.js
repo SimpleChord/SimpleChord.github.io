@@ -553,10 +553,17 @@ var DATA =
                 }
             }
         }
-    },
-    lat:
+    },/*
+    song:
     {
         language: "en",
+        nav: "Song",
+        classification:
+        {}
+    }*/
+    lat:
+    {
+        language: "sv",
         nav: "Låt",
         header:
         {
@@ -567,17 +574,21 @@ var DATA =
             sitr:
             {
                 h2: "Sunshine in the Rain",
-                preface: 'I had not expected that it is a Swedish song, the original of a Chinse cover version named "Sun Will Never Set".',
+                preface:
+                [
+                    'I had not expected that it is a Swedish song, the original of a Chinse cover version named "Sun Will Never Set".', PB,
+                    "I have changed 4 cities."
+                ],
                 section:
                 {
-                    intro: [[0, G], [3, Am], [5, D7], [7, G]],
+                    intro: [[1, G], [3, Am], [5, D7], [7, G]],
                     chords:
                     [
-                        [[0, Em], [16, Am7], [35, D7]],
-                        [[17, G], [35, Em]],
+                        [[0, Em], [16, Am7], [38, D7]],
+                        [[18, G], [40, Em]],
                         [[17, Am7], [35, D7]],
                         [[18, G]],
-                        [[0, Em], [18, Am7], [30, D7]],
+                        [[0, Em], [18, Am7], [31, D7]],
                         [[14, G], [30, Em]],
                         [[18, Am7], [31, D7]],
                         [[25, G]],
@@ -586,14 +597,14 @@ var DATA =
                         [[16, C], [34, D]],
                         [[18, BmD], [36, Em]],
                         [[17, Am7]],
-                        [[19, D6], [40, G]],
+                        [[19, D6], [41, G]],
                         [[0, GB], [17, Am7]],
-                        [[19, D6], [40, G]]
+                        [[19, D6], [41, G]]
                     ],
                     lyrics:
                     [
-                        "When I'm in Berlin you're off to London",
-                        "When I'm in New York you're doing Rome",
+                        "When I'm in Beijing you're off to Shanghai",
+                        "When I'm in Hong Kong you're doing Macau",
                         "All those crazy nights we spend together",
                         "As voices on the phone",
                         "Wishing we could be more telepathic",
@@ -605,9 +616,9 @@ var DATA =
                         "Do you feel my love when I'm not present",
                         "Standing by your side while miles apart",
                         "Sunshine in the rain",
-                        "Love is still the same" + FWS + "Sunshine in the rain",
+                        "Love is still the same   shall We date again",
                         "Sunshine in the rain",
-                        "Love is still the same" + FWS + "Sunshine in the rain"
+                        "Love is still the same   We shall date again"
                     ]
                 },
                 postscript:
@@ -616,6 +627,7 @@ var DATA =
                 ],
                 details:
                 {
+//                    demo: TAG.audio,
                     comment: "It is not good to sing \"Sunshine in the rain\" twice in the same paragraph, I'm afraid. So ..."
                 }
             }
