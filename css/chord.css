@@ -15,7 +15,7 @@ nav
 {
     position: fixed;
     top: 0; /* position navbar at the top of page */
-    width: 15%;
+    width: 10%;
     height: 100%;
     z-index: 1; /* place dropdowns in front of other elements */
     background-color: pink;
@@ -78,6 +78,10 @@ nav ul ul li a:only-child
     padding-right: 8px;
 }
 
+header
+{
+    width: 90%; /* double nav + main */
+}
 header h1
 {
     text-align: center;
@@ -87,7 +91,7 @@ header h1
 main
 {
     float: left;
-    margin-left: 15%;
+    margin-left: 10%; /* width of nav */
     width: 70%;
 }
 article
@@ -124,15 +128,34 @@ summary
 aside
 {
     float: right;
-    width: 15%;
+    width: 20%;
     padding: 1%;
     background-color: bisque;
+}
+aside ol
+{
+    margin: 0; /* remove default setting */
+    padding: 0; /* remove default setting */
+    list-style-position: inside;
+}
+aside ol li
+{
+    border-bottom: 1px dotted chocolate;
+    padding: 8px 0;
+}
+aside ol li:hover
+{
+    background-color: magenta;
+}
+aside ol li a
+{
+    text-decoration: none;
 }
 
 footer
 {
     clear: both; /* no floating elements allowed on both sides */
-    margin-left: 15%;
+    margin-left: 10%; /* width of nav */
 }
 footer small
 {

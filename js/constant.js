@@ -9,7 +9,6 @@ var BmD = "Bm/D";
 var C = "C";
 var CE = "C/E";
 var C7 = "C7";
-///var CM7 = "CM7";
 var Cadd9 = "Cadd9";
 var D = "D";
 var DFs = "D/Fx";
@@ -26,6 +25,7 @@ var EmB = "Em/B";
 var EmG = "Em/G";
 var Em7 = "Em7";
 var F = "F";
+var FM7 = "FM7";
 var FmM7 = "FmM7";
 var sFm = "xFm";
 var G = "G";
@@ -48,7 +48,6 @@ var PARAGRAPH = 4; // add a break every 4 lines
 // indexes of a chord's tuple
 var POSITION = 0; // position where a chord begins
 var NAME = 1; // name of a chord
-///var LyricsTo = 2;to be used
 
 var HTML = "html";
 
@@ -65,7 +64,7 @@ var TAG =
 {
     a: "a",
     article: "article",
-//    aside: "aside",
+    aside: "aside",
     audio: "audio",
     br: "br",
     details: "details",
@@ -77,6 +76,7 @@ var TAG =
     link: "link",
     main: "main",
     nav: "nav",
+    ol: "ol",
     p: "p",
     pre: "pre",
     q: "q",
