@@ -116,15 +116,25 @@ var DICTIONARY =
         ja:
         [
             "わざわざ本サイトをご覧いただき、誠にありがとうございます！", PB,
+            "EdgeかIEで本サイトへのアクセスは不推奨です。", PB,
             "歌詞は掲載しかねます。"
         ],
         sv:
         [
+            "Thank you for your visit to this site.", PB,
+            "Edge or IE is not recommended.", PB,
             "All of the Swedish words are translated by ",
             [TAG.q, "Google Translate"],
             "."
         ],
-        zh: "希望您会欢喜以上内容！"
+        zh:
+        [
+            "希望您会欢喜以上内容！", PB,
+            "不建议用Edge或IE访问本站。", PB,
+            "本站旨在为广大编程或音乐爱好者提供一个方便输入和弦谱的前端框架，并非乐谱查询网站。", LB,
+            "页面内所显示的谱子及多媒体，皆作为测试框架所用，请勿转载！", LB,
+            "如有侵权之处，请来信告之，本站一定删除该内容。"
+        ],
     },
     intro:
     {

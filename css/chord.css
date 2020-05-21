@@ -135,21 +135,22 @@ aside
 aside ol
 {
     margin: 0; /* remove default setting */
-    padding: 0; /* remove default setting */
-    list-style-position: inside;
+    padding-left: 1em;
 }
 aside ol li
 {
-    border-bottom: 1px dotted chocolate;
-    padding: 8px 0;
-}
-aside ol li:hover
-{
-    background-color: magenta;
+    border-bottom: 1px dotted brown;
+    line-height: 235%;
 }
 aside ol li a
 {
+    display: block; /* display links as block elements */
     text-decoration: none;
+}
+aside ol li a:hover
+{
+    background-color: magenta;
+    color: snow;
 }
 
 footer
