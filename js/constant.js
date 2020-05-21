@@ -26,6 +26,7 @@ var EmG = "Em/G";
 var Em7 = "Em7";
 var F = "F";
 var FM7 = "FM7";
+var Fadd9 = "Fadd9";
 var FmM7 = "FmM7";
 var sFm = "xFm";
 var G = "G";

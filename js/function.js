@@ -354,7 +354,7 @@ function createMain(page)
     for (id in page.information.main) appendArticle(page, id, main);
 }
 
-function createAside(page)/////parameter
+function createAside(pim) // page.information.main
 {
     var aside = appendElement(TAG.aside, document.body);
     var ol = appendElement(TAG.ol, aside);
@@ -363,7 +363,7 @@ function createAside(page)/////parameter
     var id = "";
     var song = {};
     
-    for ([id, song] of Object.entries(page.information.main))
+    for ([id, song] of Object.entries(pim))
     {
         li = appendElement(TAG.li, ol);
         a = appendTAGwithTEXT(TAG.a, song.h2, li);
@@ -383,7 +383,8 @@ function createPage(url)
 {
     var link = appendElement(TAG.link, document.head);
     var page = getPage(url);
-    var pih = page.information.header;
+    var pi = page.information;
+    var pih = pi.header;
     var pa = page.addition;
     
 // link CSS
@@ -397,6 +398,6 @@ function createPage(url)
     createNav(pa);
     createHeader(pih);
     createMain(page);
-    createAside(page);/////argument
+    createAside(pi.main);
     createFooter(pa);
 }
