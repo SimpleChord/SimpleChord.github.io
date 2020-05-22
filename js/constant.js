@@ -1,5 +1,6 @@
 // chords
 var A7 = "A7";
+var Asus4 = "Asus4";
 var Am = "Am";
 var AmG = "Am/G";
 var Am7 = "Am7";
@@ -9,6 +10,7 @@ var BmD = "Bm/D";
 var C = "C";
 var CE = "C/E";
 var C7 = "C7";
+var CM7 = "CM7";
 var Cadd9 = "Cadd9";
 var D = "D";
 var DFs = "D/Fx";
@@ -22,6 +24,7 @@ var E7 = "E7";
 var E7Gs = "E7/Gx";
 var Em = "Em";
 var EmB = "Em/B";
+var EmD = "Em/D";
 var EmG = "Em/G";
 var Em7 = "Em7";
 var F = "F";
@@ -30,10 +33,11 @@ var Fadd9 = "Fadd9";
 var FmM7 = "FmM7";
 var sFm = "xFm";
 var G = "G";
+var GA = "G/A";
 var GB = "G/B";
 var G7 = "G7";
-var Gm = "Gm";
 var Gsus4 = "Gsus4";
+var Gm = "Gm";
 
 var SHARPorFLAT =
 {
