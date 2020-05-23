@@ -2,6 +2,9 @@
 Let's create chord-scores easily!
 
 ## What's New:
++ 作为一名新谣歌手，当然主推新加坡歌啦 \(^O^)/  
+&#x25c0;&#x25c0;&#x25c0; 新发布的这首《财兴财旺财运到》，估计你没听过！  
+如果说是自己创作的新歌，你大概也会相信？
 + Edge or IE is not recommended.  
 Besides the lyrics written in Chinese characters, those in western languages have also been supported.  
 &#x25c0;&#x25c0;&#x25c0; Let's enjoy a Swedish song firstly!

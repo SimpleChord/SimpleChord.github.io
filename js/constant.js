@@ -107,6 +107,12 @@ var FORMAT =
     video: "mp4"
 };
 
+var EMOJI =
+{
+    shy: " (*^▽^*)",
+    surprise: " (ﾉﾟοﾟ)ﾉ"
+};
+
 var DICTIONARY =
 {
     demo:
