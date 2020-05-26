@@ -81,11 +81,6 @@ function appendTAGwithTEXT(tag, text, container)
     return element;
 }
 
-function appendSHARPorFLAT(sign, container)
-{
-    appendTAGwithTEXT(TAG.sup, SHARPorFLAT[sign], container);
-}
-
 function appendMenus(addition, path, parent, container) // create menus recursively
 {
     var ul = appendElement(TAG.ul, container);
@@ -179,29 +174,21 @@ function appendParagraph(prefix, type, parent, container)
 
 function appendChord(chord, container)
 {
-    var first = chord[0]; // get the 1st character of "chord"
-    var middle = chord.slice(0); // create a copy of the original "chord"
-    var last = chord.slice(-1); // get the last character of "chord"
-    var positionM = 0;
+    var c = "";
     
-    if (first in SHARPorFLAT)
-    {
-        appendSHARPorFLAT(first, container);
-        middle = middle.slice(1); // remove the 1st character of "middle"
-    }
-    
-    if (last in SHARPorFLAT) middle = middle.slice(0, -1); // remove the last character of "middle"
-    
-    positionM = middle.indexOf("M"); // M appears at most once in a chord.
-    if (positionM > 0) // M can't be the 1st character of a chord.
-    {
-        appendExtractedText(middle, 0, positionM, container);
-        appendTAGwithTEXT(TAG.small, "M", container);
-        appendExtractedText(middle, positionM + 1, middle.length, container);
-    }
-    else appendTextNode(middle, container);
-    
-    if (last in SHARPorFLAT) appendSHARPorFLAT(last, container);
+    for (c of chord)
+        switch (c)
+        {
+            case "x":
+            case "f":
+                appendTAGwithTEXT(TAG.sup, SHARPorFLAT[c], container);
+                break;
+            case "M":
+                appendTAGwithTEXT(TAG.small, c, container);
+                break;
+            default:
+                appendTextNode(c, container);
+        }
 }
 
 function appendRuby(lyrics, chord, container) // append lyrics with chords
