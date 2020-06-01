@@ -27,9 +27,17 @@ nav ul
     padding: 0; /* remove default setting */
     list-style-type: none; /* remove bullets */
 }
+nav ul li
+{
+    height: 2em;/***** a good choice? */
+}
 nav ul li:hover
 {
     background-color: springGreen;
+}
+nav ul li:hover ul /* display dropdowns on hover */
+{
+    display: block;
 }
 nav ul li a
 {
@@ -47,13 +55,11 @@ nav ul ul
     position: relative; /* indispensable */
     background-color: snow;
 /* todo */
-    top: 0; /* rectify the position of submenus */
+    /* rectify the position of submenus */
+/*     top: 0; *****/
+    top: -2em;
     left: 100%; /* rectify the position of submenus */
     white-space: nowrap; /* Text continues on the same line. */
-}
-nav ul li:hover > ul /* display dropdowns on hover */
-{
-    display: block;
 }
 nav ul ul li /* 1st level dropdowns */
 {
@@ -61,7 +67,8 @@ nav ul ul li /* 1st level dropdowns */
 }
 nav ul ul li a
 {
-    padding: 5px 35px 5px 8px; /* top right bottom left */
+    /* top right bottom left */
+/*     padding: 5px 35px 5px 8px; *****/
     color: black;
 }
 nav ul ul li a:hover
@@ -140,7 +147,7 @@ aside ol
 aside ol li
 {
     border-bottom: 1px dotted brown;
-    line-height: 235%;
+    line-height: 3em;
 }
 aside ol li a
 {

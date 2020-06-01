@@ -65,11 +65,11 @@ var DATA =
                             "，按得有点儿别扭！经过老师指点后，才发现…… 它还是蛮常用的。", LB,
                             "按Bm7时，食指要用力！"
                         ],
-//                        details:
-//                        {
-//                            demo: TAG.audio,
-//                            comment: "算是比较容易唱的吧？"
-//                        }
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment: "算是首比较容易唱的歌吧？"
+                        }
                     },
                     lsadm:
                     {
@@ -555,8 +555,10 @@ var DATA =
                         },
                         postscript:
                         [
-                            "尝试着用了Cadd9！效果好像还不错？最初拆成C和Dm来演奏过，也是个不错的选择？", LB,
-                            "把Dm/F有点儿难按，换成F也行。", LB,
+                            "尝试着用了Cadd9！效果好像还不错？最初拆成C和Dm7来演奏过，也是个不错的选择吧？", LB,
+                            "把Dm/F有点儿难按，换成Dm7或F也行、拆成",
+                            [TAG.CHORD, FM7],
+                            "和Dm也行。", LB,
                             [TAG.CHORD, sFm],
                             "还有待推敲！其它候选的有",
                             [TAG.CHORD, DFs],
@@ -564,7 +566,9 @@ var DATA =
                             [TAG.CHORD, D7Fs],
                             "……", LB,
                             "第6句里的Am和Em，用一个Am代替也行。不过此处用5级和弦来结束似乎更合理？但若合成一个Em/A又有点儿怪哦？所以就拆开吧！", LB,
-                            "高潮前最后的G，可能用大横按比较好。"
+                            "高潮前的最后俩，F改成",
+                            [TAG.CHORD, FM7],
+                            "如何？G可能用大横按比较好。"
                         ],
                         details:
                         {
