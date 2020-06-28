@@ -32,6 +32,9 @@
           <a href="html/uta.html">うた</a>
         </li>
         <li>
+          <a href="html/phelng.html">เพลง</a>
+        </li>
+        <li>
           <a>Song</a>
           <ul>
             <li>
@@ -42,9 +45,9 @@
             </li>
           </ul>
         </li>
-        <li>
+        <!--li>
           <a href="html/chanson.html">Chanson</a>
-        </li>
+        </li-->
         <li>
           <a href="html/lat.html">Låt</a>
         </li>
@@ -52,37 +55,38 @@
     </nav>
     <header>
       <h1>简单编曲</h1>
+      <h1>SimpleChord</h1>
     </header>
     <main>
       <article>
-        <h2>那些花儿</h2>
+        <h2>失恋阵线联盟</h2>
         <script>
-          var menu = DATA.gequ;
+          var menu = DATA.phelng;
           appendSection
           (
-              menu.classification.dalu.main.nxhe.section,
+//               menu.classification.dalu.main.nxhe.section,
+              menu.main.kg.section,
               menu.language,
               document.getElementsByTagName(TAG.article)[0]
           );
         </script>
-        <details open>
+        <!--details open>
           <summary>示范弹唱</summary>
-          <!--p>（暂无）</p>
+          <p>（暂无）</p>
           <video controls>
             <source src="video/gequ/taiwan/ldxyq.mp4" type="video/mp4" />
-          </video-->
+          </video>
           <audio controls>
-            <source src="audio/gequ/dalu/nxhe.mp3" type="audio/mpeg" />
+            <source src="audio/phelng/kg.mp3" type="audio/mpeg" />
           </audio>
-        </details>
+        </details-->
       </article>
     </main>
     <aside>
-      <p>左边的导航栏虽然尚未整完，但也不至于那么不起眼吧？决定加大字体！！！</p>
+      <p>左边的导航栏还有点儿瑕疵需要修补。</p>
       <p>
-        第一次听到《<a href="html/gequ/dalu.html#nxhe">那些花儿</a>》时，还以为是台湾歌呢。
+        看《家有仙妻》时第一次听到《<a href="html/phelng.html#kg">失恋阵线联盟</a>》，还以为是台湾歌呢。
       </p>
-      <p>女版的谱子就不提供了。</p>
     </aside>
     <footer>
       <small>Edge or IE is not recommended.</small>

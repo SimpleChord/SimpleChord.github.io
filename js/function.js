@@ -41,6 +41,7 @@ function checkWidth(language)
         case "sv":
             return HALF;
         case "ja":
+        case "th":
         case "zh":
             return FULL;
     }

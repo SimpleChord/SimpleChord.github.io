@@ -206,7 +206,6 @@ var DATA =
                         h2: "绿岛小夜曲（新谱置顶）",
                         preface:
                         [
-                            "版本太多，也不知道哪位是原唱？", PB,
                             "这是首情歌，女歌手如果也唱“姑娘”，似乎不太恰当噢？", LB,
                             "与之对应的词儿呢，首先想到的肯定是“小伙”，但这样唱好像老憨娥哦？", LB,
                             "听纪老师说：“那个姑娘改为情郎！”嗯，改得完美！甄老师也是这么唱的。"
@@ -530,7 +529,7 @@ var DATA =
                                 [[1, Dm7], [7, G]],
                                 [[3, C], [9, GB]],
                                 [[3, Am], [9, Em]],
-                                [[1, F], [7, EmB]],
+                                [[1, FM7], [7, EmB]],
                                 [[1, Dm7], [5, G], [7, C]]
                             ],
                             lyrics:
@@ -566,9 +565,10 @@ var DATA =
                             [TAG.CHORD, D7Fs],
                             "……", LB,
                             "第6句里的Am和Em，用一个Am代替也行。不过此处用5级和弦来结束似乎更合理？但若合成一个Em/A又有点儿怪哦？所以就拆开吧！", LB,
-                            "高潮前的最后俩，F改成",
+                            "高潮前最后的G用大横按比较好。", LB,
+                            "高潮第2遍里用了",
                             [TAG.CHORD, FM7],
-                            "如何？G可能用大横按比较好。"
+                            "，是为了和第1遍有所区别。其实用F也行。"
                         ],
                         details:
                         {
@@ -623,7 +623,8 @@ var DATA =
                         postscript:
                         [
                             LB,
-                            "最满意的是C7！", PB,
+                            "以前看别人配的和弦中，C/E出现的频率还蛮高的。当时挺纳闷：直接用C不就得了，转了E好像有点儿怪爱？现在似乎明白了，自己也尝试着用了。", LB,
+                            "最满意的是C7！", LB,
                             "高潮第2句也别花哨了，用和前1句一样的和弦，好像也是个不错的选择？"
                         ],
                         details:
@@ -788,6 +789,89 @@ var DATA =
                 }
             }
         }
+    },
+    phelng:
+    {
+        language: "th",
+        nav: "เพลง",
+        header:
+        {
+            h1: "เพลงไทย"
+        },
+        main:
+        {
+            kg:
+            {
+                h2: "คู่กัด",
+                preface:
+                [
+                    "I had not expected that it is a Thai song. " +
+                    "I found the original more than 25 years later" + EMOJI.surprise
+                ],
+                section:
+                {
+                    intro: [[1, F], [3, Dm], [5, Gm], [7, C7], [9, F], [11, Dm], [13, Gm], [15, C7]],
+                    chords:
+                    [
+                        [[3, F], [9, Dm]],
+                        [[3, F], [9, Dm]],
+                        [[3, F], [9, Dm]],
+                        [[3, Gm], [9, C7]],
+                        [[3, F], [9, Dm]],
+                        [[3, F], [9, Dm]],
+                        [[3, F], [9, Dm]],
+                        [[3, Gm], [6, C7], [9, F]],
+                        [[4, bB], [11, bB]],
+                        [[3, F], [10, F]],
+                        [[3, bB], [10, bB]],
+                        [[2, C], [8, C7]],
+                        [[3, F], [9, Dm]],
+                        [[3, F], [9, Dm]],
+                        [[3, F], [9, Dm]],
+                        [[3, Gm], [6, C7], [9, F]],
+                        [[3, Gm], [6, C7], [9, F]]
+                    ],
+                    lyrics:
+                    [
+                        "她总是只留下电话号码",
+                        "从不肯让我送她回家",
+                        "听说你也曾经爱上过她",
+                        "曾经也同样无法自拔",
+                        "你说你学不会假装潇洒",
+                        "却叫我别太早放弃她",
+                        "把过去传说成一段神话",
+                        "然后笑彼此一样的傻",
+                        "我们这么在乎她 却被他全部抹煞",
+                        "越疼她越伤心 永远得不到回答",
+                        "到底她怎么想 应该继续猜测吗",
+                        "还是说好全抛了吧",
+                        "找一个承认失恋的方法",
+                        "让心情好好的放个假",
+                        "当你我不小心又想起她",
+                        "就在记忆里画一个叉",
+                        "就在记忆里画一个叉"
+                    ]
+                },
+                postscript:
+                [
+                    LB,
+                    "At my home, there is a song book containing ",
+                    [TAG.q, "Rival"],
+                    ". It is easy to remember all of the chords.", PB,
+                    "Change to C Key instead if F is hard for you."
+                ],
+//                details:
+//                {
+//                    demo: TAG.audio,
+//                    comment:
+//                    [
+//                        "It is not good to sing ",
+//                        [TAG.q, "Sunshine in the rain"],
+//                        " twice in the same paragraph, I'm afraid. So ..."
+//                    ]
+//                }
+            }
+        }
     },/*
     song:
     {
@@ -869,7 +953,7 @@ var DATA =
                     [
                         "It is not good to sing ",
                         [TAG.q, "Sunshine in the rain"],
-                        " twice in the same paragraph, I'm afraid. So ..."
+                        " twice in the same paragraph, I'm afraid. So..."
                     ]
                 }
             }

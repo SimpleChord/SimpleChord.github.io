@@ -120,6 +120,7 @@ var DICTIONARY =
     {
         ja: "弾き語り",
         sv: "Demo",
+        th: "Demo",
         zh: "示范弹唱"
     },
     footer:
@@ -138,6 +139,14 @@ var DICTIONARY =
             [TAG.q, "Google Translate"],
             "."
         ],
+        th:
+        [
+            "Thank you for your visit to this site.", PB,
+            "Edge or IE is not recommended.", PB,
+            "All of the Thai words are translated by ",
+            [TAG.q, "Google Translate"],
+            "."
+        ],
         zh:
         [
             "希望您会欢喜以上内容！", PB,
@@ -151,18 +160,21 @@ var DICTIONARY =
     {
         ja: "（前奏）",
         sv: "(Intro)",
+        th: "（前奏）",
         zh: "（前奏）"
     },
     outro:
     {
         ja: "（後奏）",
         sv: "(Outro)",
+        th: "（尾奏）",
         zh: "（尾奏）"
     },
     unavailable:
     {
         ja: "（未登録）",
-        sv: "(Unavailable now)",
+        sv: "(Unavailable)",
+        th: "(Unavailable)",
         zh: "（暂无）"
     }
 }
