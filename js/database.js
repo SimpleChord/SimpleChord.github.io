@@ -15,61 +15,65 @@ var DATA =
                 },
                 main:
                 {
-                    nxhe:
+                    zyssg:
                     {
-                        h2: "那些花儿（新谱置顶）",
+                        h2: "子夜四时歌（新谱置顶）",
                         preface:
                         [
-                            "当年流行的时候，曾找过谱子。觉得配得还不错，未加修改就搬过来了。", PB,
-                            "女声唱的话，就照着范々姐的版本吧！不过和弦和弹法完全不同，不是单纯变个调儿就行了的！"
+                            "要用吴语来演唱，否则不好听！", LB,
+                            "多听听原唱，模仿她们的发音。"
                         ],
                         section:
                         {
-                            intro: [[1, G], [3, DFs], [5, Em], [7, C], [9, G], [11, D], [13, D7], [15, G]],
                             chords:
                             [
-                                [[1, G], [5, DFs], [10, C], [15, G]],
-                                [[1, G], [5, Em], [10, C], [15, D]],
-                                [[1, G], [5, DFs], [10, Em], [14, C]],
-                                [[1, G], [5, D], [10, D7], [14, G]],
-                                [[2, G], [6, DFs]],
-                                [[2, Em], [6, C]],
-                                [[1, G], [5, D]],
-                                [[2, D7], [6, G]],
-                                [[1, G], [6, DFs], [11, Em], [16, Bm7]],
-                                [[1, C], [6, G], [11, Em], [15, D]],
-                                [[1, G], [6, DFs], [11, Em], [16, Bm7]],
-                                [[1, C], [5, G], [10, D], [14, G]]
+                                [[1, Dm], [2, Em], [3, Cadd9], [5, Am]],
+                                [[1, F], [5, Em]],
+                                [[1, C], [3, Cadd9], [5, Dm]],
+                                [[1, AmC], [3, Dm7], [5, Am]],
+                                [[1, Dm], [2, Em], [3, Cadd9], [5, Am]],
+                                [[1, F], [3, F], [5, Em], [6, Em]],
+                                [[1, C], [2, CE], [3, Cadd9], [5, Dm]],
+                                [[1, AmC], [3, Dm7], [5, Am]],
+                                [[1, Dm], [2, Em], [3, Cadd9], [5, Am]],
+                                [[1, F], [5, Em]],
+                                [[1, C], [3, Cadd9], [5, Dm]],
+                                [[1, AmC], [3, Dm7], [5, Am]],
+                                [[1, Dm], [2, Em], [3, Cadd9], [5, Am]],
+                                [[1, F], [3, F], [5, Em], [6, Em]],
+                                [[1, C], [2, CE], [3, Cadd9], [5, Dm]],
+                                [[1, AmC], [3, Dm7], [5, Am]]
                             ],
                             lyrics:
                             [
-                                "那片笑声让我想起 我的那些花儿",
-                                "在我生命每个角落 静静为我开着",
-                                "我曾以为我会永远 守在她身旁",
-                                "今天我们已经离去 在人海茫茫",
-                                "她们都老了吧",
-                                "她们在哪里呀",
-                                "幸运的是我",
-                                "曾陪她们开放",
-                                "啦啦啦啦 啦啦啦啦 啦啦啦 想她",
-                                "啦啦啦啦 啦啦啦啦 她还在开吗",
-                                "啦啦啦啦 啦啦啦啦 啦啦啦 去呀",
-                                "她们已经被风吹走 散落在天涯"
+                                "春林花多媚",
+                                "春鸟意多哀",
+                                "春风复多情",
+                                "吹我罗裳开",
+                                "朝登凉台上",
+                                "夕宿兰池里",
+                                "乘月采芙蓉",
+                                "夜夜得莲子",
+                                "仰头看桐树",
+                                "桐花特可怜",
+                                "愿天无霜雪",
+                                "梧子解千年",
+                                "渊冰厚三尺",
+                                "素雪复千里",
+                                "我心如松柏",
+                                "君情复何似"
                             ]
                         },
                         postscript:
                         [
-                            "该谱不难背，主要就是前奏那套路子，略有不同而已。", PB,
-                            "那时第一次接触",
-                            [TAG.CHORD, DFs],
-                            "，按得有点儿别扭！经过老师指点后，才发现…… 它还是蛮常用的。", LB,
-                            "按Bm7时，食指要用力！"
-                        ],
+                            "Am/C的效果还不错哦？", PB,
+                            "第1和第2段略有不同，只想求变，3、4同理。若嫌麻烦，择其一即可。"
+                        ]/*,
                         details:
                         {
                             demo: TAG.audio,
                             comment: "算是首比较容易唱的歌吧？"
-                        }
+                        }*/
                     },
                     lsadm:
                     {
@@ -118,6 +122,62 @@ var DATA =
                                 [TAG.BoALP, "日语版", "uta", "nzmhkmgsk"],
                                 "。"
                             ]
+                        }
+                    },
+                    nxhe:
+                    {
+                        h2: "那些花儿",
+                        preface:
+                        [
+                            "当年流行的时候，曾找过谱子。觉得配得还不错，未加修改就搬过来了。", PB,
+                            "女声唱的话，就照着范々姐的版本吧！不过和弦和弹法完全不同，不是单纯变个调儿就行了的！"
+                        ],
+                        section:
+                        {
+                            intro: [[1, G], [3, DFs], [5, Em], [7, C], [9, G], [11, D], [13, D7], [15, G]],
+                            chords:
+                            [
+                                [[1, G], [5, DFs], [10, C], [15, G]],
+                                [[1, G], [5, Em], [10, C], [15, D]],
+                                [[1, G], [5, DFs], [10, Em], [14, C]],
+                                [[1, G], [5, D], [10, D7], [14, G]],
+                                [[2, G], [6, DFs]],
+                                [[2, Em], [6, C]],
+                                [[1, G], [5, D]],
+                                [[2, D7], [6, G]],
+                                [[1, G], [6, DFs], [11, Em], [16, Bm7]],
+                                [[1, C], [6, G], [11, Em], [15, D]],
+                                [[1, G], [6, DFs], [11, Em], [16, Bm7]],
+                                [[1, C], [5, G], [10, D], [14, G]]
+                            ],
+                            lyrics:
+                            [
+                                "那片笑声让我想起 我的那些花儿",
+                                "在我生命每个角落 静静为我开着",
+                                "我曾以为我会永远 守在她身旁",
+                                "今天我们已经离去 在人海茫茫",
+                                "她们都老了吧",
+                                "她们在哪里呀",
+                                "幸运的是我",
+                                "曾陪她们开放",
+                                "啦啦啦啦 啦啦啦啦 啦啦啦 想她",
+                                "啦啦啦啦 啦啦啦啦 她还在开吗",
+                                "啦啦啦啦 啦啦啦啦 啦啦啦 去呀",
+                                "她们已经被风吹走 散落在天涯"
+                            ]
+                        },
+                        postscript:
+                        [
+                            "谱子不难背，主要就是前奏那套路子，略有不同而已。", PB,
+                            "那时第一次接触",
+                            [TAG.CHORD, DFs],
+                            "，按得有点儿别扭！经过老师指点后，才发现…… 它还是蛮常用的。", LB,
+                            "按Bm7时，食指要用力！"
+                        ],
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment: "算是首比较容易唱的歌吧？"
                         }
                     }
                 }
@@ -237,9 +297,11 @@ var DATA =
                         },
                         postscript:
                         [
-                            "配完和弦后，发现自己的水平有了很大的提高！难怪这歌的曲风有点儿特别！", PB,
+                            "配完和弦后，发现自己的水平有了很大的提高！", LB,
+                            "能够用上挂4大7，真的很开心！", LB,
+                            "难怪这歌的曲风有点儿特别？", PB,
                             "最纠结的是G/A，斟酌了好久，也考虑过Gadd9，哪个好点儿？", LB,
-                            "能够用上挂4大7，真的很开心！"
+                            "Em/D的效果相当好啊？"
                         ],
                         details:
                         {
@@ -435,7 +497,7 @@ var DATA =
                             comment:
                             [
                                 "旋律轻快活泼，歌词朗朗上口！第一次看《财星高照》时就欢喜这歌儿了。", LB,
-                                "原唱黄老师前几年…… (T○T)", PB,
+                                "原唱黄老师前几年……" + EMOJI.cry, PB,
                                 "以前觉得黄老师唱得一般，不过也可以理解，毕竟他不是专业歌手。", LB,
                                 "现在自己尝试后才发现其实蛮难唱的，音域跨度很大！" +
                                 "最低的低至低音5；最高的高到高音2。如果前奏也自己来，那得唱到高音3！"
@@ -502,7 +564,7 @@ var DATA =
                             comment:
                             [
                                 "手头没有变调夹，只好弹D调了，改了几个和弦。", PB,
-                                "想唱出那种洒脱的感觉，结果显得很杂耍 <^_^!>", LB,
+                                "想唱出那种洒脱的感觉，结果显得很杂耍 <^_^!>", LB,////////emoji
                                 "等心情好时再重录一次。"
                             ]
                         }
@@ -789,7 +851,79 @@ var DATA =
                 }
             }
         }
-    },
+    },/*
+    song:
+    {
+        language: "en",
+        nav: "Song",
+        classification:
+        {
+            uk:
+            {
+                nav: "UK",
+                header:
+                {
+                    h1: "British Songs"
+                },
+                main:
+                {
+                    sh:
+                    {
+                        h2: "Summer Holiday",
+                        preface: "I was not interested in it though I had heard it before. But this time...",
+                        section:
+                        {
+                            chords:
+                            [
+                                [[1, G], [11, CM7], [21, Am7], [29, D]],
+                                [[0, G], [9, CM7], [22, Am7], [31, D]],
+                                [[1, G], [9, CM7], [24, Am7], [32, D]],
+                                [[1, Am7], [9, D], [21, G], [27, Bm], [29, bBm], [32, Am7], [39, D], [47, G]],
+                                [[7, Am7], [23, D], [34, G]],
+                                [[7, Am7], [23, D], [30, G]],
+                                [[1, Bm], [11, CM7], [21, Am7], [29, D]],
+                                [[0, G], [9, CM7], [22, D]],
+                                [[1, G], [6, CM7], [16, Am7], [24, D]],
+                                [[0, G], [7, CM7], [25, Am7], [33, D]],
+                                [[4, G], [10, CM7], [20, Am7], [28, D]],
+                                [[4, Am7], [9, D], [21, G], [27, Bm], [29, bBm], [32, Am7], [36, D], [43, G]]/////
+                            ],
+                            lyrics:
+                            [
+                                "We're all going on a summer holiday",
+                                "No more working for a week or two",
+                                "Fun and laughter on our summer holiday",
+                                "No more worries for me or you   For a week or two",
+                                "We're going where the sun shines brightly",
+                                "We're going where the sea is blue",
+                                "We've all seen it on the movies",
+                                "Now let's see if it's true",
+                                "Everybody has a summer holiday",
+                                "Doin' things they always wanted to",
+                                "So we're going on a summer holiday",
+                                "To make our dreams come true   For me and you"
+                            ]
+                        },
+                        postscript:
+                        [
+                            [TAG.CHORD, bBm],
+                            " is perfect, isn't it?"
+                        ],
+                        details:
+                        {
+                            demo: TAG.audio,
+                            comment:
+                            [
+                                "In Episode 8 of ",
+                                [TAG.q, "Armed Reaction II"],
+                                " I heard this song, sung by YAO."
+                            ],
+                        }
+                    }
+                }
+            }
+        }
+    },*/
     phelng:
     {
         language: "th",
@@ -806,7 +940,7 @@ var DATA =
                 preface:
                 [
                     "I had not expected that it is a Thai song. " +
-                    "I found the original more than 25 years later" + EMOJI.surprise
+                    "I found the original 25 years later" + EMOJI.surprise
                 ],
                 section:
                 {
@@ -858,7 +992,7 @@ var DATA =
                     "At my home, there is a song book containing ",
                     [TAG.q, "Rival"],
                     ". It is easy to remember all of the chords.", PB,
-                    "Change to C Key instead if F is hard for you."
+                    "Change to C Key if F is difficult for you."
                 ],
 //                details:
 //                {
@@ -873,13 +1007,20 @@ var DATA =
             }
         }
     },/*
-    song:
+    lied:
     {
-        language: "en",
-        nav: "Song",
+        language: "de",
+        nav: "Lied",
         classification:
         {}
-    }*/
+    },
+    chanson:
+    {
+        language: "fr",
+        nav: "Chanson",
+        classification:
+        {}
+    },*/
     lat:
     {
         language: "sv",
@@ -942,10 +1083,7 @@ var DATA =
                         "Love is still the same   We shall date again"
                     ]
                 },
-                postscript:
-                [
-                    "It seems that D7 is not a good choice, but matches with the melody well. Why?"
-                ],
+                postscript: "It seems that D7 is not a good choice, but matches with the melody well. Why?",
                 details:
                 {
                     demo: TAG.audio,

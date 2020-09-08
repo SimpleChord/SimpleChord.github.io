@@ -2,16 +2,18 @@
 var Asus4 = "Asus4";
 var A7 = "A7";
 var Am = "Am";
+var AmC = "Am/C";
 var AmG = "Am/G";
 var Am7 = "Am7";
 var bB = "fB";
+var bBm = "fBm";
 var Bm = "Bm";
 var BmD = "Bm/D";
 var Bm7 = "Bm7";
 var C = "C";
 var CE = "C/E";
-var CM7 = "CM7";
 var C7 = "C7";
+var CM7 = "CM7";
 var Cadd9 = "Cadd9";
 var D = "D";
 var DFs = "D/Fx";
@@ -110,6 +112,7 @@ var FORMAT =
 
 var EMOJI =
 {
+    cry: " (T○T)",
     shy: " (*^▽^*)",
     surprise: " (ﾉﾟοﾟ)ﾉ"
 };
@@ -118,6 +121,7 @@ var DICTIONARY =
 {
     demo:
     {
+        en: "Demo",
         ja: "弾き語り",
         sv: "Demo",
         th: "Demo",
@@ -125,10 +129,15 @@ var DICTIONARY =
     },
     footer:
     {
+        en:
+        [
+            "Thank you for your visit to this site.", PB,
+            "Edge or IE is not recommended."
+        ],
         ja:
         [
             "わざわざ本サイトをご覧いただき、誠にありがとうございます！", PB,
-            "EdgeかIEで本サイトへのアクセスは不推奨です。", PB,
+            "EdgeかIEにて本サイトへのアクセスは不推奨です。", PB,
             "歌詞は掲載しかねます。"
         ],
         sv:
@@ -158,6 +167,7 @@ var DICTIONARY =
     },
     intro:
     {
+        en: "(Intro)",
         ja: "（前奏）",
         sv: "(Intro)",
         th: "（前奏）",
@@ -165,6 +175,7 @@ var DICTIONARY =
     },
     outro:
     {
+        en: "(Outro)",
         ja: "（後奏）",
         sv: "(Outro)",
         th: "（尾奏）",
@@ -172,6 +183,7 @@ var DICTIONARY =
     },
     unavailable:
     {
+        en: "(Unavailable)",
         ja: "（未登録）",
         sv: "(Unavailable)",
         th: "(Unavailable)",

@@ -38,6 +38,7 @@ function checkWidth(language)
 {
     switch (language)
     {
+        case "en":
         case "sv":
             return HALF;
         case "ja":
