@@ -183,7 +183,7 @@ function appendChord(chord, container)
         {
             case "x":
             case "f":
-                appendTAGwithTEXT(TAG.sup, SHARPorFLAT[c], container);
+                appendTAGwithTEXT(TAG.sup, ACCIDENTAL[c], container);
                 break;
             case "M":
                 appendTAGwithTEXT(TAG.small, c, container);

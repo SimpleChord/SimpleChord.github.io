@@ -5,6 +5,7 @@ var Am = "Am";
 var AmC = "Am/C";
 var AmG = "Am/G";
 var Am7 = "Am7";
+var Am7G = "Am7/G";
 var bB = "fB";
 var bBm = "fBm";
 var Bm = "Bm";
@@ -15,14 +16,18 @@ var CE = "C/E";
 var C7 = "C7";
 var CM7 = "CM7";
 var Cadd9 = "Cadd9";
+var Cadd9E = "Cadd9/E";
 var D = "D";
 var DFs = "D/Fx";
+var Dsus4 = "Dsus4";
 var D6 = "D6";
 var D7 = "D7";
 var D7Fs = "D7/Fx";
+var D7sus4 = "D7sus4";
 var Dm = "Dm";
 var DmF = "Dm/F";
 var Dm7 = "Dm7";
+var Dm7C = "Dm7/C";
 var E7 = "E7";
 var E7Gs = "E7/Gx";
 var Em = "Em";
@@ -42,10 +47,10 @@ var Gsus4 = "Gsus4";
 var G7 = "G7";
 var Gm = "Gm";
 
-var SHARPorFLAT =
+var ACCIDENTAL =
 {
-    x: "\u266F",
-    f: "\u266D"
+    f: "\u266D", // flat
+    x: "\u266F" // sharp
 };
 
 var HALF = 1;
