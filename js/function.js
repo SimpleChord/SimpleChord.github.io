@@ -114,13 +114,13 @@ function transform2tag(prefix, original, container)
 {
     switch (original[ELEMENT.tag])
     {
-        case TAG.BoALP:
+        case TAG.BoALP: // [BoALP, between, alp, id]
             return [
                 TAG.a,
                 original[ELEMENT.between],
                 getLink(prefix, HTML, original[ELEMENT.alp]) + "#" + original[ELEMENT.id]
             ];
-        case TAG.CHORD:
+        case TAG.CHORD: // [CHORD, between]
             appendChord(original[ELEMENT.between], container);
             return [];
         case TAG.PB:

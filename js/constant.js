@@ -2,6 +2,7 @@
 var Asus4 = "Asus4";
 var A7 = "A7";
 var Am = "Am";
+var AmB = "Am/B";
 var AmC = "Am/C";
 var AmG = "Am/G";
 var Am7 = "Am7";
@@ -19,6 +20,7 @@ var Cadd9 = "Cadd9";
 var Cadd9E = "Cadd9/E";
 var D = "D";
 var DFs = "D/Fx";
+var Dsus2 = "Dsus2";
 var Dsus4 = "Dsus4";
 var D6 = "D6";
 var D7 = "D7";
@@ -44,6 +46,7 @@ var G = "G";
 var GA = "G/A";
 var GB = "G/B";
 var Gsus4 = "Gsus4";
+var G6 = "G6";
 var G7 = "G7";
 var Gm = "Gm";
 
@@ -107,7 +110,7 @@ var TAG =
     PB: "PB"
 };
 var LB = [TAG.br]; // line break
-var PB = [TAG.PB]; // paragraph break
+var PB = [TAG.PB]; // Paragraph Break
 
 var FORMAT =
 {
