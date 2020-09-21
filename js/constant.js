@@ -120,6 +120,7 @@ var FORMAT =
 
 var EMOJI =
 {
+    awkward: " <^_^!>",
     cry: " (T○T)",
     shy: " (*^▽^*)",
     surprise: " (ﾉﾟοﾟ)ﾉ"

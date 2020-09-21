@@ -350,7 +350,7 @@ var DATA =
                             demo: TAG.audio,
                             comment:
                             [
-                                "朋友们都说唱得蛮好…… <^_^!>", PB,
+                                "朋友们都说唱得蛮好……" + EMOJI.awkward, PB,
                                 "好像改成F调来唱的，但和弦还是用的G调，知道是怎么做到的吗？"
                             ]
                         }
@@ -669,7 +669,7 @@ var DATA =
                             comment:
                             [
                                 "手头没有变调夹，只好弹D调了，改了几个和弦。", PB,
-                                "想唱出那种洒脱的感觉，结果显得很杂耍 <^_^!>", LB,////////emoji
+                                "想唱出那种洒脱的感觉，结果显得很杂耍" + EMOJI.awkward, LB,
                                 "等心情好时再重录一次。"
                             ]
                         }
@@ -956,7 +956,7 @@ var DATA =
                 }
             }
         }
-    },/*
+    },
     song:
     {
         language: "en",
@@ -974,7 +974,7 @@ var DATA =
                 {
                     sh:
                     {
-                        h2: "Summer Holiday",
+                        h2: "Summer Holiday (not finished!)",
                         preface: "I was not interested in it though I had heard it before. But this time...",
                         section:
                         {
@@ -1016,7 +1016,7 @@ var DATA =
                         ],
                         details:
                         {
-                            demo: TAG.audio,
+//                            demo: TAG.audio,
                             comment:
                             [
                                 "In Episode 8 of ",
@@ -1028,7 +1028,7 @@ var DATA =
                 }
             }
         }
-    },*/
+    },
     phelng:
     {
         language: "th",
@@ -1099,16 +1099,16 @@ var DATA =
                     ". It is easy to remember all of the chords.", PB,
                     "Change to C Key if F is difficult for you."
                 ],
-//                details:
-//                {
+                details:
+                {
 //                    demo: TAG.audio,
-//                    comment:
-//                    [
-//                        "It is not good to sing ",
-//                        [TAG.q, "Sunshine in the rain"],
-//                        " twice in the same paragraph, I'm afraid. So ..."
-//                    ]
-//                }
+                    comment:
+                    [
+                        "While I was watching Taiwanese TV series, Suddenly I found that the composer's name was ",
+                        [TAG.q, "Cha Tri Kongsuwan"],
+                        "!"
+                    ]
+                }
             }
         }
     },/*
