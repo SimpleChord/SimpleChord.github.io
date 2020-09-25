@@ -14,6 +14,7 @@ var BmD = "Bm/D";
 var Bm7 = "Bm7";
 var C = "C";
 var CE = "C/E";
+var CG = "C/G";
 var C7 = "C7";
 var CM7 = "CM7";
 var Cadd9 = "Cadd9";
