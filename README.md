@@ -2,6 +2,7 @@
 Let's create chord-scores easily!
 
 ## What's New:
++ 团里说要排练《你笑起来真好看》，自己先操练起来。是首好歌！
 + I heard "Summer Holiday" again when I watched "Armed Reaction II".
 + 看了几集《方世玉与乾隆皇》，发现有首儿歌不错！
 + 刚看完《一号法庭3》，发现有袁凤瑛这么一位歌手。她专唱儿童歌曲，先来首《阿花的故事》吧！

@@ -4,6 +4,7 @@ var A7 = "A7";
 var Am = "Am";
 var AmB = "Am/B";
 var AmC = "Am/C";
+var AmE = "Am/E";
 var AmG = "Am/G";
 var Am7 = "Am7";
 var Am7G = "Am7/G";
