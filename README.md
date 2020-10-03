@@ -2,6 +2,7 @@
 Let's create chord-scores easily!
 
 ## What's New:
++ 看了几集《港媳嫁到》，起初也没留意片尾曲。在剧中当作背景音乐播放时，听了后发现旋律还蛮优美的；歌名儿和歌词儿也都不错的！
 + 团里说要排练《你笑起来真好看》，自己先操练起来。是首好歌！
 + I heard "Summer Holiday" again when I watched "Armed Reaction II".
 + 看了几集《方世玉与乾隆皇》，发现有首儿歌不错！
