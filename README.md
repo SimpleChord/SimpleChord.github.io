@@ -2,6 +2,8 @@
 Let's create chord-scores easily!
 
 ## What's New:
++ 看完了《神探狄仁杰4》。《情花案》还凑合，《金人案》看不太懂……  
+主题歌相当赞啊！
 + 看了几集《港媳嫁到》，起初也没留意片尾曲。在剧中当作背景音乐播放时，听了后发现旋律还蛮优美的；歌名儿和歌词儿也都不错的！
 + 团里说要排练《你笑起来真好看》，自己先操练起来。是首好歌！
 + I heard "Summer Holiday" again when I watched "Armed Reaction II".
@@ -17,12 +19,12 @@ Let's create chord-scores easily!
 在《戏班》里又听到林月圆唱…… 决定问下家母歌名  
 日本語版もあるとは思わんかった……
 + 作为一名新谣歌手，当然主推新加坡歌啦 \(^O^)/  
-&#x25c0;&#x25c0;&#x25c0; 新发布的这首《财兴财旺财运到》，估计你没听过！  
+新发布的这首《财兴财旺财运到》，估计你没听过！  
 如果说是自己创作的新歌，你大概也会相信？
 + Edge or IE is not recommended.  
 Besides the lyrics written in Chinese characters, those in western languages have also been supported.  
-&#x25c0;&#x25c0;&#x25c0; Let's enjoy a Swedish song firstly!
-+ 本站发布的第一首新加坡歌是《笑傲江湖》的片尾曲，再来首主题歌吧！ &#x25c0;&#x25c0;&#x25c0;  
+Let's enjoy a Swedish song firstly!
++ 本站发布的第一首新加坡歌是《笑傲江湖》的片尾曲，再来首主题歌吧！  
 网上好像还没有和弦谱！！本站大概是首发？  
 本站旨在为广大编程或音乐爱好者提供一个方便输入和弦谱的前端框架，并非乐谱查询网站。  
 页面内所显示的谱子及多媒体，皆作为测试框架所用，请勿转载！  
