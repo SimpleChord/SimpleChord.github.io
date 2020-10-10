@@ -27,6 +27,7 @@ var Dsus4 = "Dsus4";
 var D6 = "D6";
 var D7 = "D7";
 var D7Fs = "D7/Fx";
+var D7sus2 = "D7sus2";
 var D7sus4 = "D7sus4";
 var Dm = "Dm";
 var DmE = "Dm/E";
