@@ -1,5 +1,4 @@
 // chords
-var Asus4 = "Asus4";
 var A7 = "A7";
 var Am = "Am";
 var AmB = "Am/B";
@@ -8,6 +7,7 @@ var AmE = "Am/E";
 var AmG = "Am/G";
 var Am7 = "Am7";
 var Am7G = "Am7/G";
+var Asus4 = "Asus4";
 var bB = "fB";
 var bBm = "fBm";
 var Bm = "Bm";
@@ -22,18 +22,19 @@ var Cadd9 = "Cadd9";
 var Cadd9E = "Cadd9/E";
 var D = "D";
 var DFs = "D/Fx";
-var Dsus2 = "Dsus2";
-var Dsus4 = "Dsus4";
 var D6 = "D6";
 var D7 = "D7";
 var D7Fs = "D7/Fx";
-var D7sus2 = "D7sus2";
-var D7sus4 = "D7sus4";
 var Dm = "Dm";
 var DmE = "Dm/E";
 var DmF = "Dm/F";
 var Dm7 = "Dm7";
 var Dm7C = "Dm7/C";
+var Dsus2 = "Dsus2";
+var Dsus4 = "Dsus4";
+var D7sus2 = "D7sus2";
+var D7sus4 = "D7sus4";
+var Daug = "Daug";
 var E7 = "E7";
 var E7Gs = "E7/Gx";
 var Em = "Em";
@@ -50,10 +51,10 @@ var G = "G";
 var GA = "G/A";
 var GB = "G/B";
 var GD = "G/D";
-var Gsus4 = "Gsus4";
 var G6 = "G6";
 var G7 = "G7";
 var Gm = "Gm";
+var Gsus4 = "Gsus4";
 
 var ACCIDENTAL =
 {
@@ -136,7 +137,7 @@ var DICTIONARY =
     demo:
     {
         en: "Demo",
-        ja: "弾き語り",
+        ja: "模範演奏",
         sv: "Demo",
         th: "Demo",
         zh: "示范弹唱"
