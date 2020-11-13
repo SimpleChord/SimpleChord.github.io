@@ -181,12 +181,15 @@ function appendChord(chord, container)
     for (c of chord)
         switch (c)
         {
+            case "M":
+                appendTAGwithTEXT(TAG.small, c, container);
+                break;
             case "x":
             case "f":
                 appendTAGwithTEXT(TAG.sup, ACCIDENTAL[c], container);
                 break;
-            case "M":
-                appendTAGwithTEXT(TAG.small, c, container);
+            case "-":
+                appendTextNode(ACCIDENTAL.f, container);
                 break;
             default:
                 appendTextNode(c, container);

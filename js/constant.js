@@ -7,6 +7,8 @@ var AmE = "Am/E";
 var AmG = "Am/G";
 var Am7 = "Am7";
 var Am7G = "Am7/G";
+var Asus2 = "Asus2";
+var Asus2B = "Asus2/B";
 var Asus4 = "Asus4";
 var bB = "fB";
 var bBm = "fBm";
@@ -35,6 +37,7 @@ var Dsus4 = "Dsus4";
 var D7sus2 = "D7sus2";
 var D7sus4 = "D7sus4";
 var Daug = "Daug";
+var E = "E";
 var E7 = "E7";
 var E7Gs = "E7/Gx";
 var Em = "Em";
@@ -43,6 +46,7 @@ var EmD = "Em/D";
 var EmG = "Em/G";
 var Em7 = "Em7";
 var F = "F";
+var FE = "F/E";
 var FM7 = "FM7";
 var Fadd9 = "Fadd9";
 var FmM7 = "FmM7";
@@ -55,6 +59,7 @@ var G6 = "G6";
 var G7 = "G7";
 var Gm = "Gm";
 var Gsus4 = "Gsus4";
+var Bm7b5 = "Bm7-5";///test!!!
 
 var ACCIDENTAL =
 {
@@ -140,7 +145,7 @@ var DICTIONARY =
         ja: "模範演奏",
         sv: "Demo",
         th: "Demo",
-        zh: "示范弹唱"
+        zh: "示范演奏"
     },
     footer:
     {
