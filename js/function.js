@@ -209,7 +209,7 @@ function appendLyrics(chords, line, isParagraphBreak, language, container) // a 
     var firstIndex = chords[0][POSITION]; // index of the 1st chord in the lyrics
     var firstChord = [];
     var chord = "";
-    var lyrics = FWS + line; // add a FWS on the left
+    var lyrics = FWS + line; // add a full-width space on the left
     var from = 0; // starting position of the lyrics
     var to = 0; // ending position of the lyrics
     var offset = 0; // difference between "from" & "to"
