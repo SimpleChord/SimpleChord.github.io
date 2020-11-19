@@ -256,7 +256,7 @@ function append__tro(__tro, score, language, container) // intro or outro
         difference = chords[chords.length - 1][POSITION] - text.length;
         
         if (difference > 0)
-            for (i = 0; i < difference; i++) text += FWS; // fill with FWSs
+            for (i = 0; i < difference; i++) text += FWS; // fill with full-width spaces
         
         appendLyrics(chords, text, true, language, container);
     }
@@ -273,9 +273,9 @@ function appendSection(score, language, container)
     (
         function (sc, i)
         {
-            var line = score.lyrics[i] + FWS; // add a FWS to each line of lyrics on the right
+            var line = score.lyrics[i] + FWS; // add a full-width space to each line of lyrics on the right
             
-            if (FULL == checkWidth(language)) line = line.replace(/ /g, FWS); // replace all of the white spaces with FWSs
+            if (FULL == checkWidth(language)) line = line.replace(/ /g, FWS); // replace all of the white spaces with full-width spaces
             
             appendLyrics(sc, line, 0 == (i + 1) % PARAGRAPH, language, pre);
         }
