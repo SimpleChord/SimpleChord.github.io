@@ -64,6 +64,7 @@ var GB = "G/B";
 var GD = "G/D";
 var G6 = "G6";
 var G7 = "G7";
+var G7A = "G7/A";
 var Gm = "Gm";
 var Gsus2 = "Gsus2";
 var Gsus4 = "Gsus4";

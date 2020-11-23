@@ -266,20 +266,21 @@ function appendSection(score, language, container)
 {
     var section = appendElement(TAG.section, container);
     var pre = appendElement(TAG.pre, section);
+    var i;
+    var sc = score.chords;
+    var line = "";
     
     append__tro("intro", score, language, pre);
     
-    score.chords.forEach
-    (
-        function (sc, i)
-        {
-            var line = score.lyrics[i] + FWS; // add a full-width space to each line of lyrics on the right
-            
-            if (FULL == checkWidth(language)) line = line.replace(/ /g, FWS); // replace all of the white spaces with full-width spaces
-            
-            appendLyrics(sc, line, 0 == (i + 1) % PARAGRAPH, language, pre);
-        }
-    );
+    for (i = 0; i < sc.length; i++)
+    {
+        line = score.lyrics[i] + FWS; // add a full-width space to each line of lyrics on the right
+        
+        if (FULL == checkWidth(language)) line = line.replace(/ /g, FWS); // replace all of the white spaces with full-width spaces
+        
+        appendLyrics(sc[i], line, 0 == (i + 1) % PARAGRAPH, language, pre);
+    }
+    if (0 != i % PARAGRAPH) appendBreak(pre); // One more BREAK will be added if there are ending lyrics.
     
     append__tro("outro", score, language, pre);
 }
@@ -291,7 +292,7 @@ function appendArticle(page, bookmark, container)
     var demo;
     var song = page.information.main[bookmark];
     var pa = page.addition;
-    var sd; // song.details if it exists
+    var sd; // song.details if exists
     
     article.id = bookmark; // create bookmarks with ID attribute
     

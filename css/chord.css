@@ -114,6 +114,10 @@ article h2
     border-left: 16px solid deepPink;
     padding-left: 1%;
 }
+article h2 a
+{
+    text-decoration: none; /* remove underline */
+}
 section
 {
     text-align: center;
@@ -152,7 +156,7 @@ aside ol li
 aside ol li a
 {
     display: block; /* display links as block elements */
-    text-decoration: none;
+    text-decoration: none; /* remove underline */
 }
 aside ol li a:hover
 {
