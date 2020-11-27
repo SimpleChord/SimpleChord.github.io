@@ -347,20 +347,29 @@ function createMain(page)
     for (id in page.information.main) appendArticle(page, id, main);
 }
 
-function createAside(pim) // page.information.main
+function createAside(page)
 {
     var aside = appendElement(TAG.aside, document.body);
     var ol = appendElement(TAG.ol, aside);
+    var ul = appendElement(TAG.ul, aside);
     var li;
     var a;
     var id = "";
     var song = {};
+    var item;
+    var pa = page.addition;
     
-    for ([id, song] of Object.entries(pim))
+    for ([id, song] of Object.entries(page.information.main))
     {
         li = appendElement(TAG.li, ol);
         a = appendTAGwithTEXT(TAG.a, song.h2, li);
         a.href = "#" + id;
+    }
+    
+    for (item of DICTIONARY.aside[pa.language])
+    {
+        li = appendElement(TAG.li, ul);
+        appendRecursively(pa.prefix, item, li);
     }
 }
 
@@ -376,8 +385,7 @@ function createPage(url)
 {
     var link = appendElement(TAG.link, document.head);
     var page = getPage(url);
-    var pi = page.information;
-    var pih = pi.header;
+    var pih = page.information.header;
     var pa = page.addition;
     
 // link CSS
@@ -391,6 +399,6 @@ function createPage(url)
     createNav(pa);
     createHeader(pih);
     createMain(page);
-    createAside(pi.main);
+    createAside(page);
     createFooter(pa);
 }

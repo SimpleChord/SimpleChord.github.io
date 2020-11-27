@@ -9,10 +9,12 @@ var Am7G = "Am7/G";
 var Asus2 = "Asus2";
 var Asus2B = "Asus2/B";
 var Asus4 = "Asus4";
+var A7sus2 = "A7sus2";
 var bB = "fB";
 var bBm = "fBm";
 var Bm = "Bm";
 var BmD = "Bm/D";
+var BmFs = "Bm/Fx";
 var Bm7 = "Bm7";
 var C = "C";
 var CD = "C/D";
@@ -49,6 +51,8 @@ var EmD = "Em/D";
 var EmG = "Em/G";
 var Em7 = "Em7";
 var Em7B = "Em7/B";
+var Esus4 = "Esus4";
+var E7sus4 = "E7sus4";
 var F = "F";
 var FA = "F/A";
 var FC = "F/C";
@@ -68,6 +72,7 @@ var G7A = "G7/A";
 var Gm = "Gm";
 var Gsus2 = "Gsus2";
 var Gsus4 = "Gsus4";
+var Gadd9D = "Gadd9/D";
 var Bm7b5 = "Bm7-5";///test!!!
 
 var ACCIDENTAL =
@@ -142,12 +147,43 @@ var EMOJI =
 {
     awkward: " <^_^!>",
     cry: " (T○T)",
+    love: " (*^。^*)",
     shy: " (*^▽^*)",
+    smile: " \\(^○^)/",
     surprise: " (ﾉﾟοﾟ)ﾉ"
 };
 
 var DICTIONARY =
 {
+    aside:
+    {
+        en:
+        [
+            "As a matter of fact, the chords used in this site are not simple.",
+            "..."
+        ],
+        ja:
+        [
+            "...",
+            "...",
+            "..."
+        ],
+        sv:
+        [
+            "...",
+            "..."
+        ],
+        th:
+        [
+            "...",
+            "..."
+        ],
+        zh:
+        [
+            "...",
+            "..."
+        ],
+    },
     demo:
     {
         en: "Demo",
@@ -161,7 +197,10 @@ var DICTIONARY =
         en:
         [
             "Thank you for your visit to this site.", PB,
-            "Edge or IE is not recommended."
+            "Edge or IE is not recommended.", PB,
+            "A front-end framework is being provided for enthusiasts of music or programming to create chord-scores easily. " +
+            "Thus this site is not the one to inquire for musical scores.", LB,
+            "The scores and multimedia available in this site are used to test the framework. Please don't reprint them!"
         ],
         ja:
         [
@@ -189,7 +228,7 @@ var DICTIONARY =
         [
             "希望您会欢喜以上内容！", PB,
             "不建议用Edge或IE访问本站。", PB,
-            "本站旨在为广大编程或音乐爱好者提供一个方便输入和弦谱的前端框架，并非乐谱查询网站。", LB,
+            "本站旨在为广大音乐或编程爱好者提供一个方便输入和弦谱的前端框架，并非乐谱查询网站。", LB,
             "页面内所显示的谱子及多媒体，皆作为测试框架所用，请勿转载！", LB,
             "如有侵权之处，请来信告之，本站一定删除该内容。"
         ],
