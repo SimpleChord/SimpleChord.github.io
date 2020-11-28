@@ -288,15 +288,18 @@ function appendSection(score, language, container)
 function appendArticle(page, bookmark, container)
 {
     var article = appendElement(TAG.article, container);
+    var h2 = appendElement(TAG.h2, article);
     var details;
     var demo;
     var song = page.information.main[bookmark];
+    var a = appendTAGwithTEXT(TAG.a, song.h2, h2);
     var pa = page.addition;
     var sd; // song.details if exists
     
     article.id = bookmark; // create bookmarks with ID attribute
     
-    appendTAGwithTEXT(TAG.h2, song.h2, article);
+    a.href = "#" + TAG.aside; // The page will return to the top of aside when h2 is clicked.
+    
     appendParagraph(pa.prefix, "preface", song, article);
     appendSection(song.section, pa.language, article);
     appendParagraph(pa.prefix, "postscript", song, article);
@@ -351,13 +354,14 @@ function createAside(page)
 {
     var aside = appendElement(TAG.aside, document.body);
     var ol = appendElement(TAG.ol, aside);
-    var ul = appendElement(TAG.ul, aside);
+    var p = appendElement(TAG.p, aside);
     var li;
     var a;
     var id = "";
     var song = {};
-    var item;
     var pa = page.addition;
+    
+    aside.id = TAG.aside; // create bookmarks so that the page can return to the top of aside
     
     for ([id, song] of Object.entries(page.information.main))
     {
@@ -366,11 +370,7 @@ function createAside(page)
         a.href = "#" + id;
     }
     
-    for (item of DICTIONARY.aside[pa.language])
-    {
-        li = appendElement(TAG.li, ul);
-        appendRecursively(pa.prefix, item, li);
-    }
+    appendRecursively(pa.prefix, DICTIONARY.aside[pa.language], p);
 }
 
 function createFooter(addition)
