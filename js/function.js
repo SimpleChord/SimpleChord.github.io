@@ -48,7 +48,7 @@ function checkWidth(language)
     }
 }
 
-function appendTextNode(text, tag)
+function appendText(text, tag)
 {
     var node = document.createTextNode(text);
     
@@ -57,7 +57,7 @@ function appendTextNode(text, tag)
 
 function appendExtractedText(original, from, to, container)
 {
-    appendTextNode(original.slice(from, to), container);
+    appendText(original.slice(from, to), container);
 }
 
 function appendElement(tag, container) // Text is not added or Attributes are not set yet.
@@ -78,7 +78,7 @@ function appendTAGwithTEXT(tag, text, container)
 {
     var element = appendElement(tag, container);
     
-    appendTextNode(text, element);
+    appendText(text, element);
     
     return element;
 }
@@ -131,27 +131,40 @@ function transform2tag(prefix, original, container)
     }
 }
 
+function appendList(prefix, list, container) // "list" is an array.
+{
+    var l; // string or array
+    
+    for (l of list) appendRecursively(prefix, [[TAG.li, l]], container);
+}
+
 function appendRecursively(prefix, content, container)
 {
     var c; // string or array
     var transformed = [];
+    var tag = ""; // tag name
     var element;
     
-    if ("string" === typeof content) appendTextNode(content, container);
+    if ("string" === typeof content) appendText(content, container);
     else // array
         for (c of content)
-            if ("string" === typeof c) appendTextNode(c, container);
+            if ("string" === typeof c) appendText(c, container);
             else // array
             {
                 transformed = transform2tag(prefix, c, container); // transform "c" into an HTML tag if necessary
                 
                 if (transformed.length > 0)
                 {
-                    element = appendElement(transformed[ELEMENT.tag], container);
+                    tag = transformed[ELEMENT.tag];
+                    element = appendElement(tag, container);
                     
-                    switch (transformed[ELEMENT.tag])
+                    switch (tag)
                     {
                         case TAG.br:
+                            break;
+                        case TAG.ol:
+                        case TAG.ul:
+                            appendList(prefix, transformed[ELEMENT.between], element);
                             break;
                         case TAG.a:
                             element.href = transformed[ELEMENT.href];
@@ -189,10 +202,10 @@ function appendChord(chord, container)
                 appendTAGwithTEXT(TAG.sup, ACCIDENTAL[c], container);
                 break;
             case "-":
-                appendTextNode(ACCIDENTAL.f, container);
+                appendText(ACCIDENTAL.f, container);
                 break;
             default:
-                appendTextNode(c, container);
+                appendText(c, container);
         }
 }
 
@@ -354,7 +367,7 @@ function createAside(page)
 {
     var aside = appendElement(TAG.aside, document.body);
     var ol = appendElement(TAG.ol, aside);
-    var p = appendElement(TAG.p, aside);
+    var p;
     var li;
     var a;
     var id = "";
@@ -370,6 +383,9 @@ function createAside(page)
         a.href = "#" + id;
     }
     
+    appendTAGwithTEXT(TAG.h3, DICTIONARY.notice[pa.language], aside);
+    
+    p = appendElement(TAG.p, aside);
     appendRecursively(pa.prefix, DICTIONARY.aside[pa.language], p);
 }
 

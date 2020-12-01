@@ -143,7 +143,8 @@ aside
     padding: 1%;
     background-color: bisque;
 }
-aside ol
+aside ol,
+aside ul
 {
     margin: 0; /* remove default setting */
     padding-left: 1em;
@@ -162,6 +163,10 @@ aside ol li a:hover
 {
     background-color: magenta;
     color: snow;
+}
+aside h3
+{
+    text-align: center;
 }
 
 footer
