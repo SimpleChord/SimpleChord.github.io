@@ -806,7 +806,8 @@ var DATA =
                         postscript:
                         [
                             "正因为这歌特别，所以一开头就用上了大七和挂二。", LB,
-                            "而半音处则选择了不常用的3级大三和弦。"
+                            "而半音处则选择了不常用的3级大三和弦。", LB,
+                            "F/E好像有点儿怪哦？"
                         ],
                         details:
                         {
@@ -1401,17 +1402,13 @@ var DATA =
                 postscript:
                 [
                     "C/Dもあるし、D/Cもある" + EMOJI.surprise, LB,
-                    "D/Cは押しにくいか？かわりに、Dを使ってもいい。"
+                    "D/Cは押しにくいか？かわりに、Dを使ってもええ。"
                 ],
-//                details:
-//                {
-//                    demo: TAG.audio,
-//                    comment:
-//                    [
-//                        "……", PB,
-//                        "……"
-//                    ]
-//                }
+                details:
+                {
+                    demo: TAG.audio,
+                    comment: "難しいか？"
+                }
             },
             otmgkrnamgfr:
             {

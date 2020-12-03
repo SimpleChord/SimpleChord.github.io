@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
-/* all elements */
-*
+* /* all elements */
 {
     box-sizing: border-box;
 }
@@ -9,8 +8,6 @@ body
 {
     margin: 0; /* remove the default margin between navbar and sides */
 }
-
-/* vertical navigation bar */
 nav
 {
     position: fixed;
@@ -84,7 +81,6 @@ nav ul ul li a:only-child
 {
     padding-right: 8px;
 }
-
 header
 {
     width: 90%; /* double nav + main */
@@ -94,7 +90,6 @@ header h1
     text-align: center;
     color: tomato;
 }
-
 main
 {
     float: left;
@@ -134,8 +129,6 @@ summary
 {
     color: chocolate;
 }
-
-/* bookmark */
 aside
 {
     float: right;
@@ -167,8 +160,33 @@ aside ol li a:hover
 aside h3
 {
     text-align: center;
+    animation-name: colorful;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
 }
-
+@keyframes colorful
+{
+    0%
+    {
+        color: red;
+    }
+    25%
+    {
+        color: yellow;
+    }
+    50%
+    {
+        color: blue;
+    }
+    75%
+    {
+        color: green;
+    }
+    100%
+    {
+        color: red;
+    }
+}
 footer
 {
     clear: both; /* no floating elements allowed on both sides */
@@ -182,8 +200,6 @@ footer small
     background-color: azure;
     text-align: right;
 }
-
-/* demo */
 audio,
 video
 {

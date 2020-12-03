@@ -100,7 +100,7 @@ function appendMenus(addition, path, parent, container) // create menus recursiv
         
         if (addition.top === currentPath)
         {
-            a.style.backgroundColor = "red";
+            a.style.backgroundColor = "crimson";
             a.style.color = "gold";
         }
         
