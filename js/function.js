@@ -39,6 +39,7 @@ function checkWidth(language)
     switch (language)
     {
         case "en":
+        case "pt":
         case "sv":
             return HALF;
         case "ja":
@@ -367,7 +368,7 @@ function createAside(page)
 {
     var aside = appendElement(TAG.aside, document.body);
     var ol = appendElement(TAG.ol, aside);
-    var p;
+    var small;
     var li;
     var a;
     var id = "";
@@ -385,8 +386,8 @@ function createAside(page)
     
     appendTAGwithTEXT(TAG.h3, DICTIONARY.notice[pa.language], aside);
     
-    p = appendElement(TAG.p, aside);
-    appendRecursively(pa.prefix, DICTIONARY.aside[pa.language], p);
+    small = appendElement(TAG.small, aside);
+    appendRecursively(pa.prefix, DICTIONARY.aside[pa.language], small);
 }
 
 function createFooter(addition)

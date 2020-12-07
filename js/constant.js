@@ -12,6 +12,7 @@ var Asus4 = "Asus4";
 var A7sus2 = "A7sus2";
 var bB = "fB";
 var bBm = "fBm";
+var B = "B";
 var Bm = "Bm";
 var BmD = "Bm/D";
 var BmFs = "Bm/Fx";
@@ -61,6 +62,7 @@ var FM7 = "FM7";
 var Fadd9 = "Fadd9";
 var Fadd9A = "Fadd9/A";
 var FmM7 = "FmM7";
+var sF = "xF";
 var sFm = "xFm";
 var G = "G";
 var GA = "G/A";
@@ -73,6 +75,7 @@ var Gm = "Gm";
 var Gsus2 = "Gsus2";
 var Gsus4 = "Gsus4";
 var Gadd9D = "Gadd9/D";
+var sGm = "xGm";
 var Bm7b5 = "Bm7-5";///test!!!
 
 var ACCIDENTAL =
@@ -84,6 +87,7 @@ var ACCIDENTAL =
 var HALF = 1;
 var FULL = 2;
 var FWS = "\u3000"; // full-width space
+var TFWS = FWS + FWS; // 2 full-width spaces
 var PARAGRAPH = 4; // add a break every 4 lines
 
 // indexes of a chord's tuple
@@ -169,6 +173,11 @@ var DICTIONARY =
             "...",
             "..."
         ],
+        pt:///
+        [
+            "(The sentences in this area need to be translated!)", LB,
+            "（ここの文を訳してもらえない？）"
+        ],
         sv:
         [
             "...",
@@ -203,7 +212,7 @@ var DICTIONARY =
                                 ]
                             ]
                         ],
-                        "其实基础和弦一般也够用了，就不是最好；在特定的场合，倒真不能满足要求！" +
+                        "虽然基础和弦一般也够用了，就不是最好；在特定的场合，倒还真不能满足要求！" +
                         "另一方面，有的高级货反而好按，且换弦也方便。", LB,
                         "那自己润色下呀！不会？"
                     ],
@@ -213,15 +222,32 @@ var DICTIONARY =
                     ]
                 ]
             ],
-            "以上讨论的都找到谱的情况，那肯定就有找不到的啦！总之，没有（合适的）谱子时，怎么办呢？到处留言求谱？可能没有人会理你。", LB,
+            "以上讨论的都找到谱的情况，那肯定就有找不到的啦！" +
+            "总之，没有（合适的）谱子时，怎么办呢？到处留言求谱？可能没有人会理你。", LB,
             "求人不如靠自己！本站邀请的编曲者并非科班出身，也是厌倦了长时间的搜谱生涯，于近期才开始学习编曲的……", LB,
-            "其实没什么难的，相信你也可以做到！"
-        ],
+            "之所以叫“简单（编曲）”，是因为几乎没有solo形式的前奏、间奏和尾奏。" +
+            "而且大多采用简单、大家都熟知却很经典的节奏，效果倒还不错啦！", LB,
+            "不过为了摆脱初学者的队伍，和弦编配得并不简单哟！而且尽可能避开各大教学网站与视频里提及的所谓《万能伴奏》。" +
+            "其实没什么难的，相信你也可以做到！", PB,
+            "看到其它网站发布的谱子上，和弦名和歌词儿对得参差不齐、歪歪扭扭的样子，萌生了自己动手写个前端框架的念头……", PB,
+            "最后对于合作者们——",
+            [
+                TAG.ul,
+                [
+                    "记谱老师：敏江",
+                    "示范演奏：马里昂",
+                    "方言指导：小映",
+                    "……"
+                ]
+            ],
+            "表示感谢！"
+        ]
     },
     demo:
     {
         en: "Demo",
         ja: "模範演奏",
+        pt: "(Click here and translate the paragraph below!)",///
         sv: "Demo",
         th: "Demo",
         zh: "示范演奏"
@@ -241,6 +267,11 @@ var DICTIONARY =
             "わざわざ本サイトをご覧いただき、誠にありがとうございます！", PB,
             "EdgeかIEにて本サイトへのアクセスは不推奨です。", PB,
             "歌詞は掲載しかねます。"
+        ],
+        pt:///
+        [
+            "(The sentences in this area need translating!)", LB,
+            "（ここの文を訳してもらえない？）"
         ],
         sv:
         [
@@ -271,6 +302,7 @@ var DICTIONARY =
     {
         en: "(Intro)",
         ja: "（前奏）",
+        pt: "...",///
         sv: "(Intro)",
         th: "（前奏）",
         zh: "（前奏）"
@@ -279,6 +311,7 @@ var DICTIONARY =
     {
         en: "Notice",
         ja: "ご挨拶",
+        pt: "（翻訳依頼！）",///
         sv: "...",
         th: "...",
         zh: "寄语"
@@ -287,6 +320,7 @@ var DICTIONARY =
     {
         en: "(Outro)",
         ja: "（後奏）",
+        pt: "...",///
         sv: "(Outro)",
         th: "（尾奏）",
         zh: "（尾奏）"
@@ -295,6 +329,7 @@ var DICTIONARY =
     {
         en: "(Unavailable)",
         ja: "（未登録）",
+        pt: "...",///
         sv: "(Unavailable)",
         th: "(Unavailable)",
         zh: "（暂无）"

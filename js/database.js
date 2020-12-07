@@ -400,7 +400,7 @@ var DATA =
                     }
                 }
             },
-            xianggang:
+            xg:
             {
                 nav: "香港",
                 header:
@@ -586,7 +586,7 @@ var DATA =
                             "网上只找到一个",
                             [TAG.a, "页面", "https://zhidao.baidu.com/question/651740046295640485.html"],
                             "与这歌有关，歌词也是从那儿抄来的。", LB,
-                            "缺少的词儿由小映老师补全，在此表示感谢" + EMOJI.smile
+                            "缺少的词儿由小映老师补全" + EMOJI.smile
                         ],
                         section:
                         {
@@ -763,8 +763,12 @@ var DATA =
                         ],
                         details:
                         {
-//                            demo: TAG.audio,
-                            comment: "田姐唱得真好啊！"
+                            demo: TAG.audio,
+                            comment:
+                            [
+                                "男声唱出来效果不好哦？", LB,
+                                "田姊々唱得真好啊！"
+                            ]
                         }
                     },
                     yyt:
@@ -875,7 +879,7 @@ var DATA =
                             [
                                 "应该是演员本人唱的，杨老师也是有名的歌手！", PB,
                                 "唱得好不好，就听第1句。更确切地说，就听第3个字——岛！" +
-                                "不是单纯一个“岛”字儿，后面要“哦噢喔”！没有转音或是转不来的，那都属于唱得差的。这就好比批考卷，第一步错了，阅卷老师直接一个×就上去了，后面就不看了。", LB,
+                                "不是单纯一个“岛”字儿，后面要“哦噢喔”！没有转音或是转不来的，那都属于唱得差的。", LB,
                                 "同样地，“摇呀摇”和“飘呀飘”的“呀”，最好也转一下。不过和“岛”相比，就没那么明显、那么重要了。", LB,
                                 "有些版本里“那微风”或“吹开了”也…… 看歌手自己发挥了。", PB,
                                 "示范弹唱请参考",
@@ -979,7 +983,11 @@ var DATA =
                         details:
                         {
                             demo: TAG.audio,
-                            comment: "男声唱总是很怪哦？其实除了金老师，其他人唱出来都有点儿怪的。"
+                            comment:
+                            [
+                                "男声唱总是很怪哦？", LB,
+                                "其实除了金老师，其他人唱出来都有点儿怪的。"
+                            ]
                         }
                     }
                 }
@@ -1278,7 +1286,7 @@ var DATA =
                         preface:
                         [
                             "如果从中音1起唱，那最低的是低音3，好像没那么低哦？但从高音1开始的话，最高的就是高音7。", LB,
-                            "叶老师纳闷了：副歌部分都是高音吗？有那么高吗？", LB,
+                            "敏江老师纳闷了：副歌部分都是高音吗？有那么高吗？", LB,
                             "大概是这样：高音谱号后加个升号，SO当DO？（还是说加降号？）", LB,
                             "所以这歌音域跨度蛮大的！从低音6至高音3。而且原版中第3遍高潮还得再升调，那就更高了！", PB,
                             "以下是按G调来编配的；女声唱的话，转成C大概适合哦？", PB,
@@ -1374,7 +1382,7 @@ var DATA =
                         [[2, Bm], [3, FWS + Em], [6, Am7], [7, D7]],
                         [[2, G], [5, CG], [9, G], [11, Bm]],
                         [[2, FWS + CD], [5, C], [6, FWS + G], [8, G]],
-                        [[3, G], [7, FWS + CG], [9, FWS + FWS + G], [11, CG + FWS + G]],
+                        [[3, G], [7, FWS + CG], [9, TFWS + G], [11, CG + FWS + G]],
                         [[2, Bm], [5, Em], [8, FWS + Am7], [9, D7]],
                         [[4, G], [7, CG], [11, G], [13, Bm]],
                         [[2, CD], [5, C], [8, FWS + G], [10, G]],
@@ -1423,7 +1431,7 @@ var DATA =
                     chords:
                     [
                         [[2, G + FWS], [4, GA + FWS], [7, FWS + G], [11, FWS + D]],
-                        [[1, Em + FWS], [4, GA], [8, FWS + FWS + Asus4], [12, FWS + D]],
+                        [[1, Em + FWS], [4, GA], [8, TFWS + Asus4], [12, FWS + D]],
                         [[1, CM7], [7, G], [11, Am7], [15, D7]],
                         [[1, G], [6, Am7], [11, D6 + FWS], [14, G]]
                     ],
@@ -1463,9 +1471,9 @@ var DATA =
                         [[3, G], [6, C], [9, Am7], [13, D7]],
                         [[2, G], [6, D], [10, Em], [14, Bm]],
                         [[1, FWS + C], [6, D], [8, G], [9, G]],
-                        [[3, Bm], [6, Em], [9, C], [10, FWS + FWS + D], [12, G]],
+                        [[3, Bm], [6, Em], [9, C], [10, TFWS + D], [12, G]],
                         [[2, Bm], [5, Em], [9, Am7 + FWS], [12, D7]],
-                        [[3, Bm], [7, Em], [10, C], [11, FWS + FWS + D], [13, G]],
+                        [[3, Bm], [7, Em], [10, C], [11, TFWS + D], [13, G]],
                         [[3, Bm], [6, FWS + Em], [10, Am7], [11, Am7], [15, D7], [16, D7]],
                         [[5, G], [10, FWS + Em], [14, G], [18, Bm]],
                         [[3, C], [6, G], [10, Am], [14, D]],
@@ -1753,6 +1761,74 @@ var DATA =
         classification:
         {}
     },*/
+    cancao:
+    {
+        language: "pt",
+        nav: "翻訳依頼",///Canção
+        header:
+        {
+            h1: "Brazilian Songs (To be translated!!!)"
+        },
+        main:
+        {
+            sitr:
+            {
+                h2: "Ai Se Eu Te Pego",
+                preface:
+                [
+                    "(The sentences in this area need translating!)", LB,
+                    "（ここの文を訳してもらえない？）"
+                ],
+                section:
+                {
+                    chords:
+                    [
+                        [[0, B], [6, sF]],
+                        [[1, sGm], [12, E]],
+                        [[2, B], [11, sF]],
+                        [[1, sGm], [14, E]],
+                        [[0, Em], [6, Am7]],///
+                        [[1, G], [12, Em]],
+                        [[2, Am7], [11, D7]],
+                        [[1, G], [14, D7]],
+                        [[0, Em], [6, Am7]],
+                        [[1, G], [12, Em]],
+                        [[2, Am7], [11, D7]],
+                        [[1, G], [14, D7]]
+                    ],
+                    lyrics:
+                    [
+                        "Nossa, nossa",
+                        "Assim você me mata",
+                        "Ai, se eu te pego",
+                        "Ai, ai se eu te pego",
+                        "Delícia, delícia",
+                        "Assim você me mata",
+                        "Ai, se eu te pego",
+                        "Ai, ai, se eu te pego",
+                        "Sábado na balada",
+                        "A galera começou a dançar",
+                        "E passou a menina mais linda",
+                        "Tomei coragem e comecei a falar"
+                    ]
+                },
+                postscript:
+                [
+                    "(The sentences in this area need translating!)", LB,
+                    "（ここの文を訳してもらえない？）"
+                ],
+                details:
+                {
+                    demo: TAG.audio,
+                    comment:
+                    [
+                        "(The sentences in this area need translating!)", LB,
+                        "（ここの文を訳してもらえない？）"
+                    ]
+                }
+            }
+        }
+    },
     lat:
     {
         language: "sv",
