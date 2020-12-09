@@ -5,6 +5,7 @@ var AmB = "Am/B";
 var AmC = "Am/C";
 var AmE = "Am/E";
 var Am7 = "Am7";
+var Am7E = "Am7/E";
 var Am7G = "Am7/G";
 var Asus2 = "Asus2";
 var Asus2B = "Asus2/B";
@@ -17,6 +18,7 @@ var Bm = "Bm";
 var BmD = "Bm/D";
 var BmFs = "Bm/Fx";
 var Bm7 = "Bm7";
+var Bm7b5 = "Bm7-5";
 var C = "C";
 var CD = "C/D";
 var CE = "C/E";
@@ -25,6 +27,7 @@ var C7 = "C7";
 var CM7 = "CM7";
 var Cadd9 = "Cadd9";
 var Cadd9E = "Cadd9/E";
+var CM9 = "CM9";
 var D = "D";
 var DA = "D/A";
 var DC = "D/C";
@@ -33,6 +36,7 @@ var D6 = "D6";
 var D7 = "D7";
 var D7Fs = "D7/Fx";
 var Dm = "Dm";
+var DmA = "Dm/A";
 var DmE = "Dm/E";
 var DmF = "Dm/F";
 var Dm7 = "Dm7";
@@ -43,7 +47,7 @@ var D7sus2 = "D7sus2";
 var D7sus4 = "D7sus4";
 var Daug = "Daug";
 var E = "E";
-//var E7 = "E7";unused for the time being
+var E7 = "E7";
 var E7B = "E7/B";
 var E7Gs = "E7/Gx";
 var Em = "Em";
@@ -53,6 +57,7 @@ var EmG = "Em/G";
 var Em7 = "Em7";
 var Em7B = "Em7/B";
 var Esus4 = "Esus4";
+var Esus4B = "Esus4/B";
 var E7sus4 = "E7sus4";
 var F = "F";
 var FA = "F/A";
@@ -71,12 +76,12 @@ var GD = "G/D";
 var G6 = "G6";
 var G7 = "G7";
 var G7A = "G7/A";
+var G7D = "G7/D";
 var Gm = "Gm";
 var Gsus2 = "Gsus2";
 var Gsus4 = "Gsus4";
 var Gadd9D = "Gadd9/D";
 var sGm = "xGm";
-var Bm7b5 = "Bm7-5";///test!!!
 
 var ACCIDENTAL =
 {
@@ -95,6 +100,7 @@ var POSITION = 0; // position where a chord begins
 var NAME = 1; // name of a chord
 
 var HTML = "html";
+var HomePage = "index." + HTML;
 
 var ELEMENT =
 {
@@ -137,6 +143,7 @@ var TAG =
 // derivatives
     BoALP: "BoALP", // Bookmark on Another Local Page
     CHORD: "CHORD",
+    HOME: "HOME", // return to the home page
     PB: "PB"
 };
 var LB = [TAG.br]; // line break
@@ -150,6 +157,7 @@ var FORMAT =
 
 var EMOJI =
 {
+    angry: " (๑`^´๑)",
     awkward: " <^_^!>",
     cry: " (T○T)",
     love: " (*^。^*)",
@@ -225,11 +233,43 @@ var DICTIONARY =
             "以上讨论的都找到谱的情况，那肯定就有找不到的啦！" +
             "总之，没有（合适的）谱子时，怎么办呢？到处留言求谱？可能没有人会理你。", LB,
             "求人不如靠自己！本站邀请的编曲者并非科班出身，也是厌倦了长时间的搜谱生涯，于近期才开始学习编曲的……", LB,
-            "之所以叫“简单（编曲）”，是因为几乎没有solo形式的前奏、间奏和尾奏。" +
+            "之所以叫“",
+            [TAG.HOME, "简单（编曲）"],
+            "”，是因为几乎没有solo形式的前奏、间奏和尾奏。" +
             "而且大多采用简单、大家都熟知却很经典的节奏，效果倒还不错啦！", LB,
-            "不过为了摆脱初学者的队伍，和弦编配得并不简单哟！而且尽可能避开各大教学网站与视频里提及的所谓《万能伴奏》。" +
+            "不过为了摆脱初学者的队伍，和弦编配得并不简单哟！而且尽可能避开各大教学网站与视频里提及的所谓《万能伴奏》。", LB,
             "其实没什么难的，相信你也可以做到！", PB,
-            "看到其它网站发布的谱子上，和弦名和歌词儿对得参差不齐、歪歪扭扭的样子，萌生了自己动手写个前端框架的念头……", PB,
+            "看到其它网站发布的谱子上，和弦名和歌词儿对得参差不齐、歪歪扭扭的样子，萌生了自己动手写个前端框架的念头。", LB,
+            "目前完成的功能中只对应了和弦谱的输入，先对本站采用的符号进行一下说明：",
+            [
+                TAG.ul,
+                [
+                    [
+                        "升降号", LB,
+                        "上标形式显示。主和弦名中的升降号写在左边；转位的根音中的写在右边。即不使用形如", LB,
+                        ACCIDENTAL.x + "H/I" + ACCIDENTAL.x + "、",
+                        [TAG.sup, ACCIDENTAL.x],
+                        "J/",
+                        [TAG.sup, ACCIDENTAL.f],
+                        "K、L",
+                        [TAG.sup, ACCIDENTAL.f],
+                        "/",
+                        [TAG.sup, ACCIDENTAL.x],
+                        "M、N",
+                        [TAG.sup, ACCIDENTAL.f],
+                        "/O",
+                        [TAG.sup, ACCIDENTAL.f], LB,
+                        "的名儿。", LB,
+                        "半减和弦中的" + ACCIDENTAL.f + "，应该不算是降号，所以不用上标。"
+                    ],
+                    [
+                        "大（和弦）", LB,
+                        "即M/maj(or)，一律采用较小的大M（不是下标）来表示。"
+                    ],
+                    "……"
+                ]
+            ],
+            "六线谱暂时无法实现，以后可能会考虑支持ASCII谱……", PB,
             "最后对于合作者们——",
             [
                 TAG.ul,
@@ -247,7 +287,7 @@ var DICTIONARY =
     {
         en: "Demo",
         ja: "模範演奏",
-        pt: "(Click here and translate the paragraph below!)",///
+        pt: "Demonstração   (Click here and translate the paragraph below!)",///
         sv: "Demo",
         th: "Demo",
         zh: "示范演奏"
@@ -327,11 +367,11 @@ var DICTIONARY =
     },
     unavailable:
     {
-        en: "(Unavailable)",
+        en: "(unavailable)",
         ja: "（未登録）",
         pt: "...",///
-        sv: "(Unavailable)",
-        th: "(Unavailable)",
+        sv: "(unavailable)",
+        th: "(unavailable)",
         zh: "（暂无）"
     }
 }

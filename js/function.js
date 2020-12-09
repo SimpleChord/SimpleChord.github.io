@@ -124,6 +124,8 @@ function transform2tag(prefix, original, container)
         case TAG.CHORD: // [CHORD, between]
             appendChord(original[ELEMENT.between], container);
             return [];
+        case TAG.HOME: // [HOME, between]
+            return [TAG.a, original[ELEMENT.between], prefix + HomePage];
         case TAG.PB:
             appendBreak(container);
             return LB;
