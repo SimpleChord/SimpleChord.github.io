@@ -20,9 +20,14 @@ var DATA =
                         h2: "玫瑰玫瑰我爱你（新谱置顶）",
                         preface:
                         [
-                            "……", PB,
-                            "加了结束句！", LB,
-                            "记得听过某个版本，有人这么唱的。", PB,
+                            "别看这歌蛮短俄、旋律也简单，花头蛮大娥！", PB,
+                            "据说传到美国、被翻唱后，美国人说什么也不相信是中国歌依钢" + EMOJI.surprise, PB,
+                            "下面的歌词儿是这样安排的：把原曲开头的两段拆开，分别放在副歌的前后，主歌各唱一段。", LB,
+                            "两段高潮第1句中的“心”，起唱点有两种，通过和弦名的位置能看出来吧？" +
+                            "择其一即可；混合亦可，即第2遍迟一拍再唱。", LB,
+                            "两段第2句的最后一个音不同，要注意。第2遍也可以往高音处唱！", LB,
+                            "最后加了结束句，“爱”往高音处唱！", LB,
+                            "唱高的两处请参考美国版。", PB,
                             "为了体现出老上海的味道，最好用爵士风格来演奏！"
                         ],
                         section:
@@ -63,17 +68,18 @@ var DATA =
                         postscript:
                         [
                             "……", PB,
+                            "Esus4/B的效果好像还不错哦？", PB,
                             "以上是按照流行风来编配的；把没有七音的和弦统统加上7，好像爵士味儿就出来了？", LB,
                             "这样就可能会出现",
                             [TAG.CHORD, CM9],
                             "、",
                             [TAG.CHORD, Bm7b5],
-                            "等高级货！能用上大九和半减，那说明水平就又上升了！"
+                            "等高级货！能用上大九和半减，那说明水平又上升了！"
                         ],
                         details:
                         {
                             demo: TAG.video, // Ep.5 1:22.1 ~ 2:2
-                            comment: "……"
+                            comment: "第2句中的第2个玫瑰唱得很有味道！"
                         }
                     },
                     dxsh:
@@ -452,7 +458,7 @@ var DATA =
                                 "吹我罗裳开"
                             ]
                         },
-                        postscript: "Am/C的效果还不错哦？",
+                        postscript: "Am/C的效果好像还不错哦？",
                         details:
                         {
 //                            demo: TAG.audio,
@@ -991,7 +997,7 @@ var DATA =
                             [
                                 "澎老师唱得真好啊，琴弹得更好！", PB,
                                 "大拇指扫弦？这个手法没看懂……", LB,
-                                "第3句里的C7似乎不是很好？而且换弦也不太方便。不如把前一个F再弹一次？"
+                                "第3句中的C7似乎不是很好？而且换弦也不太方便。不如把前一个F再弹一次？"
                             ]
                         }
                     },
@@ -1262,7 +1268,7 @@ var DATA =
                             "、",
                             [TAG.CHORD, D7Fs],
                             "……", LB,
-                            "第6句里的Am和Em，用一个Am代替也行。不过此处用5级和弦来结束似乎更合理？但若合成一个Em/A又有点儿怪哦？所以就拆开吧！", LB,
+                            "第6句中的Am和Em，用一个Am代替也行。不过此处用5级和弦来结束似乎更合理？但若合成一个Em/A又有点儿怪哦？所以就拆开吧！", LB,
                             "高潮前最后的G用大横按比较好。", LB,
                             "高潮第2遍里用了",
                             [TAG.CHORD, FM7],
@@ -1660,6 +1666,85 @@ var DATA =
         nav: "Song",
         classification:
         {
+            us:
+            {
+                nav: "US",
+                header:
+                {
+                    h1: "American Songs"
+                },
+                main:
+                {
+                    sh:
+                    {
+                        h2: "Rose, Rose, I love You (unfinished!)",
+                        preface: "It is said that Americans do not believe that this is a Chinese song.",
+                        section:
+                        {
+                            chords:
+                            [
+                                [[1, Cadd9], [13, CE], [24, Dm7], [37, G]],
+                                [[1, Cadd9], [14, F], [23, Am7G], [38, GD]],
+                                [[2, Am7E], [17, Am7G], [30, G7D], [44, Em7]],
+                                [[1, Cadd9], [13, FM7], [22, G], [29, C]],
+                                [[1, Cadd9], [13, CE], [22, Dm7], [37, G]],/////
+                                [[1, Cadd9], [14, F], [23, Am7G], [38, GD]],
+                                [[2, Am7E], [17, Am7G], [30, G7D], [44, Em7]],
+                                [[1, Cadd9], [13, FM7], [22, G], [29, C]],
+                                [[1, CM7], [8, DmA], [16, Esus4B], [28, CG]],
+                                [[1, G7D], [8, Cadd9], [16, Am7G], [28, CE]],
+                                [[0, CM7], [8, DmA], [15, Esus4B], [28, CG]],
+                                [[1, G7D], [8, Cadd9], [16, Am7G], [28, GD]],
+                                [[1, Cadd9], [13, CE], [24, Dm7], [37, G]],
+                                [[1, Cadd9], [14, F], [23, Am7G], [38, GD]],
+                                [[2, Am7E], [17, Am7G], [30, G7D], [44, Em7]],
+                                [[1, Cadd9], [13, Am], [22, G], [29, C]],
+                                [[1, Cadd9], [13, CE], [24, Dm7], [37, G]],
+                                [[1, Cadd9], [14, F], [23, Am7G], [38, GD]],
+                                [[2, Am7E], [17, Am7G], [30, G7D], [44, Em7]],
+                                [[1, Cadd9], [13, Am], [22, G], [29, C]],
+                                [[1, Cadd9], [8, F], [15, G], [22, E], [30, C]]
+                            ],
+                            lyrics:
+                            [
+                                "Rose Rose I love you with an aching heart",
+                                "What is your future   now we have to part",
+                                "Standing on the jetty as the steamer moves away",
+                                "Flower of Malaya   I cannot stay",
+                                "Make way oh make way for my Eastern Rose",
+                                "Men crowd in dozens everywhere she goes",
+                                "In her rickshaw on the street or in a cabaret",
+                                "Please make way for Rose   you can hear them say",
+                                "All my life I shall remember",
+                                "Oriental music and you in my arms",
+                                "Perfumed flowers in your tresses",
+                                "Lotus-scented breezes and swaying palms",
+                                "Rose Rose I love you with your almond eyes",
+                                "Fragrant and slender 'neath tropical skies",
+                                "I must cross the seas again and never see you more",
+                                "Way back to my home on a distant shore",
+                                "Rose Rose I leave you my ship is in the bay",
+                                "Kiss me farewell now   there's nothin' to say",
+                                "East is East and West is West   our worlds are far apart",
+                                "I must leave you now but I leave my heart",
+                                "Rose Rose I love you   I cannot stay"
+                            ]
+                        },
+                        postscript:
+                        [
+                            "..."
+                        ],
+                        details:
+                        {
+//                            demo: TAG.audio,
+                            comment:
+                            [
+                                "..."
+                            ]
+                        }
+                    }
+                }
+            },
             uk:
             {
                 nav: "UK",
