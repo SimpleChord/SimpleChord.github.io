@@ -24,9 +24,9 @@ var CD = "C/D";
 var CE = "C/E";
 var CG = "C/G";
 var C7 = "C7";
-var CM7 = "CM7";
 var Cadd9 = "Cadd9";
 var Cadd9E = "Cadd9/E";
+var CM7 = "CM7";
 var CM9 = "CM9";
 var D = "D";
 var DA = "D/A";
@@ -56,6 +56,7 @@ var EmD = "Em/D";
 var EmG = "Em/G";
 var Em7 = "Em7";
 var Em7B = "Em7/B";
+var Emadd11 = "Emadd11";
 var Esus4 = "Esus4";
 var Esus4B = "Esus4/B";
 var E7sus4 = "E7sus4";
@@ -63,9 +64,9 @@ var F = "F";
 var FA = "F/A";
 var FC = "F/C";
 var FE = "F/E";
-var FM7 = "FM7";
 var Fadd9 = "Fadd9";
 var Fadd9A = "Fadd9/A";
+var FM7 = "FM7";
 var FmM7 = "FmM7";
 var sF = "xF";
 var sFm = "xFm";
@@ -77,10 +78,10 @@ var G6 = "G6";
 var G7 = "G7";
 var G7A = "G7/A";
 var G7D = "G7/D";
+var Gadd9D = "Gadd9/D";
 var Gm = "Gm";
 var Gsus2 = "Gsus2";
 var Gsus4 = "Gsus4";
-var Gadd9D = "Gadd9/D";
 var sGm = "xGm";
 
 var ACCIDENTAL =
@@ -220,9 +221,9 @@ var DICTIONARY =
                                 ]
                             ]
                         ],
+                        "那自己润色下呀！不会？", LB,
                         "虽然基础和弦一般也够用了，就不是最好；在特定的场合，倒还真不能满足要求！" +
-                        "另一方面，有的高级货反而好按，且换弦也方便。", LB,
-                        "那自己润色下呀！不会？"
+                        "另一方面，有的高级货反而好按，且换弦也方便。"
                     ],
                     [
                         "根本就是错的！", LB,
@@ -240,7 +241,8 @@ var DICTIONARY =
             "不过为了摆脱初学者的队伍，和弦编配得并不简单哟！而且尽可能避开各大教学网站与视频里提及的所谓《万能伴奏》。", LB,
             "其实没什么难的，相信你也可以做到！", PB,
             "看到其它网站发布的谱子上，和弦名和歌词儿对得参差不齐、歪歪扭扭的样子，萌生了自己动手写个前端框架的念头。", LB,
-            "目前完成的功能中只对应了和弦谱的输入，先对本站采用的符号进行一下说明：",
+            "歌词尽可能按每段4行来排列，目前暂时无例外。", LB,
+            "现在所完成的功能中只对应了和弦谱的输入，先对本站采用的符号进行一下说明：",
             [
                 TAG.ul,
                 [
@@ -277,9 +279,9 @@ var DICTIONARY =
                     "特邀记谱：敏江",
                     "示范演奏：马里昂",
                     "音乐顾问：……",
-                    "方言指导：小映；敏江、马里昂",
-                    "技术支持：……",
-                    "粉丝代表：……"
+                    "方言指导：小映；敏江",
+                    "技术支持：马里昂",
+                    "粉丝代表：钱副校长、阿达、小孩子、孔卡、大帝……"
                 ]
             ],
             "表示感谢！"
